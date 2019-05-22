@@ -2,7 +2,7 @@
 // @name     BAT_Buttons
 // @namespace   all
 // @include  https://shawprod.service-now.com/*
-// @version     1.1
+// @version     1.2
 // @grant    none
 // ==/UserScript==
 
