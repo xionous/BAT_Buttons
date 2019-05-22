@@ -3,7 +3,7 @@
 // @namespace all
 // @include https://shawprod.service-now.com/*
 // @author Matthew Streeter
-// @version 1.3
+// @version 1.3.1
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -109,10 +109,17 @@ if (document.getElementById('sys_display.incident.cmdb_ci')){
         }
 
         function pmNodeHistory() {
-            var NODE = document.getElementById('sys_display.incident.cmdb_ci').value;
-            var type = prompt('What Type of device is it? e.g. modem is dx and DPT is dt', 'dx');
-            var the_URL = "http://plantmonitoring/NodeHistory.aspx?opticalReceiver=" + NODE + "&type=" + type + "&daysBack=28";
-            if (NODE != '' && NODE != null) window.open(the_URL,'popout','status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no');
+            if(window.event.shiftKey) {
+                var MAC = prompt('Modem MAC Address').replace(/:/g, "");
+                var type = prompt('What Type of device is it? e.g. modem is dx and DPT is dt', 'dx');
+                var the_URL = "http://plantmonitoring/ModemHistory.aspx?modemMac=" + MAC + "&type=" + type + "&daysBack=28";
+                if (MAC != '' && MAC != null) window.open(the_URL,'popout','status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no'); })();
+            } else {
+                var NODE = document.getElementById('sys_display.incident.cmdb_ci').value;
+                var type = prompt('What Type of device is it? e.g. modem is dx and DPT is dt', 'dx');
+                var the_URL = "http://plantmonitoring/NodeHistory.aspx?opticalReceiver=" + NODE + "&type=" + type + "&daysBack=28";
+                if (NODE != '' && NODE != null) window.open(the_URL,'popout','status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no');
+            }
         }
 
     }())}
