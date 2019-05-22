@@ -3,7 +3,7 @@
 // @namespace all
 // @include https://shawprod.service-now.com/*
 // @author Matthew Streeter
-// @version 1.3.2
+// @version 1.3.3
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -13,6 +13,17 @@ if (document.getElementById('sys_display.incident.cmdb_ci')){
 
     (function(){
         'use strict'
+        var findChecked = document.querySelectorAll('div[class=".input-switch"]');
+        if (window.NOW.compact){
+            addButton('Check All', checkNode, {position: 'fixed', top: '2px', left:'160px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Incident', incSearch, {position: 'fixed', top: '2px', left:'235px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Change', chgSearch, {position: 'fixed', top: '2px', left:'310px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('sPort', sPortSearch, {position: 'fixed', top: '2px', left:'385px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Port', portSearch, {position: 'fixed', top: '2px', left:'460px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('sMQ', smqSearch, {position: 'fixed', top: '2px', left:'535px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('BMQ', bmqSearch, {position: 'fixed', top: '2px', left:'610px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('PM', pmNodeHistory, {position: 'fixed', top: '2px', left:'685px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+        } else {
         //window.addEventListener('load', () => {
             addButton('Check All', checkNode, {position: 'fixed', top: '8px', left:'160px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
             addButton('Incident', incSearch, {position: 'fixed', top: '8px', left:'235px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
@@ -23,6 +34,7 @@ if (document.getElementById('sys_display.incident.cmdb_ci')){
             addButton('BMQ', bmqSearch, {position: 'fixed', top: '8px', left:'610px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
             addButton('PM', pmNodeHistory, {position: 'fixed', top: '8px', left:'685px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
        // })
+        }
 
         function wait(ms){
             var start = new Date().getTime();
