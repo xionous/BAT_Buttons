@@ -1,9 +1,12 @@
 // ==UserScript==
-// @name     BAT_Buttons
-// @namespace   all
-// @include  https://shawprod.service-now.com/*
-// @version     1.2
-// @grant    none
+// @name BAT_Buttons
+// @namespace all
+// @include https://shawprod.service-now.com/*
+// @author Matthew Streeter
+// @version 1.2
+// @downloadURL https://github.com/xionous/BAT_Buttons/blob/master/BAT_Buttons.user.js
+// @updateURL https://github.com/xionous/BAT_Buttons/blob/master/BAT_Buttons.user.js
+// @grant none
 // ==/UserScript==
 
 if (document.getElementById('sys_display.incident.cmdb_ci')){
