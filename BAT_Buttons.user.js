@@ -4,8 +4,8 @@
 // @include https://shawprod.service-now.com/*
 // @author Matthew Streeter
 // @version 1.2
-// @downloadURL https://github.com/xionous/BAT_Buttons/blob/49caf69f8daf5a415dd4d001f33115adc04a9239/BAT_Buttons.user.js
-// @updateURL https://github.com/xionous/BAT_Buttons/blob/49caf69f8daf5a415dd4d001f33115adc04a9239/BAT_Buttons.user.js
+// @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
+// @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
 // ==/UserScript==
 
