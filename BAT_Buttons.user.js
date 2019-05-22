@@ -3,7 +3,7 @@
 // @namespace all
 // @include https://shawprod.service-now.com/*
 // @author Matthew Streeter
-// @version 1.2
+// @version 1.3
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -14,14 +14,14 @@ if (document.getElementById('sys_display.incident.cmdb_ci')){
     (function(){
         'use strict'
         //window.addEventListener('load', () => {
-            addButton('Check All', checkNode, {position: 'fixed', top: '8px', left:'160px', 'min-width':'5.3em', 'z-index': '500'})
-            addButton('Incident', incSearch, {position: 'fixed', top: '8px', left:'235px', 'min-width':'5.3em', 'z-index': '500'})
-            addButton('Change', chgSearch, {position: 'fixed', top: '8px', left:'310px', 'min-width':'5.3em', 'z-index': '500'})
-            addButton('sPort', sPortSearch, {position: 'fixed', top: '8px', left:'385px', 'min-width':'5.3em', 'z-index': '500'})
-            addButton('Port', portSearch, {position: 'fixed', top: '8px', left:'460px', 'min-width':'5.3em', 'z-index': '500'})
-            addButton('sMQ', smqSearch, {position: 'fixed', top: '8px', left:'535px', 'min-width':'5.3em', 'z-index': '500'})
-            addButton('BMQ', bmqSearch, {position: 'fixed', top: '8px', left:'610px', 'min-width':'5.3em', 'z-index': '500'})
-            addButton('PM', pmNodeHistory, {position: 'fixed', top: '8px', left:'685px', 'min-width':'5.3em', 'z-index': '500'})
+            addButton('Check All', checkNode, {position: 'fixed', top: '8px', left:'160px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Incident', incSearch, {position: 'fixed', top: '8px', left:'235px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Change', chgSearch, {position: 'fixed', top: '8px', left:'310px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('sPort', sPortSearch, {position: 'fixed', top: '8px', left:'385px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Port', portSearch, {position: 'fixed', top: '8px', left:'460px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('sMQ', smqSearch, {position: 'fixed', top: '8px', left:'535px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('BMQ', bmqSearch, {position: 'fixed', top: '8px', left:'610px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('PM', pmNodeHistory, {position: 'fixed', top: '8px', left:'685px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
        // })
 
         function wait(ms){
