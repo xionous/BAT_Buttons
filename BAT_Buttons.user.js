@@ -13,7 +13,6 @@ if (document.getElementById('sys_display.incident.cmdb_ci')){
 
     (function(){
         'use strict'
-        var findChecked = document.querySelectorAll('div[class=".input-switch"]');
         if (window.NOW.compact){
             addButton('Check All', checkNode, {position: 'fixed', top: '2px', left:'160px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
             addButton('Incident', incSearch, {position: 'fixed', top: '2px', left:'235px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
