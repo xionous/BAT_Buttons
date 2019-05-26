@@ -3,7 +3,7 @@
 // @namespace all
 // @include https://shawprod.service-now.com/*
 // @author Matthew Streeter
-// @version 1.4.2
+// @version 1.4.3
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -15,9 +15,9 @@ if (document.getElementById('sys_display.incident.cmdb_ci')){
         'use strict'
 
         var topBarMain = document.querySelector('.navbar-header');
-        var getBody = document.getElementsByTagName('body').innerHTML.toString();
- var isNewInc = 'New record';
-        if (getBody.includes(isNewInc)) {
+        var isNewInc = 'New record';
+
+        if (document.body.innerHTML.includes(isNewInc)) {
 
         } else {
             if (window.NOW.compact){
