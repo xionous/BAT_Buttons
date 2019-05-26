@@ -3,7 +3,7 @@
 // @namespace all
 // @include https://shawprod.service-now.com/*
 // @author Matthew Streeter
-// @version 1.3.3
+// @version 1.3.4
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -22,6 +22,7 @@ if (document.getElementById('sys_display.incident.cmdb_ci')){
             addButton('sMQ', smqSearch, {position: 'fixed', top: '2px', left:'535px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
             addButton('BMQ', bmqSearch, {position: 'fixed', top: '2px', left:'610px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
             addButton('PM', pmNodeHistory, {position: 'fixed', top: '2px', left:'685px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
         } else {
         //window.addEventListener('load', () => {
             addButton('Check All', checkNode, {position: 'fixed', top: '8px', left:'160px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
@@ -33,6 +34,16 @@ if (document.getElementById('sys_display.incident.cmdb_ci')){
             addButton('BMQ', bmqSearch, {position: 'fixed', top: '8px', left:'610px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
             addButton('PM', pmNodeHistory, {position: 'fixed', top: '8px', left:'685px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
        // })
+        }
+
+        function addGlobalStyle(css) {
+            var head, style;
+            head = document.getElementsByTagName('head')[0];
+           if (!head) { return; }
+            style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = css;
+            head.appendChild(style);
         }
 
         function wait(ms){
