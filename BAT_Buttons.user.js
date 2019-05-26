@@ -3,7 +3,7 @@
 // @namespace all
 // @include https://shawprod.service-now.com/*
 // @author Matthew Streeter
-// @version 1.3.4
+// @version 1.4.0
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -13,27 +13,27 @@ if (document.getElementById('sys_display.incident.cmdb_ci')){
 
     (function(){
         'use strict'
+
+        var topBarMain = document.querySelector('.navbar-header');
+
         if (window.NOW.compact){
-            addButton('Check All', checkNode, {position: 'fixed', top: '2px', left:'160px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('Incident', incSearch, {position: 'fixed', top: '2px', left:'235px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('Change', chgSearch, {position: 'fixed', top: '2px', left:'310px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('sPort', sPortSearch, {position: 'fixed', top: '2px', left:'385px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('Port', portSearch, {position: 'fixed', top: '2px', left:'460px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('sMQ', smqSearch, {position: 'fixed', top: '2px', left:'535px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('BMQ', bmqSearch, {position: 'fixed', top: '2px', left:'610px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('PM', pmNodeHistory, {position: 'fixed', top: '2px', left:'685px', 'max-height':'1.8em', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
+            addButton('Check All', checkNode, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Incident', incSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Change', chgSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('sPort', sPortSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Port', portSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('sMQ', smqSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('BMQ', bmqSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('PM', pmNodeHistory, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
         } else {
-        //window.addEventListener('load', () => {
-            addButton('Check All', checkNode, {position: 'fixed', top: '8px', left:'160px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('Incident', incSearch, {position: 'fixed', top: '8px', left:'235px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('Change', chgSearch, {position: 'fixed', top: '8px', left:'310px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('sPort', sPortSearch, {position: 'fixed', top: '8px', left:'385px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('Port', portSearch, {position: 'fixed', top: '8px', left:'460px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('sMQ', smqSearch, {position: 'fixed', top: '8px', left:'535px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('BMQ', bmqSearch, {position: 'fixed', top: '8px', left:'610px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-            addButton('PM', pmNodeHistory, {position: 'fixed', top: '8px', left:'685px', 'min-width':'5.3em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
-       // })
+            addButton('Check All', checkNode, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Incident', incSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Change', chgSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('sPort', sPortSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('Port', portSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('sMQ', smqSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+            addButton('BMQ', bmqSearch, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
+           addButton('PM', pmNodeHistory, topBarMain, {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'})
         }
 
         function addGlobalStyle(css) {
@@ -54,10 +54,10 @@ if (document.getElementById('sys_display.incident.cmdb_ci')){
             }
         }
 
-        function addButton(text, onclick, cssVal, cssObj) {
+        function addButton(text, onclick, node, cssVal, cssObj) {
             cssObj = cssObj || cssVal
             let button = document.createElement('button'), btnStyle = button.style
-            document.body.appendChild(button)
+            node.appendChild(button)
             button.innerHTML = text
             button.onclick = onclick
             Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key])
