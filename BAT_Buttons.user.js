@@ -3,7 +3,7 @@
 // @namespace all
 // @include https://shawprod.service-now.com/*
 // @author Matthew Streeter
-// @version 1.6.1
+// @version 1.6.2
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -249,6 +249,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             }
 
             g_form.setValue('incident.cmdb_ci', nodeSysId)
+            g_form.setValue('incident.contact_type', 'self-service')
             g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Outage - Pending');
             g_form.setValue('incident.category', 'hfc');
             g_form.setValue('incident.subcategory', 'network_connectivity');
@@ -305,6 +306,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             }
 
             g_form.setValue('incident.cmdb_ci', nodeSysId)
+            g_form.setValue('incident.contact_type', 'self-service')
             g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Poor RF - [MODIFIER] [Poor TX / Poor RX / Poor CV / Low dSNR] - Pending');
             g_form.setValue('incident.category', 'hfc');
             g_form.setValue('incident.subcategory', 'network_connectivity');
@@ -361,6 +363,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             }
 
             g_form.setValue('incident.cmdb_ci', nodeSysId)
+            g_form.setValue('incident.contact_type', 'self-service')
             g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Noise - Telco - Pending');
             g_form.setValue('incident.category', 'hfc');
             g_form.setValue('incident.subcategory', 'telco_ingress');
@@ -417,6 +420,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             }
 
             g_form.setValue('incident.cmdb_ci', nodeSysId)
+            g_form.setValue('incident.contact_type', 'self-service')
             g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Noise - [MODIFIER] [Low SNR / Unc||rectables / Rogue Modem] - Pending');
             g_form.setValue('incident.category', 'hfc');
             g_form.setValue('incident.subcategory', 'noise_ingress');
@@ -473,6 +477,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             }
 
             g_form.setValue('incident.cmdb_ci', nodeSysId)
+            g_form.setValue('incident.contact_type', 'self-service')
             g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Plant Intermittency - Pending');
             g_form.setValue('incident.category', 'hfc');
             g_form.setValue('incident.subcategory', 'network_connectivity');
