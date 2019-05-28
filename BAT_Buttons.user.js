@@ -3,7 +3,7 @@
 // @namespace all
 // @include https://shawprod.service-now.com/*
 // @author Matthew Streeter
-// @version 1.5.0
+// @version 1.5.1
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -23,7 +23,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         var compactStyle = {'margin':'0px 0px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.8em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'};
         var normalStyle = {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'};
 
-        //var node = '';
+        var node = '';
 
         if (formId == 'incident_task.do') {
             if (window.NOW.compact) {
@@ -33,10 +33,10 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             }
         }
 
-        //if (formId == 'sn_customerservice_rac_escalation.do') {
-        //   node = g_form.getReference('sys_display.sn_customerservice_rac_escalation.u_case.u_node')
-        //   window.alert(node);           
-        //}        
+        if (formId == 'sn_customerservice_rac_escalation.do') {
+           node = g_form.getReference('sys_display.sn_customerservice_rac_escalation.u_case.u_node')
+           window.alert(node);           
+        }        
 
         if (document.body.innerHTML.includes(isNewInc)) {
 
@@ -57,6 +57,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('sMQ', smqSearch, topBarMain, compactStyle)
                 addButton('BMQ', bmqSearch, topBarMain, compactStyle)
                 addButton('PM', pmNodeHistory, topBarMain, compactStyle)
+                addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
                 }
             } else {
                 addButton('Check All', checkNode, topBarMain, normalStyle)
