@@ -2,8 +2,9 @@
 // @name BAT_Buttons
 // @namespace all
 // @include https://shawprod.service-now.com/*
+// @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.6.2
+// @version 1.6.3
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
