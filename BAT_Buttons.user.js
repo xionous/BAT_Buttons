@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.6.4
+// @version 1.6.5
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -31,16 +31,17 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
 
         var topBarMain = document.querySelector('.navbar-header');
         var topBarRight = document.querySelector('.navbar-right');
+        var topBarRightBut = document.querySelector('.navbar_ui_actions');
         var escInc = document.querySelector('form[id="incident.do"]');
         var isNewInc = 'New record';
         var compactStyle = {'margin':'0px 0px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.8em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'};
         var normalStyle = {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'};
 
-        if (formId == 'incident_task.do') {
+        if (formId == 'incident_task.do' && g_form.setValue('incident_task.state') != 3) {
             if (window.NOW.compact) {
-                addButton('Close Task', closeTask, topBarRight, compactStyle)
+                addButton('Close Task', closeTask, topBarRightBut, compactStyle)
             } else {
-                addButton('Close Task', closeTask, topBarRight, normalStyle)
+                addButton('Close Task', closeTask, topBarRightBut, normalStyle)
             }
         }
 
@@ -68,7 +69,9 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('sMQ', smqSearch, topBarMain, compactStyle)
                 addButton('BMQ', bmqSearch, topBarMain, compactStyle)
                 addButton('PM', pmNodeHistory, topBarMain, compactStyle)
-                addButton('Cancel', cancelInc, topBarRight, compactStyle)
+                if (g_form.getValue('incident.state') != 8) {
+                    addButton('Cancel', cancelInc, topBarRightBut, compactStyle)
+                }
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
                 }
             } else {
@@ -80,7 +83,9 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('sMQ', smqSearch, topBarMain, normalStyle)
                 addButton('BMQ', bmqSearch, topBarMain, normalStyle)
                 addButton('PM', pmNodeHistory, topBarMain, normalStyle)
-                addButton('Cancel', cancelInc, topBarRight, normalStyle)
+                if (g_form.getValue('incident.state') != 8) {
+                    addButton('Cancel', cancelInc, topBarRightBut, normalStyle)
+                }
             }
         } else if (formId == 'change_request.do') {
             if (window.NOW.compact) {
@@ -142,87 +147,94 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         }
 
         function cancelInc() {
-            g_form.setValue('incident_task.state', '8');
+            g_form.setValue('incident.state', '8');
             g_form.save();
         }
 
         function sPortSearch() {
+            var node = '';
             if (formId == 'change_request.do') {
-                var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+                node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
-                var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                node = document.getElementById('sys_display.incident.cmdb_ci').value;
             }
             var the_URL = "http://bslam/squery/?direct=sPort&query=" + node;
             if (node != '' && node != null) window.open(the_URL);
         }
 
         function incSearch() {
+            var node = '';
             if (formId == 'change_request.do') {
-                var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+                node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
-                var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                node = document.getElementById('sys_display.incident.cmdb_ci').value;
             }
             var the_URL = "https://shawprod.service-now.com/nav_to.do?uri=%2Fincident_list.do%3Fsysparm_query%3D123TEXTQUERY321%253D" + node;
             if (node != '' && node != null) window.open(the_URL);
         }
 
         function chgSearch() {
+            var node = '';
             if (formId == 'change_request.do') {
-                var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+                node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
-                var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                node = document.getElementById('sys_display.incident.cmdb_ci').value;
             }
             var the_URL = "https://shawprod.service-now.com/nav_to.do?uri=%2Fchange_request_list.do%3Fsysparm_query%3D123TEXTQUERY321%253D" + node;
             if (node != '' && node != null)	window.open(the_URL);
         }
 
         function portSearch() {
+            var node = '';
             if (formId == 'change_request.do') {
-                var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+                node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
-                var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                node = document.getElementById('sys_display.incident.cmdb_ci').value;
             }
             var the_URL = "http://port.shaw.ca/port/?orx=" + node;
             if (node != '' && node != null) window.open(the_URL);
         }
 
         function smqSearch() {
+            var node = '';
             if(window.event.shiftKey) {
-                var node = prompt('sMQ Search');
+                node = prompt('sMQ Search');
                 var the_URL = "http://bslam/squery/?direct=sMQ&query=" + node;
                 if (node != '' && node != null) window.open(the_URL);
             } else {
                 if (formId == 'change_request.do') {
-                    var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+                    node = document.getElementById('sys_display.change_request.cmdb_ci').value;
                 } else {
-                    var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
                 }
-                var the_URL2 = "http://bslam/squery/?direct=sMQ&query=" + node2;
-                if (node2 != '' && node2 != null) window.open(the_URL2);
+                var the_URL2 = "http://bslam/squery/?direct=sMQ&query=" + node;
+                if (node != '' && node != null) window.open(the_URL2);
             }
         }
 
         function bmqSearch() {
+            var node = '';
             if(window.event.shiftKey) {
-                var node = prompt('BMQ Search');
+                node = prompt('BMQ Search');
                 var the_URL = "https://bmq.sjrb.ca/?s=" + node + "&c";
                 if (node != '' && node != null) window.open(the_URL);
             } else {
                 if (formId == 'change_request.do') {
-                    var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+                    node = document.getElementById('sys_display.change_request.cmdb_ci').value;
                 } else {
-                    var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
                 }
-                var the_URL2 = "https://bmq.sjrb.ca/?s=" + node2 + "&c";
-                if (node2 != '' && node2 != null) window.open(the_URL2);
+                var the_URL2 = "https://bmq.sjrb.ca/?s=" + node + "&c";
+                if (node != '' && node != null) window.open(the_URL2);
             }
         }
 
         function checkNode() {
+            var node = '';
             if (formId == 'change_request.do') {
-                var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+                node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
-                var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                node = document.getElementById('sys_display.incident.cmdb_ci').value;
             }
             var the_URL = "http://bslam/squery/?direct=sPort&query=" + node;
             var the_URL2 = "https://bmq.sjrb.ca/?s=" + node + "&c";
@@ -241,6 +253,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         }
 
         function pmNodeHistory() {
+            var node = '';
             if(window.event.shiftKey) {
                 var MAC = prompt('Modem MAC Address').replace(/:/g, "");
                 var type = prompt('What Type of device is it? e.g. modem is dx and DPT is dt', 'dx');
@@ -248,9 +261,9 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (MAC != '' && MAC != null) window.open(the_URL,'popout','status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no');
             } else {
                 if (formId == 'change_request.do') {
-                    var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+                    node = document.getElementById('sys_display.change_request.cmdb_ci').value;
                 } else {
-                    var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
                 }
                 var type2 = prompt('What Type of device is it? e.g. modem is dx and DPT is dt', 'dx');
                 var the_URL2 = "http://plantmonitoring/NodeHistory.aspx?opticalReceiver=" + NODE + "&type=" + type2 + "&daysBack=28";
@@ -264,17 +277,21 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             var cmts = sessionStorage.getItem('cmts');
             var nodeSysId = sessionStorage.getItem('nodeSysId');
             var prov = '';
+            var getHub = '';
+            var h1 = '';
+            var h2 = '';
+            var hub = '';
 
             if (cmts.length == 9) {
-                var getHub = cmts.split('.');
-                var h1 = getHub[0].substr(4)
-                var h2 = getHub[1]
-                var hub = h2+h1
+                getHub = cmts.split('.');
+                h1 = getHub[0].substr(4)
+                h2 = getHub[1]
+                hub = h2+h1
             } else if (cmts.length == 8) {
-                var getHub = cmts.split('.');
-                var h1 = getHub[0].substr(3)
-                var h2 = getHub[1]
-                var hub = h2+h1
+                getHub = cmts.split('.');
+                h1 = getHub[0].substr(3)
+                h2 = getHub[1]
+                hub = h2+h1
             }
 
             if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
@@ -321,17 +338,21 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             var cmts = sessionStorage.getItem('cmts');
             var nodeSysId = sessionStorage.getItem('nodeSysId');
             var prov = '';
+            var getHub = '';
+            var h1 = '';
+            var h2 = '';
+            var hub = '';
 
             if (cmts.length == 9) {
-                var getHub = cmts.split('.');
-                var h1 = getHub[0].substr(4)
-                var h2 = getHub[1]
-                var hub = h2+h1
+                getHub = cmts.split('.');
+                h1 = getHub[0].substr(4)
+                h2 = getHub[1]
+                hub = h2+h1
             } else if (cmts.length == 8) {
-                var getHub = cmts.split('.');
-                var h1 = getHub[0].substr(3)
-                var h2 = getHub[1]
-                var hub = h2+h1
+                getHub = cmts.split('.');
+                h1 = getHub[0].substr(3)
+                h2 = getHub[1]
+                hub = h2+h1
             }
 
             if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
@@ -378,17 +399,21 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             var cmts = sessionStorage.getItem('cmts');
             var nodeSysId = sessionStorage.getItem('nodeSysId');
             var prov = '';
+            var getHub = '';
+            var h1 = '';
+            var h2 = '';
+            var hub = '';
 
             if (cmts.length == 9) {
-                var getHub = cmts.split('.');
-                var h1 = getHub[0].substr(4)
-                var h2 = getHub[1]
-                var hub = h2+h1
+                getHub = cmts.split('.');
+                h1 = getHub[0].substr(4)
+                h2 = getHub[1]
+                hub = h2+h1
             } else if (cmts.length == 8) {
-                var getHub = cmts.split('.');
-                var h1 = getHub[0].substr(3)
-                var h2 = getHub[1]
-                var hub = h2+h1
+                getHub = cmts.split('.');
+                h1 = getHub[0].substr(3)
+                h2 = getHub[1]
+                hub = h2+h1
             }
 
             if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
@@ -435,17 +460,21 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             var cmts = sessionStorage.getItem('cmts');
             var nodeSysId = sessionStorage.getItem('nodeSysId');
             var prov = '';
+            var getHub = '';
+            var h1 = '';
+            var h2 = '';
+            var hub = '';
 
             if (cmts.length == 9) {
-                var getHub = cmts.split('.');
-                var h1 = getHub[0].substr(4)
-                var h2 = getHub[1]
-                var hub = h2+h1
+                getHub = cmts.split('.');
+                h1 = getHub[0].substr(4)
+                h2 = getHub[1]
+                hub = h2+h1
             } else if (cmts.length == 8) {
-                var getHub = cmts.split('.');
-                var h1 = getHub[0].substr(3)
-                var h2 = getHub[1]
-                var hub = h2+h1
+                getHub = cmts.split('.');
+                h1 = getHub[0].substr(3)
+                h2 = getHub[1]
+                hub = h2+h1
             }
 
             if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
@@ -492,17 +521,21 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             var cmts = sessionStorage.getItem('cmts');
             var nodeSysId = sessionStorage.getItem('nodeSysId');
             var prov = '';
+            var getHub = '';
+            var h1 = '';
+            var h2 = '';
+            var hub = '';
 
             if (cmts.length == 9) {
-                var getHub = cmts.split('.');
-                var h1 = getHub[0].substr(4)
-                var h2 = getHub[1]
-                var hub = h2+h1
+                getHub = cmts.split('.');
+                h1 = getHub[0].substr(4)
+                h2 = getHub[1]
+                hub = h2+h1
             } else if (cmts.length == 8) {
-                var getHub = cmts.split('.');
-                var h1 = getHub[0].substr(3)
-                var h2 = getHub[1]
-                var hub = h2+h1
+                getHub = cmts.split('.');
+                h1 = getHub[0].substr(3)
+                h2 = getHub[1]
+                hub = h2+h1
             }
 
             if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
