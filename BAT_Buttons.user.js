@@ -32,6 +32,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         var topBarMain = document.querySelector('.navbar-header');
         var topBarRight = document.querySelector('.navbar-right');
         var topBarRightBut = document.querySelector('.navbar_ui_actions');
+        var buttomButtons = document.querySelector('.form_action_button_container');
         var escInc = document.querySelector('form[id="incident.do"]');
         var isNewInc = 'New record';
         var compactStyle = {'margin':'0px 0px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.8em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'};
@@ -71,6 +72,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('PM', pmNodeHistory, topBarMain, compactStyle)
                 if (g_form.getValue('incident.state') != 8) {
                     addButton('Cancel', cancelInc, topBarRightBut, compactStyle)
+                    addButton('Cancel', cancelInc, buttomButtons, compactStyle)
                 }
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
                 }
@@ -92,6 +94,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('PM', pmNodeHistory, topBarMain, normalStyle)
                 if (g_form.getValue('incident.state') != 8) {
                     addButton('Cancel', cancelInc, topBarRightBut, normalStyle)
+                    addButton('Cancel', cancelInc, buttomButtons, normalStyle)
                 }
             }
                 
