@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.7.0
+// @version 1.7.1
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -279,8 +279,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     node = document.getElementById('sys_display.incident.cmdb_ci').value;
                 }
                 var type2 = prompt('What Type of device is it? e.g. modem is dx and DPT is dt', 'dx');
-                var the_URL2 = "http://plantmonitoring/NodeHistory.aspx?opticalReceiver=" + NODE + "&type=" + type2 + "&daysBack=28";
-                if (NODE != '' && NODE != null) window.open(the_URL2,'popout','status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no');
+                var the_URL2 = "http://plantmonitoring/NodeHistory.aspx?opticalReceiver=" + node + "&type=" + type2 + "&daysBack=28";
+                if (node != '' && node != null) window.open(the_URL2,'popout','status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no');
             }
         }
 
