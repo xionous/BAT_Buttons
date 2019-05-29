@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.6.7
+// @version 1.6.8
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -75,6 +75,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Cancel', cancelInc, buttomButtons, compactStyle)
                 }
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
+                addGlobalStyle('.section_view { display:none !important; }');
                 }
             } else {
                 if (topBarMain == null) {
@@ -96,7 +97,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Cancel', cancelInc, topBarRightBut, normalStyle)
                     addButton('Cancel', cancelInc, buttomButtons, normalStyle)
                 }
-            }
+                addGlobalStyle('.section_view { display:none !important; }');
+                }
                 
             }
         } else if (formId == 'change_request.do') {
