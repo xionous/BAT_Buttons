@@ -4,14 +4,13 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.6.3
+// @version 1.6.4
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
 // ==/UserScript==
 
 var formId = document.getElementById('section_form_id').value;
-
 var node = '';
 var cmts = '';
 var nodeSysId = '';
@@ -25,7 +24,7 @@ if (formId == 'sn_customerservice_rac_escalation.do') {
     sessionStorage.setItem('cmts', cmts);
 }
 
-if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_customerservice_rac_escalation.do'){
+if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_customerservice_rac_escalation.do' || formId == 'change_request.do'){
 
     (function(){
         'use strict'
@@ -81,6 +80,21 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('BMQ', bmqSearch, topBarMain, normalStyle)
                 addButton('PM', pmNodeHistory, topBarMain, normalStyle)
             }
+        } else if (formId == 'change_request.do') {
+            if (window.NOW.compact) {
+                addButton('Incident', incSearch, topBarMain, compactStyle)
+                addButton('Change', chgSearch, topBarMain, compactStyle)
+                addButton('sPort', sPortSearch, topBarMain, compactStyle)
+                addButton('sMQ', smqSearch, topBarMain, compactStyle)
+                addButton('BMQ', bmqSearch, topBarMain, compactStyle)
+                addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
+            } else {
+                addButton('Incident', incSearch, topBarMain, normalStyle)
+                addButton('Change', chgSearch, topBarMain, normalStyle)
+                addButton('sPort', sPortSearch, topBarMain, normalStyle)
+                addButton('sMQ', smqSearch, topBarMain, normalStyle)
+                addButton('BMQ', bmqSearch, topBarMain, normalStyle)
+            }
         }
 
         function addGlobalStyle(css) {
@@ -126,25 +140,41 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         }
 
         function sPortSearch() {
-            var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+            if (formId == 'change_request.do') {
+                var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+            } else {
+                var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+            }
             var the_URL = "http://bslam/squery/?direct=sPort&query=" + node;
             if (node != '' && node != null) window.open(the_URL);
         }
 
         function incSearch() {
-            var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+            if (formId == 'change_request.do') {
+                var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+            } else {
+                var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+            }
             var the_URL = "https://shawprod.service-now.com/nav_to.do?uri=%2Fincident_list.do%3Fsysparm_query%3D123TEXTQUERY321%253D" + node;
             if (node != '' && node != null) window.open(the_URL);
         }
 
         function chgSearch() {
-            var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+            if (formId == 'change_request.do') {
+                var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+            } else {
+                var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+            }
             var the_URL = "https://shawprod.service-now.com/nav_to.do?uri=%2Fchange_request_list.do%3Fsysparm_query%3D123TEXTQUERY321%253D" + node;
             if (node != '' && node != null)	window.open(the_URL);
         }
 
         function portSearch() {
-            var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+            if (formId == 'change_request.do') {
+                var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+            } else {
+                var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+            }
             var the_URL = "http://port.shaw.ca/port/?orx=" + node;
             if (node != '' && node != null) window.open(the_URL);
         }
@@ -155,7 +185,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 var the_URL = "http://bslam/squery/?direct=sMQ&query=" + node;
                 if (node != '' && node != null) window.open(the_URL);
             } else {
-                var node2 = document.getElementById('sys_display.incident.cmdb_ci').value;
+                if (formId == 'change_request.do') {
+                    var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+                } else {
+                    var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                }
                 var the_URL2 = "http://bslam/squery/?direct=sMQ&query=" + node2;
                 if (node2 != '' && node2 != null) window.open(the_URL2);
             }
@@ -167,14 +201,22 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 var the_URL = "https://bmq.sjrb.ca/?s=" + node + "&c";
                 if (node != '' && node != null) window.open(the_URL);
             } else {
-                var node2 = document.getElementById('sys_display.incident.cmdb_ci').value;
+                if (formId == 'change_request.do') {
+                    var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+                } else {
+                    var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                }
                 var the_URL2 = "https://bmq.sjrb.ca/?s=" + node2 + "&c";
                 if (node2 != '' && node2 != null) window.open(the_URL2);
             }
         }
 
         function checkNode() {
-            var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+            if (formId == 'change_request.do') {
+                var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+            } else {
+                var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+            }
             var the_URL = "http://bslam/squery/?direct=sPort&query=" + node;
             var the_URL2 = "https://bmq.sjrb.ca/?s=" + node + "&c";
             var the_URL3 = "http://bslam/squery/?direct=sMQ&query=" + node;
@@ -198,7 +240,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 var the_URL = "http://plantmonitoring/ModemHistory.aspx?modemMac=" + MAC + "&type=" + type + "&daysBack=28";
                 if (MAC != '' && MAC != null) window.open(the_URL,'popout','status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no');
             } else {
-                var NODE = document.getElementById('sys_display.incident.cmdb_ci').value;
+                if (formId == 'change_request.do') {
+                    var node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+                } else {
+                    var node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                }
                 var type2 = prompt('What Type of device is it? e.g. modem is dx and DPT is dt', 'dx');
                 var the_URL2 = "http://plantmonitoring/NodeHistory.aspx?opticalReceiver=" + NODE + "&type=" + type2 + "&daysBack=28";
                 if (NODE != '' && NODE != null) window.open(the_URL2,'popout','status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no');
