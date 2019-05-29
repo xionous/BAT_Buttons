@@ -68,6 +68,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('sMQ', smqSearch, topBarMain, compactStyle)
                 addButton('BMQ', bmqSearch, topBarMain, compactStyle)
                 addButton('PM', pmNodeHistory, topBarMain, compactStyle)
+                addButton('Cancel', cancelInc, topBarRight, compactStyle)
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
                 }
             } else {
@@ -79,6 +80,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('sMQ', smqSearch, topBarMain, normalStyle)
                 addButton('BMQ', bmqSearch, topBarMain, normalStyle)
                 addButton('PM', pmNodeHistory, topBarMain, normalStyle)
+                addButton('Cancel', cancelInc, topBarRight, normalStyle)
             }
         } else if (formId == 'change_request.do') {
             if (window.NOW.compact) {
@@ -136,6 +138,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
 
         function closeTask() {
             g_form.setValue('incident_task.state', '3');
+            g_form.save();
+        }
+
+        function cancelInc() {
+            g_form.setValue('incident_task.state', '8');
             g_form.save();
         }
 
