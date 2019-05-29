@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.6.5
+// @version 1.6.6
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -75,6 +75,13 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
                 }
             } else {
+                if (topBarMain == null) {
+                    addli('Outage', outageTemplate, escInc)
+                    addli('Poor RF', poorRfTemplate, escInc)
+                    addli('Plant Intermittency', piTemplate, escInc)
+                    addli('Noise', noiseTemplate, escInc)
+                    addli('Telco', telcoTemplate, escInc)
+                } else {
                 addButton('Check All', checkNode, topBarMain, normalStyle)
                 addButton('Incident', incSearch, topBarMain, normalStyle)
                 addButton('Change', chgSearch, topBarMain, normalStyle)
@@ -86,6 +93,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (g_form.getValue('incident.state') != 8) {
                     addButton('Cancel', cancelInc, topBarRightBut, normalStyle)
                 }
+            }
+                
             }
         } else if (formId == 'change_request.do') {
             if (window.NOW.compact) {
