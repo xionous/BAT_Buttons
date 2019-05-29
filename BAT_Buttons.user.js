@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.6.8
+// @version 1.6.9
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -70,7 +70,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('sMQ', smqSearch, topBarMain, compactStyle)
                 addButton('BMQ', bmqSearch, topBarMain, compactStyle)
                 addButton('PM', pmNodeHistory, topBarMain, compactStyle)
-                if (g_form.getValue('incident.state') != 8) {
+                if (g_form.getValue('incident.state') != 8 || g_form.getValue('incident.state') != 6) {
                     addButton('Cancel', cancelInc, topBarRightBut, compactStyle)
                     addButton('Cancel', cancelInc, buttomButtons, compactStyle)
                 }
@@ -93,7 +93,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('sMQ', smqSearch, topBarMain, normalStyle)
                 addButton('BMQ', bmqSearch, topBarMain, normalStyle)
                 addButton('PM', pmNodeHistory, topBarMain, normalStyle)
-                if (g_form.getValue('incident.state') != 8) {
+                if (g_form.getValue('incident.state') != 8 || g_form.getValue('incident.state') != 6) {
                     addButton('Cancel', cancelInc, topBarRightBut, normalStyle)
                     addButton('Cancel', cancelInc, buttomButtons, normalStyle)
                 }
