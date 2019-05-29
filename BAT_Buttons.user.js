@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.6.9
+// @version 1.7.0
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -35,8 +35,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         var buttomButtons = document.querySelector('.form_action_button_container');
         var escInc = document.querySelector('form[id="incident.do"]');
         var isNewInc = 'New record';
-        var compactStyle = {'margin':'0px 0px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.8em', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'};
-        var normalStyle = {'margin':'0px 0px 0px 5px', 'z-index': '500', 'background-color': 'rgb(241, 242, 243)'};
+        var compactStyle = {'margin':'0px 0px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.8em', 'z-index': '500'};
+        var normalStyle = {'margin':'0px 0px 0px 5px', 'z-index': '500'};
 
         if (formId == 'incident_task.do' && g_form.setValue('incident_task.state') != 3) {
             if (window.NOW.compact) {
@@ -49,7 +49,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         if (formId == 'sn_customerservice_rac_escalation.do') {
             window.node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
             window.cmts = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_cmts_data').value;
-        }        
+        }
 
         if (document.body.innerHTML.includes(isNewInc)) {
 
@@ -70,7 +70,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('sMQ', smqSearch, topBarMain, compactStyle)
                 addButton('BMQ', bmqSearch, topBarMain, compactStyle)
                 addButton('PM', pmNodeHistory, topBarMain, compactStyle)
-                if (g_form.getValue('incident.state') != 8 || g_form.getValue('incident.state') != 6) {
+                if (g_form.getValue('incident.state') != 8 && g_form.getValue('incident.state') != 6) {
                     addButton('Cancel', cancelInc, topBarRightBut, compactStyle)
                     addButton('Cancel', cancelInc, buttomButtons, compactStyle)
                 }
@@ -93,13 +93,12 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('sMQ', smqSearch, topBarMain, normalStyle)
                 addButton('BMQ', bmqSearch, topBarMain, normalStyle)
                 addButton('PM', pmNodeHistory, topBarMain, normalStyle)
-                if (g_form.getValue('incident.state') != 8 || g_form.getValue('incident.state') != 6) {
+                if (g_form.getValue('incident.state') != 8 && g_form.getValue('incident.state') != 6) {
                     addButton('Cancel', cancelInc, topBarRightBut, normalStyle)
                     addButton('Cancel', cancelInc, buttomButtons, normalStyle)
                 }
                 addGlobalStyle('.section_view { display:none !important; }');
                 }
-                
             }
         } else if (formId == 'change_request.do') {
             if (window.NOW.compact) {
