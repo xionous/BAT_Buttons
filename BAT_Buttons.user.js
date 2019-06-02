@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.7.1
+// @version 1.7.2
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -49,6 +49,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         if (formId == 'sn_customerservice_rac_escalation.do') {
             window.node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
             window.cmts = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_cmts_data').value;
+            if (window.NOW.compact) {
+                addButton('Check All', checkNodeNoc, topBarMain, compactStyle)
+            } else {
+                addButton('Check All', checkNodeNoc, topBarMain, normalStyle)
+            }
         }
 
         if (document.body.innerHTML.includes(isNewInc)) {
@@ -249,6 +254,24 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             } else {
                 node = document.getElementById('sys_display.incident.cmdb_ci').value;
             }
+            var the_URL = "http://bslam/squery/?direct=sPort&query=" + node;
+            var the_URL2 = "https://bmq.sjrb.ca/?s=" + node + "&c";
+            var the_URL3 = "http://bslam/squery/?direct=sMQ&query=" + node;
+            var the_URL4 = "https://shawprod.service-now.com/nav_to.do?uri=%2Fchange_request_list.do%3Fsysparm_query%3D123TEXTQUERY321%253D" + node;
+            var the_URL5 = "https://shawprod.service-now.com/nav_to.do?uri=%2Fincident_list.do%3Fsysparm_query%3D123TEXTQUERY321%253D" + node;
+            function open_tabs() {
+                window.open(the_URL);
+                window.open(the_URL2);
+                window.open(the_URL3);
+                window.open(the_URL4);
+                wait(200);
+                window.open(the_URL5);
+            }
+            if (node != '' && node != null) open_tabs();
+        }
+
+        function checkNodeNoc() {
+            var node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
             var the_URL = "http://bslam/squery/?direct=sPort&query=" + node;
             var the_URL2 = "https://bmq.sjrb.ca/?s=" + node + "&c";
             var the_URL3 = "http://bslam/squery/?direct=sMQ&query=" + node;
