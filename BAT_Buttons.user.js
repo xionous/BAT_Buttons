@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.7.3
+// @version 1.7.4
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -38,7 +38,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         var compactStyle = {'margin':'0px 0px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.8em', 'z-index': '500'};
         var normalStyle = {'margin':'0px 0px 0px 5px', 'z-index': '500'};
 
-        if (formId == 'incident_task.do' && g_form.setValue('incident_task.state') != 3) {
+        if (formId == 'incident_task.do' && g_form.getValue('incident_task.state') != 3) {
             if (window.NOW.compact) {
                 addButton('Close Task', closeTask, topBarRightBut, compactStyle)
             } else {
