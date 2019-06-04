@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.7.4
+// @version 1.7.5
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -32,10 +32,12 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         var topBarMain = document.querySelector('.navbar-header');
         var topBarRight = document.querySelector('.navbar-right');
         var topBarRightBut = document.querySelector('.navbar_ui_actions');
+        var denyButton = document.getElementById('deny_escalation');
         var buttomButtons = document.querySelector('.form_action_button_container');
         var escInc = document.querySelector('form[id="incident.do"]');
         var isNewInc = 'New record';
-        var compactStyle = {'margin':'0px 0px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.8em', 'z-index': '500'};
+        var compactStyle = {'margin':'0px 3px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.848em', 'z-index': '500'};
+        var compactStyleInc = {'margin':'0px 5px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.848em', 'z-index': '500'};
         var normalStyle = {'margin':'0px 0px 0px 5px', 'z-index': '500'};
 
         if (formId == 'incident_task.do' && g_form.getValue('incident_task.state') != 3) {
@@ -51,8 +53,14 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             window.cmts = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_cmts_data').value;
             if (window.NOW.compact) {
                 addButton('Check All', checkNodeNoc, topBarMain, compactStyle)
+                if (document.getElementById('create_incident_rac') == null){
+                    createInc('Create Incident', denyButton, compactStyleInc)
+                }
             } else {
                 addButton('Check All', checkNodeNoc, topBarMain, normalStyle)
+                if (document.getElementById('create_incident_rac') == null){
+                    createInc('Create Incident', denyButton, compactStyleInc)
+                }
             }
         }
 
@@ -150,6 +158,23 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             button.onclick = onclick
             Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key])
             return button
+        }
+
+        function createInc(text, node, cssVal, cssObj) {
+            cssObj = cssObj || cssVal
+            let newButton = document.createElement ('button'), btnStyle = newButton.style
+            newButton.innerHTML = text
+            newButton.setAttribute("class", "form_action_button header action_context btn btn-default")
+
+            newButton.setAttribute("type", "submit")
+            newButton.setAttribute("value", "13db290edb9d360064aefa38bf9619b8")
+            newButton.setAttribute("onclick", "var create_incident_rac=window.create_incident_rac;launchIncidentModal();return false;")
+            newButton.setAttribute("id", "create_incident_rac")
+            newButton.setAttribute("data-action-name", "create_incident_rac")
+            newButton.setAttribute("gsft_id", "13db290edb9d360064aefa38bf9619b8")
+            topBarRightBut.insertBefore(newButton, node)
+            Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key])
+            return newButton
         }
 
         function addli(text, onclick, node) {
