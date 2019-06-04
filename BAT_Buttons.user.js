@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.7.5
+// @version 1.7.6
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -53,11 +53,18 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             window.cmts = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_cmts_data').value;
             if (window.NOW.compact) {
                 addButton('Check All', checkNodeNoc, topBarMain, compactStyle)
+                addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
+                addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; }');
+                addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
+                addGlobalStyle('.section_view { display:none !important; }');
+                addGlobalStyle('.record-paging-nowrap { display:none !important; }');
                 if (document.getElementById('create_incident_rac') == null){
                     createInc('Create Incident', denyButton, compactStyleInc)
                 }
             } else {
                 addButton('Check All', checkNodeNoc, topBarMain, normalStyle)
+                addGlobalStyle('.section_view { display:none !important; }');
+                addGlobalStyle('.record-paging-nowrap { display:none !important; }');
                 if (document.getElementById('create_incident_rac') == null){
                     createInc('Create Incident', denyButton, compactStyleInc)
                 }
@@ -89,7 +96,10 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Cancel', cancelInc, buttomButtons, compactStyle)
                 }
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
+                addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; }');
+                addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
                 addGlobalStyle('.section_view { display:none !important; }');
+                addGlobalStyle('.record-paging-nowrap { display:none !important; }');
                 }
             } else {
                 if (topBarMain == null) {
@@ -113,6 +123,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Cancel', cancelInc, buttomButtons, normalStyle)
                 }
                 addGlobalStyle('.section_view { display:none !important; }');
+                addGlobalStyle('.record-paging-nowrap { display:none !important; }');
                 }
             }
         } else if (formId == 'change_request.do') {
@@ -123,12 +134,18 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('sMQ', smqSearch, topBarMain, compactStyle)
                 addButton('BMQ', bmqSearch, topBarMain, compactStyle)
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
+                addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; }');
+                addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
+                addGlobalStyle('.section_view { display:none !important; }');
+                addGlobalStyle('.record-paging-nowrap { display:none !important; }');
             } else {
                 addButton('Incident', incSearch, topBarMain, normalStyle)
                 addButton('Change', chgSearch, topBarMain, normalStyle)
                 addButton('sPort', sPortSearch, topBarMain, normalStyle)
                 addButton('sMQ', smqSearch, topBarMain, normalStyle)
                 addButton('BMQ', bmqSearch, topBarMain, normalStyle)
+                addGlobalStyle('.section_view { display:none !important; }');
+                addGlobalStyle('.record-paging-nowrap { display:none !important; }');
             }
         }
 
