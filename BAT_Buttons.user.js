@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.7.6
+// @version 1.7.7
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -58,7 +58,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
-                if (document.getElementById('create_incident_rac') == null){
+                if (document.getElementById('create_incident_rac') == null && g_form.getValue('sn_customerservice_rac_escalation.state') == 2 && document.getElementById('sys_display.sn_customerservice_rac_escalation.assigned_to').value != null){
                     createInc('Create Incident', denyButton, compactStyleInc)
                 }
             } else {
