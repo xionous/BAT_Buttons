@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.7.7
+// @version 1.7.8
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -54,7 +54,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (window.NOW.compact) {
                 addButton('Check All', checkNodeNoc, topBarMain, compactStyle)
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
-                addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; }');
+                addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; line-height: 2.6rem!important; }');
                 addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
@@ -96,7 +96,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Cancel', cancelInc, buttomButtons, compactStyle)
                 }
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
-                addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; }');
+                addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important;  line-height: 2.6rem!important;}');
                 addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
@@ -134,7 +134,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('sMQ', smqSearch, topBarMain, compactStyle)
                 addButton('BMQ', bmqSearch, topBarMain, compactStyle)
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
-                addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; }');
+                addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; line-height: 2.6rem!important; }');
                 addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
