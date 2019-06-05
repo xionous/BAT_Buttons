@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.7.8
+// @version 1.7.9
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -337,7 +337,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 window.open(the_URL2);
                 window.open(the_URL3);
                 window.open(the_URL4);
-                wait(200);
+                wait(300);
                 window.open(the_URL5);
             }
             if (node != '' && node != null) open_tabs();
