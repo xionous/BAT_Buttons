@@ -4,7 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @author Matthew Streeter
-// @version 1.7.9
+// @version 1.8.0
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -91,6 +91,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('BMQ', bmqSearch, topBarMain, compactStyle)
                 addButton('PM', pmNodeHistory, topBarMain, compactStyle)
                 addButton('Power Supply', powerSupply, topBarMain, compactStyle)
+                addNodeDropdown(topBarMain)
                 if (g_form.getValue('incident.state') != 8 && g_form.getValue('incident.state') != 6) {
                     addButton('Cancel', cancelInc, topBarRightBut, compactStyle)
                     addButton('Cancel', cancelInc, buttomButtons, compactStyle)
@@ -118,6 +119,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('BMQ', bmqSearch, topBarMain, normalStyle)
                 addButton('PM', pmNodeHistory, topBarMain, normalStyle)
                 addButton('Power Supply', powerSupply, topBarMain, normalStyle)
+                addNodeDropdown(topBarMain)
                 if (g_form.getValue('incident.state') != 8 && g_form.getValue('incident.state') != 6) {
                     addButton('Cancel', cancelInc, topBarRightBut, normalStyle)
                     addButton('Cancel', cancelInc, buttomButtons, normalStyle)
@@ -182,7 +184,6 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             let newButton = document.createElement ('button'), btnStyle = newButton.style
             newButton.innerHTML = text
             newButton.setAttribute("class", "form_action_button header action_context btn btn-default")
-
             newButton.setAttribute("type", "submit")
             newButton.setAttribute("value", "13db290edb9d360064aefa38bf9619b8")
             newButton.setAttribute("onclick", "var create_incident_rac=window.create_incident_rac;launchIncidentModal();return false;")
@@ -203,6 +204,28 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             return li
         }
 
+        function addNodeDropdown(node) {
+            var getShortDesc = document.getElementById('incident.short_description').value
+            if (getShortDesc != null) {
+                var getNodes = getShortDesc.split('-')
+                var splitNodes = getNodes[2].split(';')
+                var index
+                let select = document.createElement('select')
+                node.appendChild(select)
+                if (splitNodes.length == 1) {
+                    select.style.display = 'none'
+                }
+                select.id = 'nodesListbox'
+                for (index = 0; index < splitNodes.length; ++index) {
+                    var nodesList = document.getElementById('nodesListbox')
+                    let option = document.createElement('option')
+                    option.text = splitNodes[index].trim()
+                    nodesList.add(option)
+                }
+                return select
+            }
+        }
+
         function closeTask() {
             g_form.setValue('incident_task.state', '3');
             g_form.save();
@@ -218,7 +241,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (formId == 'change_request.do') {
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
-                node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                var nodesListBox = document.getElementById('nodesListbox');
+                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                if (node == null) {
+                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                }
             }
             var the_URL = "http://bslam/squery/?direct=sPort&query=" + node;
             if (node != '' && node != null) window.open(the_URL);
@@ -229,7 +256,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (formId == 'change_request.do') {
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
-                node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                var nodesListBox = document.getElementById('nodesListbox');
+                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                if (node == null) {
+                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                }
             }
             var the_URL = "https://kenny:9156/psm/query?node=" + node;
             if (node != '' && node != null) window.open(the_URL);
@@ -240,7 +271,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (formId == 'change_request.do') {
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
-                node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                var nodesListBox = document.getElementById('nodesListbox');
+                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                if (node == null) {
+                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                }
             }
             var the_URL = "https://shawprod.service-now.com/nav_to.do?uri=%2Fincident_list.do%3Fsysparm_query%3D123TEXTQUERY321%253D" + node;
             if (node != '' && node != null) window.open(the_URL);
@@ -251,7 +286,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (formId == 'change_request.do') {
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
-                node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                var nodesListBox = document.getElementById('nodesListbox');
+                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                if (node == null) {
+                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                }
             }
             var the_URL = "https://shawprod.service-now.com/nav_to.do?uri=%2Fchange_request_list.do%3Fsysparm_query%3D123TEXTQUERY321%253D" + node;
             if (node != '' && node != null)	window.open(the_URL);
@@ -262,7 +301,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (formId == 'change_request.do') {
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
-                node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                var nodesListBox = document.getElementById('nodesListbox');
+                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                if (node == null) {
+                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                }
             }
             var the_URL = "http://port.shaw.ca/port/?orx=" + node;
             if (node != '' && node != null) window.open(the_URL);
@@ -278,7 +321,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (formId == 'change_request.do') {
                     node = document.getElementById('sys_display.change_request.cmdb_ci').value;
                 } else {
-                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                    var nodesListBox = document.getElementById('nodesListbox');
+                    var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                    if (node == null) {
+                        node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                    }
                 }
                 var the_URL2 = "http://bslam/squery/?direct=sMQ&query=" + node;
                 if (node != '' && node != null) window.open(the_URL2);
@@ -295,7 +342,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (formId == 'change_request.do') {
                     node = document.getElementById('sys_display.change_request.cmdb_ci').value;
                 } else {
-                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                    var nodesListBox = document.getElementById('nodesListbox');
+                    var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                    if (node == null) {
+                        node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                    }
                 }
                 var the_URL2 = "https://bmq.sjrb.ca/?s=" + node + "&c";
                 if (node != '' && node != null) window.open(the_URL2);
@@ -307,7 +358,11 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (formId == 'change_request.do') {
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
-                node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                var nodesListBox = document.getElementById('nodesListbox');
+                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                if (node == null) {
+                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                }
             }
             var the_URL = "http://bslam/squery/?direct=sPort&query=" + node;
             var the_URL2 = "https://bmq.sjrb.ca/?s=" + node + "&c";
@@ -354,7 +409,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (formId == 'change_request.do') {
                     node = document.getElementById('sys_display.change_request.cmdb_ci').value;
                 } else {
-                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                    var nodesListBox = document.getElementById('nodesListbox');
+                    var node = nodesListBox.options[nodesListBox.selectedIndex].text
                 }
                 var type2 = prompt('What Type of device is it? e.g. modem is dx and DPT is dt', 'dx');
                 var the_URL2 = "http://plantmonitoring/NodeHistory.aspx?opticalReceiver=" + node + "&type=" + type2 + "&daysBack=28";
