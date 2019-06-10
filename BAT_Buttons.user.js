@@ -3,14 +3,18 @@
 // @namespace all
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
+// @include http://plantmonitoring/ModemHistory.aspx*
 // @author Matthew Streeter
-// @version 1.8.0
+// @version 1.9.0
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
 // ==/UserScript==
 
-var formId = document.getElementById('section_form_id').value;
+if (document.getElementById('section_form_id')){
+    var formId = document.getElementById('section_form_id').value;
+}
+
 var node = '';
 var cmts = '';
 var nodeSysId = '';
@@ -242,7 +246,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
                 var nodesListBox = document.getElementById('nodesListbox');
-                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                node = nodesListBox.options[nodesListBox.selectedIndex].text
                 if (node == null) {
                     node = document.getElementById('sys_display.incident.cmdb_ci').value;
                 }
@@ -257,7 +261,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
                 var nodesListBox = document.getElementById('nodesListbox');
-                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                node = nodesListBox.options[nodesListBox.selectedIndex].text
                 if (node == null) {
                     node = document.getElementById('sys_display.incident.cmdb_ci').value;
                 }
@@ -272,7 +276,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
                 var nodesListBox = document.getElementById('nodesListbox');
-                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                node = nodesListBox.options[nodesListBox.selectedIndex].text
                 if (node == null) {
                     node = document.getElementById('sys_display.incident.cmdb_ci').value;
                 }
@@ -287,7 +291,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
                 var nodesListBox = document.getElementById('nodesListbox');
-                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                node = nodesListBox.options[nodesListBox.selectedIndex].text
                 if (node == null) {
                     node = document.getElementById('sys_display.incident.cmdb_ci').value;
                 }
@@ -302,7 +306,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
                 var nodesListBox = document.getElementById('nodesListbox');
-                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                node = nodesListBox.options[nodesListBox.selectedIndex].text
                 if (node == null) {
                     node = document.getElementById('sys_display.incident.cmdb_ci').value;
                 }
@@ -322,7 +326,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     node = document.getElementById('sys_display.change_request.cmdb_ci').value;
                 } else {
                     var nodesListBox = document.getElementById('nodesListbox');
-                    var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                    node = nodesListBox.options[nodesListBox.selectedIndex].text
                     if (node == null) {
                         node = document.getElementById('sys_display.incident.cmdb_ci').value;
                     }
@@ -343,7 +347,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     node = document.getElementById('sys_display.change_request.cmdb_ci').value;
                 } else {
                     var nodesListBox = document.getElementById('nodesListbox');
-                    var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                    node = nodesListBox.options[nodesListBox.selectedIndex].text
                     if (node == null) {
                         node = document.getElementById('sys_display.incident.cmdb_ci').value;
                     }
@@ -359,7 +363,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 node = document.getElementById('sys_display.change_request.cmdb_ci').value;
             } else {
                 var nodesListBox = document.getElementById('nodesListbox');
-                var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                node = nodesListBox.options[nodesListBox.selectedIndex].text
                 if (node == null) {
                     node = document.getElementById('sys_display.incident.cmdb_ci').value;
                 }
@@ -401,20 +405,20 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         function pmNodeHistory() {
             var node = '';
             if(window.event.shiftKey) {
-                var MAC = prompt('Modem MAC Address').replace(/:/g, "");
-                var type = prompt('What Type of device is it? e.g. modem is dx and DPT is dt', 'dx');
-                var the_URL = "http://plantmonitoring/ModemHistory.aspx?modemMac=" + MAC + "&type=" + type + "&daysBack=28";
-                if (MAC != '' && MAC != null) window.open(the_URL,'popout','status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no');
-            } else {
                 if (formId == 'change_request.do') {
                     node = document.getElementById('sys_display.change_request.cmdb_ci').value;
                 } else {
                     var nodesListBox = document.getElementById('nodesListbox');
-                    var node = nodesListBox.options[nodesListBox.selectedIndex].text
+                    node = nodesListBox.options[nodesListBox.selectedIndex].text
                 }
                 var type2 = prompt('What Type of device is it? e.g. modem is dx and DPT is dt', 'dx');
                 var the_URL2 = "http://plantmonitoring/NodeHistory.aspx?opticalReceiver=" + node + "&type=" + type2 + "&daysBack=28";
                 if (node != '' && node != null) window.open(the_URL2,'popout','status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no');
+            } else {
+                var MAC = prompt('Modem MAC Address').replace(/:/g, "");
+                var type = prompt('What Type of device is it? e.g. modem is dx and DPT is dt', 'dx');
+                var the_URL = "http://plantmonitoring/ModemHistory.aspx?modemMac=" + MAC + "&type=" + type + "&daysBack=28";
+                if (MAC != '' && MAC != null) window.open(the_URL,'popout','status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no');
             }
         }
 
@@ -444,24 +448,24 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
                 prov = "AB"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
+            } else if (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
                 prov = "AB"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("FM")) {
+            } else if (node.startsWith("FM")) {
                 prov = "F||t Mcmurray"
-            } else if  (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
+            } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
+            } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
+            } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
                 prov = "SK"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
+            } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
                 prov = "MB"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
+            } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
             }
@@ -505,24 +509,24 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
                 prov = "AB"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
+            } else if (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
                 prov = "AB"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("FM")) {
+            } else if (node.startsWith("FM")) {
                 prov = "F||t Mcmurray"
-            } else if  (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
+            } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
+            } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
+            } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
                 prov = "SK"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
+            } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
                 prov = "MB"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
+            } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
             }
@@ -566,24 +570,24 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
                 prov = "AB"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
+            } else if (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
                 prov = "AB"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("FM")) {
+            } else if (node.startsWith("FM")) {
                 prov = "F||t Mcmurray"
-            } else if  (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
+            } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
+            } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
+            } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
                 prov = "SK"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
+            } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
                 prov = "MB"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
+            } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
             }
@@ -627,24 +631,24 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
                 prov = "AB"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
+            } else if (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
                 prov = "AB"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("FM")) {
+            } else if (node.startsWith("FM")) {
                 prov = "F||t Mcmurray"
-            } else if  (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
+            } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
+            } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
+            } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
                 prov = "SK"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
+            } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
                 prov = "MB"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
+            } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
             }
@@ -688,24 +692,24 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
                 prov = "AB"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
+            } else if (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
                 prov = "AB"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("FM")) {
+            } else if (node.startsWith("FM")) {
                 prov = "F||t Mcmurray"
-            } else if  (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
+            } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
+            } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-            } else if  (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
+            } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
                 prov = "SK"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
+            } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
                 prov = "MB"
 				g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-            } else if  (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
+            } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
                 prov = "BC"
 				g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
             }
@@ -724,3 +728,76 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         }
 
     }())}
+
+if (document.body.innerHTML.includes('Modem History For')) {
+    addGlobalStyle('.alertblue { padding: 20px; background-color: #2196F3; color: white; margin-bottom: 15px; }');
+    addGlobalStyle('.alertgreen { padding: 20px; background-color: #4CAF50; color: white; margin-bottom: 15px; }');
+    addGlobalStyle('.closebtn { margin-left: 15px; color: white; font-weight: bold; float: right; font-size: 22px; line-height: 20px; cursor: pointer; transition: 0.3s;}');
+    addGlobalStyle('.closebtn:hover { color: black; }');
+    var timeList = [];
+    var getTable = document.querySelectorAll('table');
+    getTable[0].style.position = 'static';
+    getTable[1].style.position = 'static';
+    var getDiv = document.querySelectorAll('div');
+    getDiv[3].setAttribute('id', 'flaplist');
+    document.getElementById("flaplist").insertAdjacentElement('afterbegin', getTable[0]);
+    var getTableBody = document.querySelectorAll('tbody');
+    var getform = document.querySelector('form');
+    var getTime = getTableBody[1].querySelectorAll('td'), i;
+    var getTzOfs = new Date().getTimezoneOffset();
+    popupMessage('Double click on any time field to copy the time and date', 'alertblue', getform, 'beforebegin')
+    for (i = 0; i < getTime.length; ++i) {
+        var getYear = new Date().getFullYear();
+        if (getTime[i].innerHTML.startsWith(getYear)) {
+            getTime[i].id = 'time'+i
+            var time = getTime[i].innerHTML
+            timeList[i] = time;
+            getTime[i].ondblclick = (function(i) {return function() {
+                var tmLsSpl = timeList[i].split(' ');
+                var dateSpl = tmLsSpl[0].split('-');
+                var dateNew = dateSpl[2]+'/'+dateSpl[1]+'/'+dateSpl[0];
+                var timeNew = tmLsSpl[1].split(':');
+                var newHour = timeNew[0];
+                if (getTzOfs == 300) {
+                    newHour++;
+                    copyStringToClipboard(dateNew+' '+newHour+':'+timeNew[1]+':'+timeNew[2]);
+                } else if (getTzOfs == 420) {
+                    newHour--;
+                    copyStringToClipboard(dateNew+' '+newHour+':'+timeNew[1]+':'+timeNew[2]);
+                } else if (getTzOfs == 360) {
+                    copyStringToClipboard(dateNew+' '+timeNew[0]+':'+timeNew[1]+':'+timeNew[2]);
+                }
+                popupMessage('Copied Date & Time to clipboard in the Service-Now Format', 'alertgreen', getform, 'beforebegin')
+            };})(i);
+        }
+    }
+
+    function copyStringToClipboard (str) {
+        var el = document.createElement('textarea');
+        el.value = str;
+        el.setAttribute('readonly', '');
+        el.style = {position: 'absolute', left: '-9999px', display: 'none'};
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+     }
+
+     function addGlobalStyle(css) {
+        var head, style;
+        head = document.getElementsByTagName('head')[0];
+       if (!head) { return; }
+        style = document.createElement('style');
+        style.type = 'text/css';
+        style.innerHTML = css;
+        head.appendChild(style);
+    }
+
+    function popupMessage(text, cls, node, pos) {
+        var popCon = document.createElement('div');
+        popCon.setAttribute('class', cls);
+        popCon.setAttribute('id', 'popupmessage');
+        popCon.innerHTML = text+'<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>';
+        node.insertAdjacentElement(pos ,popCon);
+    }
+}
