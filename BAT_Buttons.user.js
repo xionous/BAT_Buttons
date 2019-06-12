@@ -6,7 +6,7 @@
 // @include http://plantmonitoring/ModemHistory.aspx*
 // @include http://bslam/squery/*
 // @author Matthew Streeter
-// @version 1.9.2
+// @version 1.9.3
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -78,7 +78,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
 
         if (document.body.innerHTML.includes(isNewInc)) {
 
-        } else if (formId == 'incident.do') {
+        } else if (formId == 'incident.do' && g_form.getValue('incident.category') == 'hfc') {
             if (window.NOW.compact) {
                 if (topBarMain == null) {
                     addli('Outage', outageTemplate, escInc)
