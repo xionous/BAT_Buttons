@@ -6,7 +6,7 @@
 // @include http://plantmonitoring/ModemHistory.aspx*
 // @include http://bslam/squery/*
 // @author Matthew Streeter
-// @version 1.9.3
+// @version 1.9.4
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @grant none
@@ -80,13 +80,6 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
 
         } else if (formId == 'incident.do' && g_form.getValue('incident.category') == 'hfc') {
             if (window.NOW.compact) {
-                if (topBarMain == null) {
-                    addli('Outage', outageTemplate, escInc)
-                    addli('Poor RF', poorRfTemplate, escInc)
-                    addli('Plant Intermittency', piTemplate, escInc)
-                    addli('Noise', noiseTemplate, escInc)
-                    addli('Telco', telcoTemplate, escInc)
-                } else {
                 addButton('Check All', checkNode, topBarMain, compactStyle)
                 addButton('Incident', incSearch, topBarMain, compactStyle)
                 addButton('Change', chgSearch, topBarMain, compactStyle)
@@ -106,15 +99,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
-                }
             } else {
-                if (topBarMain == null) {
-                    addli('Outage', outageTemplate, escInc)
-                    addli('Poor RF', poorRfTemplate, escInc)
-                    addli('Plant Intermittency', piTemplate, escInc)
-                    addli('Noise', noiseTemplate, escInc)
-                    addli('Telco', telcoTemplate, escInc)
-                } else {
                 addButton('Check All', checkNode, topBarMain, normalStyle)
                 addButton('Incident', incSearch, topBarMain, normalStyle)
                 addButton('Change', chgSearch, topBarMain, normalStyle)
@@ -131,7 +116,6 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 }
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
-                }
             }
         } else if (formId == 'change_request.do') {
             if (window.NOW.compact) {
@@ -491,7 +475,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
 
             g_form.setValue('incident.cmdb_ci', nodeSysId)
             g_form.setValue('incident.contact_type', 'self-service')
-            g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Outage - Pending');
+            g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Outage - [ISSUE] - Pending');
             g_form.setValue('incident.category', 'hfc');
             g_form.setValue('incident.subcategory', 'network_connectivity');
             g_form.setValue('incident.u_incident_type', '');
