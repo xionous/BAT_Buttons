@@ -919,7 +919,7 @@ if (document.getElementById('optionSelect').selectedIndex == 6) {
                 timeResult = timeSpl[0];
             }
 
-            var timeDateFin = monthConv+'/'+timeSecDate[2]+'/'+timeSecYrTm[1]+' '+timeResult+':'+timeSpl[1]+':00'
+            var timeDateFin = timeSecDate[2]+'/'+monthConv+'/'+timeSecYrTm[1]+' '+timeResult+':'+timeSpl[1]+':00'
 
             copyStringToClipboard(timeDateFin)
 
