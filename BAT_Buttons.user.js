@@ -4,6 +4,7 @@
 // @include https://shawprod.service-now.com/*
 // @include https://shawqa.service-now.com/*
 // @include http://plantmonitoring/ModemHistory.aspx*
+// @include http://bslam/squery/*
 // @author Matthew Streeter
 // @version 1.9.0
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
@@ -799,5 +800,141 @@ if (document.body.innerHTML.includes('Modem History For')) {
         popCon.setAttribute('id', 'popupmessage');
         popCon.innerHTML = text+'<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>';
         node.insertAdjacentElement(pos ,popCon);
+    }
+}
+
+if (document.getElementById('optionSelect').selectedIndex == 6) {
+    var sPortTime = '';
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+        if (!mutation.addedNodes) return
+            for (var i = 0; i < mutation.addedNodes.length; i++) {
+                var textNodes = document.querySelectorAll('text')
+                if (textNodes[4] != null) {
+                    if (textNodes[4].firstChild.innerHTML.length > 26 ) {
+                    textNodes[4].firstChild.setAttribute('id', 'graphtitle')
+                    var graphtitle = document.getElementById('graphtitle');
+                    graphtitle.ondblclick = getTime;
+                    }
+                }
+                var node = mutation.addedNodes[i]
+            }
+        })
+    })
+
+    observer.observe(document.body, {
+        childList: true
+        , subtree: true
+        , attributes: false
+        , characterData: false
+    })
+
+
+
+    function getTime() {
+        var small = document.querySelectorAll('small');
+        if (small.length > 1) {
+            sPortTime = small[small.length - 1].innerHTML;
+			var timeSec = sPortTime.split(',');
+			var timeSecDate = timeSec[1].split(' ');
+			var timeSecYrTm = timeSec[2].split(' ');
+			var timeSpl = timeSecYrTm[2].split(':');
+			var monthConv = '';
+            var timeConv = timeSpl[0];
+            var timeResult = 0;
+			if (timeSecDate[1] == 'Jan') {
+				monthConv = '01';
+			} else if (timeSecDate[1] == 'Feb') {
+				monthConv = '02';
+			} else if (timeSecDate[1] == 'Mar') {
+				monthConv = '03';
+			} else if (timeSecDate[1] == 'Apr') {
+				monthConv = '04';
+			} else if (timeSecDate[1] == 'May') {
+				monthConv = '05';
+			} else if (timeSecDate[1] == 'Jun') {
+				monthConv = '06';
+			} else if (timeSecDate[1] == 'Jul') {
+				monthConv = '07';
+			} else if (timeSecDate[1] == 'Aug') {
+				monthConv = '08';
+			} else if (timeSecDate[1] == 'Sep') {
+				monthConv = '09';
+			} else if (timeSecDate[1] == 'Oct') {
+				monthConv = '10';
+			} else if (timeSecDate[1] == 'Nov') {
+				monthConv = '11';
+			} else if (timeSecDate[1] == 'Dec') {
+				monthConv = '12';
+            }
+            if (timeConv == '1' && timeSecYrTm[3] == 'AM') {
+                timeResult = '01';
+            } else if (timeConv == '2' && timeSecYrTm[3] == 'AM') {
+                timeResult = '02';
+            } else if (timeConv == '3' && timeSecYrTm[3] == 'AM') {
+                timeResult = '03';
+            } else if (timeConv == '4' && timeSecYrTm[3] == 'AM') {
+                timeResult = '04';
+            } else if (timeConv == '5' && timeSecYrTm[3] == 'AM') {
+                timeResult = '05';
+            } else if (timeConv == '6' && timeSecYrTm[3] == 'AM') {
+                timeResult = '06';
+            } else if (timeConv == '7' && timeSecYrTm[3] == 'AM') {
+                timeResult = '07';
+            } else if (timeConv == '8' && timeSecYrTm[3] == 'AM') {
+                timeResult = '08';
+            } else if (timeConv == '9' && timeSecYrTm[3] == 'AM') {
+                timeResult = '09';
+            } else if (timeConv == '10' && timeSecYrTm[3] == 'AM') {
+                timeResult = 10;
+            } else if (timeConv == '11' && timeSecYrTm[3] == 'AM') {
+                timeResult = 11;
+            } else if (timeConv == '12' && timeSecYrTm[3] == 'PM') {
+                timeResult = 12;
+            } else if (timeConv == '1' && timeSecYrTm[3] == 'PM') {
+                timeResult = 13;
+            } else if (timeConv == '2' && timeSecYrTm[3] == 'PM') {
+                timeResult = 14;
+            } else if (timeConv == '3' && timeSecYrTm[3] == 'PM') {
+                timeResult = 15;
+            } else if (timeConv == '4' && timeSecYrTm[3] == 'PM') {
+                timeResult = 16;
+            } else if (timeConv == '5' && timeSecYrTm[3] == 'PM') {
+                timeResult = 17;
+            } else if (timeConv == '6' && timeSecYrTm[3] == 'PM') {
+                timeResult = 18;
+            } else if (timeConv == '7' && timeSecYrTm[3] == 'PM') {
+                timeResult = 19;
+            } else if (timeConv == '8' && timeSecYrTm[3] == 'PM') {
+                timeResult = 20;
+            } else if (timeConv == '9' && timeSecYrTm[3] == 'PM') {
+                timeResult = 21;
+            } else if (timeConv == '0' && timeSecYrTm[3] == 'PM') {
+                timeResult = 22;
+            } else if (timeConv == '11' && timeSecYrTm[3] == 'PM') {
+                timeResult = 23;
+            } else if (timeConv == '12' && timeSecYrTm[3] == 'AM') {
+                timeResult = '00';
+            } else {
+                timeResult = timeSpl[0];
+            }
+
+            var timeDateFin = monthConv+'/'+timeSecDate[2]+'/'+timeSecYrTm[1]+' '+timeResult+':'+timeSpl[1]+':00'
+
+            copyStringToClipboard(timeDateFin)
+
+            $.toaster({ priority : 'info', title : 'sPort', message : "Time of selected point copied to clipboard"});
+
+            function copyStringToClipboard (str) {
+                var el = document.createElement('textarea');
+                el.value = str;
+                el.setAttribute('readonly', '');
+                el.style = {position: 'absolute', left: '-9999px', display: 'none'};
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+             }
+    	}
     }
 }
