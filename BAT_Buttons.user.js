@@ -154,6 +154,24 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
             }
+        } else if (formId == 'incident.do') {
+            if (window.NOW.compact) {
+                if (topBarMain == null) {
+                    addli('Outage', outageTemplate, escInc)
+                    addli('Poor RF', poorRfTemplate, escInc)
+                    addli('Plant Intermittency', piTemplate, escInc)
+                    addli('Noise', noiseTemplate, escInc)
+                    addli('Telco', telcoTemplate, escInc)
+                }
+            } else {
+                if (topBarMain == null) {
+                    addli('Outage', outageTemplate, escInc)
+                    addli('Poor RF', poorRfTemplate, escInc)
+                    addli('Plant Intermittency', piTemplate, escInc)
+                    addli('Noise', noiseTemplate, escInc)
+                    addli('Telco', telcoTemplate, escInc)
+                }
+            }
         }
 
         function addGlobalStyle(css) {
