@@ -21,7 +21,7 @@ function addButton(text, onclick, node, cssVal, label, cssObj) {
     let button = document.createElement('button'), btnStyle = button.style
     node.appendChild(button)
     button.innerHTML = text
-    button.setAttribute("label", label)
+    button.label = label
     button.onclick = onclick
     Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key])
     return button
