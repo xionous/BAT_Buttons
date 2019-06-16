@@ -16,11 +16,12 @@ function wait(ms){
     }
 }
 
-function addButton(text, onclick, node, cssVal, cssObj) {
+function addButton(text, onclick, node, cssVal, label, cssObj) {
     cssObj = cssObj || cssVal
     let button = document.createElement('button'), btnStyle = button.style
     node.appendChild(button)
     button.innerHTML = text
+    button.setAttribute('label', label)
     button.onclick = onclick
     Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key])
     return button
@@ -700,3 +701,6 @@ function openConfig() {
     GM_config.open();
 }
 
+var compactStyle = {'margin':'0px 3px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.848em', 'z-index': '500'};
+var compactStyleInc = {'margin':'0px 5px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.848em', 'z-index': '500'};
+var normalStyle = {'margin':'0px 0px 0px 5px', 'z-index': '500'};
