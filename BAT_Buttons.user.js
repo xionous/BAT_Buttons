@@ -6,7 +6,7 @@
 // @include http://plantmonitoring/ModemHistory.aspx*
 // @include http://bslam/squery/*
 // @author Matthew Streeter
-// @version 2.0.0
+// @version 2.0.1
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -43,7 +43,7 @@ function addButton(text, onclick, node, cssVal, cssObj) {
     return button
 }
 
-function addButton2(text, onclick, node, cssVal, pos, classIn, arlabel, cssObj) {
+function addButton2(onclick, node, cssVal, pos, classIn, cssObj) {
     cssObj = cssObj || cssVal
     let button = document.createElement('button'), btnStyle = button.style
     node.insertAdjacentElement(pos, button)
@@ -1004,6 +1004,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (psnoc == true) {
                     addButton('Power Supply', powerSupply, topBarMain, compactStyle)
                 }
+                addButton2(openConfig, topBarRightIn, compactStyle, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
                 addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; line-height: 2.6rem!important; }');
                 addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
@@ -1014,32 +1015,33 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 }
             } else {
                 if (checkallnoc == true) {
-                    addButton('Check All', checkNode, topBarMain, compactStyle)
+                    addButton('Check All', checkNode, topBarMain, normalStyle)
                 }
                 if (nocinc == true) {
-                    addButton('nocident', nocSearch, topBarMain, compactStyle)
+                    addButton('nocident', nocSearch, topBarMain, normalStyle)
                 }
                 if (nocchg == true) {
-                    addButton('Change', chgSearch, topBarMain, compactStyle)
+                    addButton('Change', chgSearch, topBarMain, normalStyle)
                 }
                 if (sportnoc == true) {
-                    addButton('sPort', sPortSearch, topBarMain, compactStyle)
+                    addButton('sPort', sPortSearch, topBarMain, normalStyle)
                 }
                 if (portnoc == true) {
-                    addButton('Port', portSearch, topBarMain, compactStyle)
+                    addButton('Port', portSearch, topBarMain, normalStyle)
                 }
                 if (smqnoc == true) {
-                    addButton('sMQ', smqSearch, topBarMain, compactStyle)
+                    addButton('sMQ', smqSearch, topBarMain, normalStyle)
                 }
                 if (bmqnoc == true) {
-                    addButton('BMQ', bmqSearch, topBarMain, compactStyle)
+                    addButton('BMQ', bmqSearch, topBarMain, normalStyle)
                 }
                 if (pmnoc == true) {
-                    addButton('PM', pmNodeHistory, topBarMain, compactStyle)
+                    addButton('PM', pmNodeHistory, topBarMain, normalStyle)
                 }
                 if (psnoc == true) {
-                    addButton('Power Supply', powerSupply, topBarMain, compactStyle)
+                    addButton('Power Supply', powerSupply, topBarMain, normalStyle)
                 }
+                addButton2(openConfig, topBarRightIn, normalStyle, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
                 if (document.getElementById('create_incident_rac') == null){
@@ -1079,7 +1081,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (psinc == true) {
                     addButton('Power Supply', powerSupply, topBarMain, compactStyle)
                 }
-                addButton2('S', openConfig, topBarRightIn, compactStyle, 'afterend', 'icon-cog btn btn-icon')
+                addButton2(openConfig, topBarRightIn, compactStyle, 'afterend', 'icon-cog btn btn-icon')
                 addNodeDropdown(topBarMain)
                 if (g_form.getValue('incident.state') != 8 && g_form.getValue('incident.state') != 6) {
                     addButton('Cancel', cancelInc, topBarRightBut, compactStyle)
@@ -1118,6 +1120,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (psinc == true) {
                     addButton('Power Supply', powerSupply, topBarMain, normalStyle)
                 }
+                addButton2(openConfig, topBarRightIn, normalStyle, 'afterend', 'icon-cog btn btn-icon')
                 addNodeDropdown(topBarMain)
                 if (g_form.getValue('incident.state') != 8 && g_form.getValue('incident.state') != 6) {
                     addButton('Cancel', cancelInc, topBarRightBut, normalStyle)
@@ -1155,6 +1158,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (pschg == true) {
                     addButton('Power Supply', powerSupply, topBarMain, compactStyle)
                 }
+                addButton2(openConfig, topBarRightIn, compactStyle, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
                 addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; line-height: 2.6rem!important; }');
                 addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
@@ -1188,6 +1192,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (pschg == true) {
                     addButton('Power Supply', powerSupply, topBarMain, normalStyle)
                 }
+                addButton2(openConfig, topBarRightIn, normalStyle, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
             }
