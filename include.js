@@ -26,6 +26,16 @@ function addButton(text, onclick, node, cssVal, cssObj) {
     return button
 }
 
+function addButton2(text, onclick, node, cssVal, pos, cssObj) {
+    cssObj = cssObj || cssVal
+    let button = document.createElement('button'), btnStyle = button.style
+    node.insertAdjacentElement(pos, button)
+    button.innerHTML = text
+    button.onclick = onclick
+    Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key])
+    return button
+}
+
 function createInc(text, node, cssVal, cssObj) {
     cssObj = cssObj || cssVal
     let newButton = document.createElement ('button'), btnStyle = newButton.style
