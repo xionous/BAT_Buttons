@@ -6,7 +6,7 @@
 // @include http://plantmonitoring/ModemHistory.aspx*
 // @include http://bslam/squery/*
 // @author Matthew Streeter
-// @version 2.0.1
+// @version 2.0.2
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
