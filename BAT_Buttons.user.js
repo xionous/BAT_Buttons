@@ -6,7 +6,7 @@
 // @include http://plantmonitoring/ModemHistory.aspx*
 // @include http://bslam/squery/*
 // @author Matthew Streeter
-// @version 2.0.3
+// @version 2.0.4
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -114,6 +114,8 @@ function sPortSearch() {
     var node = '';
     if (formId == 'change_request.do') {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+    } else if (formId == 'sn_customerservice_rac_escalation.do') {
+        node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text
@@ -129,6 +131,8 @@ function powerSupply() {
     var node = '';
     if (formId == 'change_request.do') {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+    } else if (formId == 'sn_customerservice_rac_escalation.do') {
+        node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text
@@ -144,6 +148,8 @@ function incSearch() {
     var node = '';
     if (formId == 'change_request.do') {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+    } else if (formId == 'sn_customerservice_rac_escalation.do') {
+        node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text
@@ -159,6 +165,8 @@ function chgSearch() {
     var node = '';
     if (formId == 'change_request.do') {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+    } else if (formId == 'sn_customerservice_rac_escalation.do') {
+        node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text
@@ -174,6 +182,8 @@ function portSearch() {
     var node = '';
     if (formId == 'change_request.do') {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+    } else if (formId == 'sn_customerservice_rac_escalation.do') {
+        node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text
@@ -194,6 +204,8 @@ function smqSearch() {
     } else {
         if (formId == 'change_request.do') {
             node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+        } else if (formId == 'sn_customerservice_rac_escalation.do') {
+            node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
         } else {
             var nodesListBox = document.getElementById('nodesListbox');
             node = nodesListBox.options[nodesListBox.selectedIndex].text
@@ -215,6 +227,8 @@ function bmqSearch() {
     } else {
         if (formId == 'change_request.do') {
             node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+        } else if (formId == 'sn_customerservice_rac_escalation.do') {
+            node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
         } else {
             var nodesListBox = document.getElementById('nodesListbox');
             node = nodesListBox.options[nodesListBox.selectedIndex].text
@@ -261,6 +275,8 @@ function pmNodeHistory() {
     if(window.event.shiftKey) {
         if (formId == 'change_request.do') {
             node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+        } else if (formId == 'sn_customerservice_rac_escalation.do') {
+            node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
         } else {
             var nodesListBox = document.getElementById('nodesListbox');
             node = nodesListBox.options[nodesListBox.selectedIndex].text
