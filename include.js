@@ -26,12 +26,13 @@ function addButton(text, onclick, node, cssVal, cssObj) {
     return button
 }
 
-function addButton2(text, onclick, node, cssVal, pos, cssObj) {
+function addButton2(text, onclick, node, cssVal, pos, classIn, cssObj) {
     cssObj = cssObj || cssVal
     let button = document.createElement('button'), btnStyle = button.style
     node.insertAdjacentElement(pos, button)
     button.innerHTML = text
     button.onclick = onclick
+    button.class = classIn
     Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key])
     return button
 }
