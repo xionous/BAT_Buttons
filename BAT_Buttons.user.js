@@ -6,7 +6,7 @@
 // @include http://plantmonitoring/ModemHistory.aspx*
 // @include http://bslam/squery/*
 // @author Matthew Streeter
-// @version 2.0.2
+// @version 2.0.3
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -231,6 +231,8 @@ function checkNode() {
     var node = '';
     if (formId == 'change_request.do') {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
+    } else if (formId == 'sn_customerservice_rac_escalation.do') {
+        node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text
@@ -249,24 +251,6 @@ function checkNode() {
         window.open(the_URL3);
         window.open(the_URL4);
         wait(200);
-        window.open(the_URL5);
-    }
-    if (node != '' && node != null) open_tabs();
-}
-
-function checkNodeNoc() {
-    var node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
-    var the_URL = "http://bslam/squery/?direct=sPort&query=" + node;
-    var the_URL2 = "https://bmq.sjrb.ca/?s=" + node + "&c";
-    var the_URL3 = "http://bslam/squery/?direct=sMQ&query=" + node;
-    var the_URL4 = "https://shawprod.service-now.com/nav_to.do?uri=%2Fchange_request_list.do%3Fsysparm_query%3D123TEXTQUERY321%253D" + node;
-    var the_URL5 = "https://shawprod.service-now.com/nav_to.do?uri=%2Fincident_list.do%3Fsysparm_query%3D123TEXTQUERY321%253D" + node;
-    function open_tabs() {
-        window.open(the_URL);
-        window.open(the_URL2);
-        window.open(the_URL3);
-        window.open(the_URL4);
-        wait(300);
         window.open(the_URL5);
     }
     if (node != '' && node != null) open_tabs();
@@ -978,14 +962,16 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         if (formId == 'sn_customerservice_rac_escalation.do') {
             window.node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
             window.cmts = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_cmts_data').value;
+            document.getElementById('more_information').style.display = 'none';
+            document.getElementById('show_dashboard').style.display = 'none';
             if (window.NOW.compact) {
                 if (checkallnoc == true) {
                     addButton('Check All', checkNode, topBarMain, compactStyle)
                 }
-                if (nocinc == true) {
-                    addButton('nocident', nocSearch, topBarMain, compactStyle)
+                if (incnoc == true) {
+                    addButton('Incident', incSearch, topBarMain, compactStyle)
                 }
-                if (nocchg == true) {
+                if (chgnoc == true) {
                     addButton('Change', chgSearch, topBarMain, compactStyle)
                 }
                 if (sportnoc == true) {
@@ -1020,7 +1006,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Check All', checkNode, topBarMain, normalStyle)
                 }
                 if (nocinc == true) {
-                    addButton('nocident', nocSearch, topBarMain, normalStyle)
+                    addButton('Incident', incSearch, topBarMain, normalStyle)
                 }
                 if (nocchg == true) {
                     addButton('Change', chgSearch, topBarMain, normalStyle)
