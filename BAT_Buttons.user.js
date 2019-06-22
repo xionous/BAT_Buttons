@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.0.8
+// @version 2.0.9
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1328,16 +1328,25 @@ if (bmqcheck) {
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.text = 'function pmSearch(MAC, type) { var the_URL = "http://plantmonitoring/ModemHistory.aspx?modemMac=" + MAC + "&type=" + type + "&daysBack=28"; if (MAC != \'\' && MAC != null) window.open(the_URL,\'popout\',\'status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no\'); };';
+    script.text += '\nfunction batterySearch(MAC) { var the_URL = "http://bslam/battery/?action=query&mac=" + MAC; if (MAC != \'\' && MAC != null) window.open(the_URL, \'popout\',\'status=no,directories=no,location=no,resizable=no,menubar=no,width=600,height=150,toolbar=no\'); };';
     script.text += '\nvar getTableBmq = document.querySelector(\'tbody\');';
     script.text += '\nvar getMacs = getTableBmq.querySelectorAll(\'.mac\');';
+    var deployed = 0;
     head.appendChild(script);
 
     function loadButtons() {
-        if (document.getElementById('button0')) {
-            for (var iii = 0, row; row = getTableBmq.rows[iii]; iii++) {
-                document.getElementById('button'+iii).remove();
+        if (deployed == 1) {
+            var buttons1 = document.querySelectorAll('#button');
+            var buttons2 = document.querySelectorAll('#buttonbt');
+            for (i = 0; i < buttons1.length; ++i) {
+                document.getElementById('button').remove();
             }
+            for (i = 0; i < buttons2.length; ++i) {
+                document.getElementById('buttonbt').remove();
+            }
+            deployed = 0;
         } else {
+            deployed = 1;
             for (var ii = 0, row1; row1 = getTableBmq.rows[ii]; ii++) {
                 var col = row1.cells;
                 if (getTableBmq.rows[0].innerText != 'No data available in table') {
@@ -1346,12 +1355,18 @@ if (bmqcheck) {
                     if (type == 'dcx') {
                         type = 'dx';
                     }
+                    if (type == 'dt') {
+                        let buttonBt = document.createElement('button');
+                        buttonBt.innerHTML = 'Battery';
+                        buttonBt.id = 'buttonbt';
+                        buttonBt.setAttribute('onclick', 'javascript: batterySearch("'+MAC+'");');
+                        col[3].insertAdjacentElement('beforeend', buttonBt);
+                    }
                     let button = document.createElement('button');
-                    col[3].insertAdjacentElement('afterend', button);
                     button.innerHTML = 'PM';
-                    button.id = 'button'+ii;
-                    var cb = document.getElementById('button'+ii);
-                    cb.setAttribute('onclick', 'javascript: pmSearch("'+MAC+'", "'+type+'");');
+                    button.id = 'button';
+                    button.setAttribute('onclick', 'javascript: pmSearch("'+MAC+'", "'+type+'");');
+                    col[3].insertAdjacentElement('beforeend', button);
                 } else {
                     window.alert('Load a Node First.')
                 }
@@ -1367,5 +1382,5 @@ if (bmqcheck) {
     button1.style.backgroundColor = '#555555';
     button1.style.color = '#FFFFFF';
     button1.style.border = '1px solid #626262';
-    anchor.appendChild(button1);
+    anchor.insertAdjacentElement('afterend', button1);
 }
