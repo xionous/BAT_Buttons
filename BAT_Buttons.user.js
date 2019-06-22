@@ -5,6 +5,7 @@
 // @include https://shawqa.service-now.com/*
 // @include http://plantmonitoring/ModemHistory.aspx*
 // @include http://bslam/squery/*
+// @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
 // @version 2.0.7
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
@@ -339,7 +340,7 @@ function outageTemplate() {
         prov = "BC"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
-    
+
     g_form.setValue('incident.cmdb_ci', nodeSysId)
     g_form.setValue('incident.contact_type', 'self-service')
     if (prov == '' && hub == '' && node == '' && cmts == '') {
@@ -1255,16 +1256,16 @@ if (document.body.innerHTML.includes('Modem History For')) {
     document.getElementById("flaplist").insertAdjacentElement('afterbegin', getTable[0]);
     var getTableBody = document.querySelectorAll('tbody');
     var getform = document.querySelector('form');
-    var getTime = getTableBody[1].querySelectorAll('td'), i;
+    var getTimePm = getTableBody[1].querySelectorAll('td'), i;
     var getTzOfs = new Date().getTimezoneOffset();
     popupMessage('Double click on any time field to copy the time and date', 'alertblue', getform, 'beforebegin')
-    for (i = 0; i < getTime.length; ++i) {
+    for (i = 0; i < getTimePm.length; ++i) {
         var getYear = new Date().getFullYear();
-        if (getTime[i].innerHTML.startsWith(getYear)) {
-            getTime[i].id = 'time'+i
-            var time = getTime[i].innerHTML
+        if (getTimePm[i].innerHTML.startsWith(getYear)) {
+            getTimePm[i].id = 'time'+i
+            var time = getTimePm[i].innerHTML
             timeList[i] = time;
-            getTime[i].ondblclick = (function(i) {return function() {
+            getTimePm[i].ondblclick = (function(i) {return function() {
                 var tmLsSpl = timeList[i].split(' ');
                 var dateSpl = tmLsSpl[0].split('-');
                 var dateNew = dateSpl[2]+'/'+dateSpl[1]+'/'+dateSpl[0];
@@ -1315,4 +1316,56 @@ if (sportCheck) {
             , characterData: false
         })
     }
+}
+
+var bmqcheck = document.getElementById('welcome');
+
+if (bmqcheck) {
+    var getTableBmq = document.querySelector('tbody');
+    var getMacs = getTableBmq.querySelectorAll('.mac');
+    var head = document.getElementsByTagName('head')[0];
+    var anchor = document.getElementById('tabs');
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.text = 'function pmSearch(MAC, type) { var the_URL = "http://plantmonitoring/ModemHistory.aspx?modemMac=" + MAC + "&type=" + type + "&daysBack=28"; if (MAC != \'\' && MAC != null) window.open(the_URL,\'popout\',\'status=no,directories=no,location=no,resizable=no,menubar=no,width=720,height=500,toolbar=no\'); };';
+    script.text += '\nvar getTableBmq = document.querySelector(\'tbody\');';
+    script.text += '\nvar getMacs = getTableBmq.querySelectorAll(\'.mac\');';
+    head.appendChild(script);
+
+    function loadButtons() {
+        if (document.getElementById('button0')) {
+            for (var iii = 0, row; row = getTableBmq.rows[iii]; iii++) {
+                document.getElementById('button'+iii).remove();
+            }
+        } else {
+            for (var ii = 0, row1; row1 = getTableBmq.rows[ii]; ii++) {
+                var col = row1.cells;
+                if (getTableBmq.rows[0].innerText != 'No data available in table') {
+                    var MAC = col[3].innerHTML;
+                    var type = col[2].innerHTML.toLowerCase();
+                    if (type == 'dcx') {
+                        type = 'dx';
+                    }
+                    let button = document.createElement('button');
+                    col[3].insertAdjacentElement('afterend', button);
+                    button.innerHTML = 'PM';
+                    button.id = 'button'+ii;
+                    var cb = document.getElementById('button'+ii);
+                    cb.setAttribute('onclick', 'javascript: pmSearch("'+MAC+'", "'+type+'");');
+                } else {
+                    window.alert('Load a Node First.')
+                }
+            }
+        }
+    }
+
+    var button1 = document.createElement('button');
+    button1.onclick = loadButtons;
+    button1.innerHTML = 'Load/Unload PM Buttons';
+    button1.style.marginTop = '8px';
+    button1.style.borderRadius = '6px';
+    button1.style.backgroundColor = '#555555';
+    button1.style.color = '#FFFFFF';
+    button1.style.border = '1px solid #626262';
+    anchor.appendChild(button1);
 }
