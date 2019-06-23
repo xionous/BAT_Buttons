@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.1.0
+// @version 2.1.1
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1273,10 +1273,10 @@ if (document.body.innerHTML.includes('Modem History For')) {
                 var newHour = timeNew[0];
                 if (getTzOfs == 300) {
                     newHour++;
-                    copyStringToClipboard(dateNew+' '+newHour+':'+timeNew[1]+':'+timeNew[2]);
+                    copyStringToClipboard(dateNew+' 0'+newHour+':'+timeNew[1]+':'+timeNew[2]);
                 } else if (getTzOfs == 420) {
                     newHour--;
-                    copyStringToClipboard(dateNew+' '+newHour+':'+timeNew[1]+':'+timeNew[2]);
+                    copyStringToClipboard(dateNew+' 0'+newHour+':'+timeNew[1]+':'+timeNew[2]);
                 } else if (getTzOfs == 360) {
                     copyStringToClipboard(dateNew+' '+timeNew[0]+':'+timeNew[1]+':'+timeNew[2]);
                 }
