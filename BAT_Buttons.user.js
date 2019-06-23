@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.0.9
+// @version 2.1.0
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1160,7 +1160,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Check All', checkNode, topBarMain, compactStyle)
                 }
                 if (chginc == true) {
-                    addButton('chgident', chgSearch, topBarMain, compactStyle)
+                    addButton('Incident', chgSearch, topBarMain, compactStyle)
                 }
                 if (chgchg == true) {
                     addButton('Change', chgSearch, topBarMain, compactStyle)
@@ -1194,7 +1194,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Check All', checkNode, topBarMain, normalStyle)
                 }
                 if (chginc == true) {
-                    addButton('chgident', chgSearch, topBarMain, normalStyle)
+                    addButton('Incident', chgSearch, topBarMain, normalStyle)
                 }
                 if (chgchg == true) {
                     addButton('Change', chgSearch, topBarMain, normalStyle)
