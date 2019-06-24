@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.1.4
+// @version 2.1.5
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1276,14 +1276,22 @@ if (document.body.innerHTML.includes('Modem History For')) {
                     if (newHour.toString().length == 1){
                         copyStringToClipboard(dateNew+' 0'+newHour+':'+timeNew[1]+':'+timeNew[2]);
                     } else {
-                        copyStringToClipboard(dateNew+' '+newHour+':'+timeNew[1]+':'+timeNew[2]);
+                        if (newHour == 24) {
+                            copyStringToClipboard(dateNew+' 00:'+timeNew[1]+':'+timeNew[2]);
+                        } else {
+                            copyStringToClipboard(dateNew+' '+newHour+':'+timeNew[1]+':'+timeNew[2]);
+                        }
                     }
                 } else if (getTzOfs == 420) {
                     newHour--;
                     if (newHour.toString().length == 1){
                         copyStringToClipboard(dateNew+' 0'+newHour+':'+timeNew[1]+':'+timeNew[2]);
                     } else {
-                        copyStringToClipboard(dateNew+' '+newHour+':'+timeNew[1]+':'+timeNew[2]);
+                        if (newHour == 24) {
+                            copyStringToClipboard(dateNew+' 00:'+timeNew[1]+':'+timeNew[2]);
+                        } else {
+                            copyStringToClipboard(dateNew+' '+newHour+':'+timeNew[1]+':'+timeNew[2]);
+                        }
                     }
                 } else if (getTzOfs == 360) {
                     copyStringToClipboard(dateNew+' '+timeNew[0]+':'+timeNew[1]+':'+timeNew[2]);
