@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.1.3
+// @version 2.1.4
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -344,9 +344,9 @@ function outageTemplate() {
     g_form.setValue('incident.cmdb_ci', nodeSysId)
     g_form.setValue('incident.contact_type', 'self-service')
     if (prov == '' && hub == '' && node == '' && cmts == '') {
-        g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Outage - [ISSUE] - Pending');
+        g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Outage - [ISSUE]');
     } else {
-        g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Outage - [ISSUE] - Pending');
+        g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Outage - [ISSUE]');
     }
     g_form.setValue('incident.category', 'hfc');
     g_form.setValue('incident.subcategory', 'network_connectivity');
@@ -409,9 +409,9 @@ function poorRfTemplate() {
     g_form.setValue('incident.cmdb_ci', nodeSysId)
     g_form.setValue('incident.contact_type', 'self-service')
     if (prov == '' && hub == '' && node == '' && cmts == '') {
-        g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Poor RF - [ISSUE] - Pending');
+        g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Poor RF - [ISSUE]');
     } else {
-        g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Poor RF - [ISSUE] - Pending');
+        g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Poor RF - [ISSUE]');
     }
     g_form.setValue('incident.category', 'hfc');
     g_form.setValue('incident.subcategory', 'network_connectivity');
@@ -474,9 +474,9 @@ function telcoTemplate() {
     g_form.setValue('incident.cmdb_ci', nodeSysId)
     g_form.setValue('incident.contact_type', 'self-service')
     if (prov == '' && hub == '' && node == '' && cmts == '') {
-        g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Noise - Telco - Pending');
+        g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Noise - Telco');
     } else {
-        g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Noise - Telco - Pending');
+        g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Noise - Telco');
     }
     g_form.setValue('incident.category', 'hfc');
     g_form.setValue('incident.subcategory', 'telco_ingress');
@@ -539,9 +539,9 @@ function noiseTemplate() {
     g_form.setValue('incident.cmdb_ci', nodeSysId)
     g_form.setValue('incident.contact_type', 'self-service')
     if (prov == '' && hub == '' && node == '' && cmts == '') {
-        g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Noise - [ISSUE] - Pending');
+        g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Noise - [ISSUE]');
     } else {
-        g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Noise - [ISSUE] - Pending');
+        g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Noise - [ISSUE]');
     }
     g_form.setValue('incident.category', 'hfc');
     g_form.setValue('incident.subcategory', 'noise_ingress');
@@ -604,9 +604,9 @@ function piTemplate() {
     g_form.setValue('incident.cmdb_ci', nodeSysId)
     g_form.setValue('incident.contact_type', 'self-service')
     if (prov == '' && hub == '' && node == '' && cmts == '') {
-        g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Plant Intermittency - [ISSUE] - Pending');
+        g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Plant Intermittency - [ISSUE]');
     } else {
-        g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Plant Intermittency - [ISSUE] - Pending');
+        g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Plant Intermittency - [ISSUE]');
     }
     g_form.setValue('incident.category', 'hfc');
     g_form.setValue('incident.subcategory', 'network_connectivity');
