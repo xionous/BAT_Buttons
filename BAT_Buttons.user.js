@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.1.5
+// @version 2.1.6
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
