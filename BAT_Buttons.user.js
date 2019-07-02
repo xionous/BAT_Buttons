@@ -82,22 +82,29 @@ function addli(text, onclick, node) {
 function addNodeDropdown(node) {
     var getShortDesc = document.getElementById('incident.short_description').value
     if (getShortDesc != null) {
-        var getNodes = getShortDesc.split('-')
-        var splitNodes = getNodes[2].split(';')
-        var index
-        let select = document.createElement('select')
+        var getNodes = getShortDesc.split('-');
+        var splitNodes;
+        if (getNodes[2].includes('/')) {
+            splitNodes = getNodes[2].split('/');
+        } else if (getNodes[2].includes('&')) {
+            splitNodes = getNodes[2].split('&');
+        } else {
+            splitNodes = getNodes[2].split(';');
+        }
+        var index;
+        let select = document.createElement('select');
         node.appendChild(select)
         if (splitNodes.length == 1) {
-            select.style.display = 'none'
+            select.style.display = 'none';
         }
         select.id = 'nodesListbox'
         for (index = 0; index < splitNodes.length; ++index) {
-            var nodesList = document.getElementById('nodesListbox')
-            let option = document.createElement('option')
-            option.text = splitNodes[index].trim()
-            nodesList.add(option)
+            var nodesList = document.getElementById('nodesListbox');
+            let option = document.createElement('option');
+            option.text = splitNodes[index].trim();
+            nodesList.add(option);
         }
-        return select
+        return select;
     }
 }
 
