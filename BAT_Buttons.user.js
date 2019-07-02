@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.1.6
+// @version 2.1.7
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -653,6 +653,7 @@ function getTime() {
         var timeSecYrTm = timeSec[2].split(' ');
         var timeSpl = timeSecYrTm[2].split(':');
         var monthConv = '';
+        var dayConv = ''+timeSecDate[2];
         var timeConv = timeSpl[0];
         var timeResult = 0;
         if (timeSecDate[1] == 'Jan') {
@@ -699,40 +700,44 @@ function getTime() {
         } else if (timeConv == '9' && timeSecYrTm[3] == 'AM') {
             timeResult = '09';
         } else if (timeConv == '10' && timeSecYrTm[3] == 'AM') {
-            timeResult = 10;
+            timeResult = '10';
         } else if (timeConv == '11' && timeSecYrTm[3] == 'AM') {
-            timeResult = 11;
+            timeResult = '11';
         } else if (timeConv == '12' && timeSecYrTm[3] == 'PM') {
-            timeResult = 12;
+            timeResult = '12';
         } else if (timeConv == '1' && timeSecYrTm[3] == 'PM') {
-            timeResult = 13;
+            timeResult = '13';
         } else if (timeConv == '2' && timeSecYrTm[3] == 'PM') {
-            timeResult = 14;
+            timeResult = '14';
         } else if (timeConv == '3' && timeSecYrTm[3] == 'PM') {
-            timeResult = 15;
+            timeResult = '15';
         } else if (timeConv == '4' && timeSecYrTm[3] == 'PM') {
-            timeResult = 16;
+            timeResult = '16';
         } else if (timeConv == '5' && timeSecYrTm[3] == 'PM') {
-            timeResult = 17;
+            timeResult = '17';
         } else if (timeConv == '6' && timeSecYrTm[3] == 'PM') {
-            timeResult = 18;
+            timeResult = '18';
         } else if (timeConv == '7' && timeSecYrTm[3] == 'PM') {
-            timeResult = 19;
+            timeResult = '19';
         } else if (timeConv == '8' && timeSecYrTm[3] == 'PM') {
-            timeResult = 20;
+            timeResult = '20';
         } else if (timeConv == '9' && timeSecYrTm[3] == 'PM') {
-            timeResult = 21;
+            timeResult = '21';
         } else if (timeConv == '0' && timeSecYrTm[3] == 'PM') {
-            timeResult = 22;
+            timeResult = '22';
         } else if (timeConv == '11' && timeSecYrTm[3] == 'PM') {
-            timeResult = 23;
+            timeResult = '23';
         } else if (timeConv == '12' && timeSecYrTm[3] == 'AM') {
             timeResult = '00';
         } else {
             timeResult = timeSpl[0];
         }
 
-        var timeDateFin = timeSecDate[2]+'/'+monthConv+'/'+timeSecYrTm[1]+' '+timeResult+':'+timeSpl[1]+':00'
+        if (dayConv.length == 1) {
+            dayConv = '0'+dayConv;
+        }
+
+        var timeDateFin = dayConv+'/'+monthConv+'/'+timeSecYrTm[1]+' '+timeResult+':'+timeSpl[1]+':00'
 
         copyStringToClipboard(timeDateFin)
 
