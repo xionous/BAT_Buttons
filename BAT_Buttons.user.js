@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.1.7
+// @version 2.1.8
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1387,12 +1387,26 @@ if (bmqcheck) {
                         let buttonBt = document.createElement('button');
                         buttonBt.innerHTML = 'Battery';
                         buttonBt.id = 'buttonbt';
+                        buttonBt.style.height = '18px';
+                        buttonBt.style.fontSize = '12';
+                        buttonBt.style.backgroundColor = '#dddddd';
+                        buttonBt.style.borderRadius = '4px';
+                        buttonBt.style.padding = '1px';
+                        buttonBt.style.lineHeight = '0';
+                        buttonBt.style.marginLeft = '2px';
                         buttonBt.setAttribute('onclick', 'javascript: batterySearch("'+MAC+'");');
                         col[3].insertAdjacentElement('beforeend', buttonBt);
                     }
                     let button = document.createElement('button');
                     button.innerHTML = 'PM';
                     button.id = 'button';
+                    button.style.height = '18px';
+                    button.style.fontSize = '12';
+                    button.style.backgroundColor = '#dddddd';
+                    button.style.borderRadius = '4px';
+                    button.style.padding = '1px';
+                    button.style.lineHeight = '0';
+                    button.style.marginLeft = '2px';
                     button.setAttribute('onclick', 'javascript: pmSearch("'+MAC+'", "'+type+'");');
                     col[3].insertAdjacentElement('beforeend', button);
                 } else {
