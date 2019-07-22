@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.2.0
+// @version 2.2.1
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -124,27 +124,27 @@ function aTM() {
         var node = sessionStorage.getItem('node');
         if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
             prov = "AB";
-            g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+            g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
         } else if (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
             prov = "AB";
-            g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+            g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
         } else if (node.startsWith("FM")) {
             prov = "AB";
         } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
             prov = "BC";
-            g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+            g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
         } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
             prov = "BC";
-            g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+            g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
         } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
             prov = "SK";
-            g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+            g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
         } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
             prov = "MB";
-            g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+            g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
         } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
             prov = "BC";
-            g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+            g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
         }
     }
     g_form.setValue('current.assigned_to', userID);
