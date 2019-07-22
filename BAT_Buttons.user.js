@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.1.9
+// @version 2.2.0
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -849,7 +849,7 @@ var fieldDefs = {
         'type': 'checkbox',
         'default': true
     },
-    'atm': {
+    'atminc': {
         'label': 'Assign to me:',
         'labelPos': 'left',
         'type': 'checkbox',
@@ -965,7 +965,7 @@ var fieldDefs = {
         'type': 'checkbox',
         'default': false
     },
-    'atm': {
+    'atmnoc': {
         'label': 'Assign to me:',
         'labelPos': 'left',
         'type': 'checkbox',
