@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.1.8
+// @version 2.1.9
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -118,6 +118,39 @@ function cancelInc() {
     g_form.save();
 }
 
+function aTM() {
+    var userID = g_user.userID;
+    if (g_form.getValue('current.assignment_group') == '5b91e02fdbf026403dc77bec0f961997') {
+        var node = sessionStorage.getItem('node');
+        if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
+            prov = "AB";
+            g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+        } else if (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
+            prov = "AB";
+            g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+        } else if (node.startsWith("FM")) {
+            prov = "AB";
+        } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
+            prov = "BC";
+            g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+        } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
+            prov = "BC";
+            g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+        } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
+            prov = "SK";
+            g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+        } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
+            prov = "MB";
+            g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+        } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
+            prov = "BC";
+            g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+        }
+    }
+    g_form.setValue('current.assigned_to', userID);
+    g_form.save();
+}
+
 function sPortSearch() {
     var node = '';
     if (formId == 'change_request.do') {
@@ -126,7 +159,7 @@ function sPortSearch() {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
-        node = nodesListBox.options[nodesListBox.selectedIndex].text
+        node = nodesListBox.options[nodesListBox.selectedIndex].text;
         if (node == null) {
             node = document.getElementById('sys_display.incident.cmdb_ci').value;
         }
@@ -330,7 +363,7 @@ function outageTemplate() {
         prov = "AB"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("FM")) {
-        prov = "F||t Mcmurray"
+        prov = "AB"
     } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
         prov = "BC"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
@@ -395,7 +428,7 @@ function poorRfTemplate() {
         prov = "AB"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("FM")) {
-        prov = "F||t Mcmurray"
+        prov = "AB"
     } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
         prov = "BC"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
@@ -460,7 +493,7 @@ function telcoTemplate() {
         prov = "AB"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("FM")) {
-        prov = "F||t Mcmurray"
+        prov = "AB"
     } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
         prov = "BC"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
@@ -525,7 +558,7 @@ function noiseTemplate() {
         prov = "AB"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("FM")) {
-        prov = "F||t Mcmurray"
+        prov = "AB"
     } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
         prov = "BC"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
@@ -590,7 +623,7 @@ function piTemplate() {
         prov = "AB"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("FM")) {
-        prov = "F||t Mcmurray"
+        prov = "AB"
     } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
         prov = "BC"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
@@ -816,6 +849,12 @@ var fieldDefs = {
         'type': 'checkbox',
         'default': true
     },
+    'atm': {
+        'label': 'Assign to me:',
+        'labelPos': 'left',
+        'type': 'checkbox',
+        'default': true
+    },
     'checkallchg': {
         'section': [GM_config.create('Change Control Buttons'), 'Select the buttons that show on Change Control'],
         'label': 'Check All:',
@@ -926,6 +965,12 @@ var fieldDefs = {
         'type': 'checkbox',
         'default': false
     },
+    'atm': {
+        'label': 'Assign to me:',
+        'labelPos': 'left',
+        'type': 'checkbox',
+        'default': true
+    },
 };
 
 GM_config.init(
@@ -973,12 +1018,28 @@ var cmts = '';
 var nodeSysId = '';
 
 if (formId == 'sn_customerservice_rac_escalation.do') {
+    var userID = g_user.userID;
+    var topBarRight = document.querySelector('.navbar-right');
+    var buttomButtons = document.querySelector('.form_action_button_container');
+    var compactStyle = {'margin':'0px 3px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.848em', 'z-index': '500'};
+    var normalStyle = {'margin':'0px 0px 0px 5px', 'z-index': '500'};
     node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     cmts = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_cmts_data').value;
     nodeSysId = g_form.getValue('current.sn_customerservice_rac_escalation.u_case.u_node');
     sessionStorage.setItem('nodeSysId', nodeSysId);
     sessionStorage.setItem('node', node);
     sessionStorage.setItem('cmts', cmts);
+    if (window.NOW.compact) {
+        if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
+            addButton('Assign to me', aTM, topBarRight, compactStyle);
+            addButton('Assign to me', aTM, buttomButtons, compactStyle);
+        }
+    } else {
+        if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
+            addButton('Assign to me', aTM, topBarRight, normalStyle);
+            addButton('Assign to me', aTM, buttomButtons, normalStyle);
+        }
+    }
 }
 
 if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_customerservice_rac_escalation.do' || formId == 'change_request.do'){
@@ -993,6 +1054,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         var denyButton = document.getElementById('deny_escalation');
         var buttomButtons = document.querySelector('.form_action_button_container');
         var escInc = document.querySelector('form[id="incident.do"]');
+        var userID = g_user.userID;
         var isNewInc = 'New record';
         var compactStyleCog = {'z-index': '500'};
         var compactStyle = {'margin':'0px 3px 0px 5px', 'padding':'0px 5px 0px 5px', 'min-height':'1.848em', 'z-index': '500'};
@@ -1002,9 +1064,9 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
 
         if (formId == 'incident_task.do' && g_form.getValue('incident_task.state') != 3) {
             if (window.NOW.compact) {
-                addButton('Close Task', closeTask, topBarRightBut, compactStyle)
+                addButton('Close Task', closeTask, topBarRightBut, compactStyle);
             } else {
-                addButton('Close Task', closeTask, topBarRightBut, normalStyle)
+                addButton('Close Task', closeTask, topBarRightBut, normalStyle);
             }
         }
 
@@ -1015,31 +1077,31 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             document.getElementById('show_dashboard').style.display = 'none';
             if (window.NOW.compact) {
                 if (checkallnoc == true) {
-                    addButton('Check All', checkNode, topBarMain, compactStyle)
+                    addButton('Check All', checkNode, topBarMain, compactStyle);
                 }
                 if (incnoc == true) {
-                    addButton('Incident', incSearch, topBarMain, compactStyle)
+                    addButton('Incident', incSearch, topBarMain, compactStyle);
                 }
                 if (chgnoc == true) {
-                    addButton('Change', chgSearch, topBarMain, compactStyle)
+                    addButton('Change', chgSearch, topBarMain, compactStyle);
                 }
                 if (sportnoc == true) {
-                    addButton('sPort', sPortSearch, topBarMain, compactStyle)
+                    addButton('sPort', sPortSearch, topBarMain, compactStyle);
                 }
                 if (portnoc == true) {
-                    addButton('Port', portSearch, topBarMain, compactStyle)
+                    addButton('Port', portSearch, topBarMain, compactStyle);
                 }
                 if (smqnoc == true) {
-                    addButton('sMQ', smqSearch, topBarMain, compactStyle)
+                    addButton('sMQ', smqSearch, topBarMain, compactStyle);
                 }
                 if (bmqnoc == true) {
-                    addButton('BMQ', bmqSearch, topBarMain, compactStyle)
+                    addButton('BMQ', bmqSearch, topBarMain, compactStyle);
                 }
                 if (pmnoc == true) {
-                    addButton('PM', pmNodeHistory, topBarMain, compactStyle)
+                    addButton('PM', pmNodeHistory, topBarMain, compactStyle);
                 }
                 if (psnoc == true) {
-                    addButton('Power Supply', powerSupply, topBarMain, compactStyle)
+                    addButton('Power Supply', powerSupply, topBarMain, compactStyle);
                 }
                 addButton2(openConfig, topBarRightIn, compactStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
@@ -1048,41 +1110,41 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
                 if (document.getElementById('create_incident_rac') == null && g_form.getValue('sn_customerservice_rac_escalation.state') == 2 && document.getElementById('sys_display.sn_customerservice_rac_escalation.assigned_to').value != null){
-                    createInc('Create Incident', denyButton, compactStyleInc)
+                    createInc('Create Incident', denyButton, compactStyleInc);
                 }
             } else {
                 if (checkallnoc == true) {
-                    addButton('Check All', checkNode, topBarMain, normalStyle)
+                    addButton('Check All', checkNode, topBarMain, normalStyle);
                 }
                 if (nocinc == true) {
-                    addButton('Incident', incSearch, topBarMain, normalStyle)
+                    addButton('Incident', incSearch, topBarMain, normalStyle);
                 }
                 if (nocchg == true) {
-                    addButton('Change', chgSearch, topBarMain, normalStyle)
+                    addButton('Change', chgSearch, topBarMain, normalStyle);
                 }
                 if (sportnoc == true) {
-                    addButton('sPort', sPortSearch, topBarMain, normalStyle)
+                    addButton('sPort', sPortSearch, topBarMain, normalStyle);
                 }
                 if (portnoc == true) {
-                    addButton('Port', portSearch, topBarMain, normalStyle)
+                    addButton('Port', portSearch, topBarMain, normalStyle);
                 }
                 if (smqnoc == true) {
-                    addButton('sMQ', smqSearch, topBarMain, normalStyle)
+                    addButton('sMQ', smqSearch, topBarMain, normalStyle);
                 }
                 if (bmqnoc == true) {
-                    addButton('BMQ', bmqSearch, topBarMain, normalStyle)
+                    addButton('BMQ', bmqSearch, topBarMain, normalStyle);
                 }
                 if (pmnoc == true) {
-                    addButton('PM', pmNodeHistory, topBarMain, normalStyle)
+                    addButton('PM', pmNodeHistory, topBarMain, normalStyle);
                 }
                 if (psnoc == true) {
-                    addButton('Power Supply', powerSupply, topBarMain, normalStyle)
+                    addButton('Power Supply', powerSupply, topBarMain, normalStyle);
                 }
                 addButton2(openConfig, topBarRightIn, normalStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
                 if (document.getElementById('create_incident_rac') == null){
-                    createInc('Create Incident', denyButton, compactStyleInc)
+                    createInc('Create Incident', denyButton, compactStyleInc);
                 }
             }
         }
@@ -1092,37 +1154,41 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         } else if (formId == 'incident.do' && g_form.getValue('incident.category') == 'hfc') {
             if (window.NOW.compact) {
                 if (checkallinc == true) {
-                    addButton('Check All', checkNode, topBarMain, compactStyle)
+                    addButton('Check All', checkNode, topBarMain, compactStyle);
                 }
                 if (incinc == true) {
-                    addButton('Incident', incSearch, topBarMain, compactStyle)
+                    addButton('Incident', incSearch, topBarMain, compactStyle);
                 }
                 if (incchg == true) {
-                    addButton('Change', chgSearch, topBarMain, compactStyle)
+                    addButton('Change', chgSearch, topBarMain, compactStyle);
                 }
                 if (sportinc == true) {
-                    addButton('sPort', sPortSearch, topBarMain, compactStyle)
+                    addButton('sPort', sPortSearch, topBarMain, compactStyle);
                 }
                 if (portinc == true) {
-                    addButton('Port', portSearch, topBarMain, compactStyle)
+                    addButton('Port', portSearch, topBarMain, compactStyle);
                 }
                 if (smqinc == true) {
-                    addButton('sMQ', smqSearch, topBarMain, compactStyle)
+                    addButton('sMQ', smqSearch, topBarMain, compactStyle);
                 }
                 if (bmqinc == true) {
-                    addButton('BMQ', bmqSearch, topBarMain, compactStyle)
+                    addButton('BMQ', bmqSearch, topBarMain, compactStyle);
                 }
                 if (pminc == true) {
-                    addButton('PM', pmNodeHistory, topBarMain, compactStyle)
+                    addButton('PM', pmNodeHistory, topBarMain, compactStyle);
                 }
                 if (psinc == true) {
-                    addButton('Power Supply', powerSupply, topBarMain, compactStyle)
+                    addButton('Power Supply', powerSupply, topBarMain, compactStyle);
                 }
                 addButton2(openConfig, topBarRightIn, compactStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addNodeDropdown(topBarMain)
                 if (g_form.getValue('incident.state') != 8 && g_form.getValue('incident.state') != 6) {
-                    addButton('Cancel', cancelInc, topBarRightBut, compactStyle)
-                    addButton('Cancel', cancelInc, buttomButtons, compactStyle)
+                    addButton('Cancel', cancelInc, topBarRightBut, compactStyle);
+                    addButton('Cancel', cancelInc, buttomButtons, compactStyle);
+                    if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
+                        addButton('Assign to me', aTM, topBarRight, compactStyle);
+                        addButton('Assign to me', aTM, buttomButtons, compactStyle);
+                    }
                 }
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
                 addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important;  line-height: 2.6rem!important;}');
@@ -1131,37 +1197,41 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
             } else {
                 if (checkallinc == true) {
-                    addButton('Check All', checkNode, topBarMain, normalStyle)
+                    addButton('Check All', checkNode, topBarMain, normalStyle);
                 }
                 if (incinc == true) {
-                    addButton('Incident', incSearch, topBarMain, normalStyle)
+                    addButton('Incident', incSearch, topBarMain, normalStyle);
                 }
                 if (incchg == true) {
-                    addButton('Change', chgSearch, topBarMain, normalStyle)
+                    addButton('Change', chgSearch, topBarMain, normalStyle);
                 }
                 if (sportinc == true) {
-                    addButton('sPort', sPortSearch, topBarMain, normalStyle)
+                    addButton('sPort', sPortSearch, topBarMain, normalStyle);
                 }
                 if (portinc == true) {
-                    addButton('Port', portSearch, topBarMain, normalStyle)
+                    addButton('Port', portSearch, topBarMain, normalStyle);
                 }
                 if (smqinc == true) {
-                    addButton('sMQ', smqSearch, topBarMain, normalStyle)
+                    addButton('sMQ', smqSearch, topBarMain, normalStyle);
                 }
                 if (bmqinc == true) {
-                    addButton('BMQ', bmqSearch, topBarMain, normalStyle)
+                    addButton('BMQ', bmqSearch, topBarMain, normalStyle);
                 }
                 if (pminc == true) {
-                    addButton('PM', pmNodeHistory, topBarMain, normalStyle)
+                    addButton('PM', pmNodeHistory, topBarMain, normalStyle);
                 }
                 if (psinc == true) {
-                    addButton('Power Supply', powerSupply, topBarMain, normalStyle)
+                    addButton('Power Supply', powerSupply, topBarMain, normalStyle);
                 }
                 addButton2(openConfig, topBarRightIn, normalStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addNodeDropdown(topBarMain)
                 if (g_form.getValue('incident.state') != 8 && g_form.getValue('incident.state') != 6) {
-                    addButton('Cancel', cancelInc, topBarRightBut, normalStyle)
-                    addButton('Cancel', cancelInc, buttomButtons, normalStyle)
+                    addButton('Cancel', cancelInc, topBarRightBut, normalStyle);
+                    addButton('Cancel', cancelInc, buttomButtons, normalStyle);
+                    if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
+                        addButton('Assign to me', aTM, topBarRight, normalStyle);
+                        addButton('Assign to me', aTM, buttomButtons, normalStyle);
+                    }
                 }
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
@@ -1169,31 +1239,31 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         } else if (formId == 'change_request.do') {
             if (window.NOW.compact) {
                 if (checkallchg == true) {
-                    addButton('Check All', checkNode, topBarMain, compactStyle)
+                    addButton('Check All', checkNode, topBarMain, compactStyle);
                 }
                 if (chginc == true) {
-                    addButton('Incident', chgSearch, topBarMain, compactStyle)
+                    addButton('Incident', chgSearch, topBarMain, compactStyle);
                 }
                 if (chgchg == true) {
-                    addButton('Change', chgSearch, topBarMain, compactStyle)
+                    addButton('Change', chgSearch, topBarMain, compactStyle);
                 }
                 if (sportchg == true) {
-                    addButton('sPort', sPortSearch, topBarMain, compactStyle)
+                    addButton('sPort', sPortSearch, topBarMain, compactStyle);
                 }
                 if (portchg == true) {
-                    addButton('Port', portSearch, topBarMain, compactStyle)
+                    addButton('Port', portSearch, topBarMain, compactStyle);
                 }
                 if (smqchg == true) {
-                    addButton('sMQ', smqSearch, topBarMain, compactStyle)
+                    addButton('sMQ', smqSearch, topBarMain, compactStyle);
                 }
                 if (bmqchg == true) {
-                    addButton('BMQ', bmqSearch, topBarMain, compactStyle)
+                    addButton('BMQ', bmqSearch, topBarMain, compactStyle);
                 }
                 if (pmchg == true) {
-                    addButton('PM', pmNodeHistory, topBarMain, compactStyle)
+                    addButton('PM', pmNodeHistory, topBarMain, compactStyle);
                 }
                 if (pschg == true) {
-                    addButton('Power Supply', powerSupply, topBarMain, compactStyle)
+                    addButton('Power Supply', powerSupply, topBarMain, compactStyle);
                 }
                 addButton2(openConfig, topBarRightIn, compactStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
@@ -1203,31 +1273,31 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
             } else {
                 if (checkallchg == true) {
-                    addButton('Check All', checkNode, topBarMain, normalStyle)
+                    addButton('Check All', checkNode, topBarMain, normalStyle);
                 }
                 if (chginc == true) {
-                    addButton('Incident', chgSearch, topBarMain, normalStyle)
+                    addButton('Incident', chgSearch, topBarMain, normalStyle);
                 }
                 if (chgchg == true) {
-                    addButton('Change', chgSearch, topBarMain, normalStyle)
+                    addButton('Change', chgSearch, topBarMain, normalStyle);
                 }
                 if (sportchg == true) {
-                    addButton('sPort', sPortSearch, topBarMain, normalStyle)
+                    addButton('sPort', sPortSearch, topBarMain, normalStyle);
                 }
                 if (portchg == true) {
-                    addButton('Port', portSearch, topBarMain, normalStyle)
+                    addButton('Port', portSearch, topBarMain, normalStyle);
                 }
                 if (smqchg == true) {
-                    addButton('sMQ', smqSearch, topBarMain, normalStyle)
+                    addButton('sMQ', smqSearch, topBarMain, normalStyle);
                 }
                 if (bmqchg == true) {
-                    addButton('BMQ', bmqSearch, topBarMain, normalStyle)
+                    addButton('BMQ', bmqSearch, topBarMain, normalStyle);
                 }
                 if (pmchg == true) {
-                    addButton('PM', pmNodeHistory, topBarMain, normalStyle)
+                    addButton('PM', pmNodeHistory, topBarMain, normalStyle);
                 }
                 if (pschg == true) {
-                    addButton('Power Supply', powerSupply, topBarMain, normalStyle)
+                    addButton('Power Supply', powerSupply, topBarMain, normalStyle);
                 }
                 addButton2(openConfig, topBarRightIn, normalStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.section_view { display:none !important; }');
@@ -1236,19 +1306,19 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         } else if (formId == 'incident.do') {
             if (window.NOW.compact) {
                 if (topBarMain == null) {
-                    addli('Outage', outageTemplate, escInc)
-                    addli('Poor RF', poorRfTemplate, escInc)
-                    addli('Plant Intermittency', piTemplate, escInc)
-                    addli('Noise', noiseTemplate, escInc)
-                    addli('Telco', telcoTemplate, escInc)
+                    addli('Outage', outageTemplate, escInc);
+                    addli('Poor RF', poorRfTemplate, escInc);
+                    addli('Plant Intermittency', piTemplate, escInc);
+                    addli('Noise', noiseTemplate, escInc);
+                    addli('Telco', telcoTemplate, escInc);
                 }
             } else {
                 if (topBarMain == null) {
-                    addli('Outage', outageTemplate, escInc)
-                    addli('Poor RF', poorRfTemplate, escInc)
-                    addli('Plant Intermittency', piTemplate, escInc)
-                    addli('Noise', noiseTemplate, escInc)
-                    addli('Telco', telcoTemplate, escInc)
+                    addli('Outage', outageTemplate, escInc);
+                    addli('Poor RF', poorRfTemplate, escInc);
+                    addli('Plant Intermittency', piTemplate, escInc);
+                    addli('Noise', noiseTemplate, escInc);
+                    addli('Telco', telcoTemplate, escInc);
                 }
             }
         }
@@ -1274,8 +1344,8 @@ if (document.body.innerHTML.includes('Modem History For')) {
     for (i = 0; i < getTimePm.length; ++i) {
         var getYear = new Date().getFullYear();
         if (getTimePm[i].innerHTML.startsWith(getYear)) {
-            getTimePm[i].id = 'time'+i
-            var time = getTimePm[i].innerHTML
+            getTimePm[i].id = 'time'+i;
+            var time = getTimePm[i].innerHTML;
             timeList[i] = time;
             getTimePm[i].ondblclick = (function(i) {return function() {
                 var tmLsSpl = timeList[i].split(' ');
@@ -1308,7 +1378,7 @@ if (document.body.innerHTML.includes('Modem History For')) {
                 } else if (getTzOfs == 360) {
                     copyStringToClipboard(dateNew+' '+timeNew[0]+':'+timeNew[1]+':'+timeNew[2]);
                 }
-                popupMessage('Copied Date & Time to clipboard in the Service-Now Format', 'alertgreen', getform, 'beforebegin')
+                popupMessage('Copied Date & Time to clipboard in the Service-Now Format', 'alertgreen', getform, 'beforebegin');
             };})(i);
         }
     }
@@ -1324,10 +1394,10 @@ if (sportCheck) {
             mutations.forEach(function(mutation) {
             if (!mutation.addedNodes) return
                 for (var i = 0; i < mutation.addedNodes.length; i++) {
-                    var textNodes = document.querySelectorAll('text')
+                    var textNodes = document.querySelectorAll('text');
                     if (textNodes[4] != null) {
                         if (textNodes[4].firstChild.innerHTML.length > 26 ) {
-                        textNodes[4].firstChild.setAttribute('id', 'graphtitle')
+                        textNodes[4].firstChild.setAttribute('id', 'graphtitle');
                         var graphtitle = document.getElementById('graphtitle');
                         graphtitle.ondblclick = getTime;
                         }
@@ -1342,7 +1412,7 @@ if (sportCheck) {
             , subtree: true
             , attributes: false
             , characterData: false
-        })
+        });
     }
 }
 
