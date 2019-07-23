@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.2.3
+// @version 2.2.4
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -130,32 +130,87 @@ function aTM() {
             }
         }
         if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
-            prov = "AB";
             g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
         } else if (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
-            prov = "AB";
             g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
         } else if (node.startsWith("FM")) {
-            prov = "AB";
+            g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
         } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
-            prov = "BC";
             g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
         } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
-            prov = "BC";
             g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
         } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
-            prov = "SK";
             g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
         } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
-            prov = "MB";
             g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
         } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
-            prov = "BC";
             g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
         }
     }
     g_form.setValue('current.assigned_to', userID);
     g_form.save();
+}
+
+function pTM() {
+    var hub;
+    var getShortDesc = document.getElementById('incident.short_description').value
+    var getHub = getShortDesc.split('-');
+    hub = getHub[1]
+    if (hub.startsWith("CG") || hub.startsWith("DH") || hub.startsWith("CN")) {
+        g_form.setValue('current.assignment_group', 'b691e02fdbf026403dc77bec0f961941');
+        g_form.save();
+    } else if (hub.startsWith("LB")) {
+        g_form.setValue('current.assignment_group', '7a91e02fdbf026403dc77bec0f96194d');
+        g_form.save();
+    } else if (hub.startsWith("MH") || hub.startsWith("BR")) {
+        g_form.setValue('current.assignment_group', 'b691e02fdbf026403dc77bec0f96194e');
+        g_form.save();
+    } else if (hub.startsWith("RD")) {
+        g_form.setValue('current.assignment_group', 'b691e02fdbf026403dc77bec0f961957');
+        g_form.save();
+    } else if (hub.startsWith("MJ")) {
+        g_form.setValue('current.assignment_group', 'f291e02fdbf026403dc77bec0f96194f');
+        g_form.save();
+    } else if (hub.startsWith("PR")) {
+        g_form.setValue('current.assignment_group', 'be91e02fdbf026403dc77bec0f961954');
+        g_form.save();
+    } else if (hub.startsWith("SC")) {
+        g_form.setValue('current.assignment_group', '3691e02fdbf026403dc77bec0f96195c');
+        g_form.save();
+    } else if (hub.startsWith("SS")) {
+        g_form.setValue('current.assignment_group', '3291e02fdbf026403dc77bec0f961959');
+        g_form.save();
+    } else if (hub == "DRQU") {
+        g_form.setValue('current.assignment_group', 'a4868f04db2ffa80f369f25bbf9619b5');
+        g_form.save();
+    } else if (hub == "DRRL" || hub == "DRER") {
+        g_form.setValue('current.assignment_group', '63189b0d1b0e7f84a34b64a7bc4bcb51');
+        g_form.save();
+    } else if (hub == "DRSL") {
+        g_form.setValue('current.assignment_group', '1c7797411b0e7f84a34b64a7bc4bcbc9');
+        g_form.save();
+    } else if (hub.startsWith("LS")) {
+        g_form.setValue('current.assignment_group', 'fe91e02fdbf026403dc77bec0f96194b');
+        g_form.save();
+    } else if (hub.startsWith("SU")) {
+        g_form.setValue('current.assignment_group', '7e91e02fdbf026403dc77bec0f961959');
+        g_form.save();
+    } else if (hub == "TBTB" || hub == "TBBW" || hub == "TBBM") {
+        g_form.setValue('current.assignment_group', '43ceff40db7d66c0fb9772fc0f96197e');
+        g_form.save();
+    } else if (hub == "TBAT") {
+        g_form.setValue('current.assignment_group', '1ef7d7891b0e7f84a34b64a7bc4bcb06');
+        g_form.save();
+    } else if (hub == "TBFF") {
+        g_form.setValue('current.assignment_group', '19c793091b0e7f84a34b64a7bc4bcb94');
+        g_form.save();
+    } else if (hub.startsWith("KN")) {
+        g_form.setValue('current.assignment_group', '46e58700db2ffa80f369f25bbf9619c8');
+        g_form.save();
+    } else if (hub.startsWith("FF") || hub.startsWith("PP") || hub.startsWith("TH") || hub.startsWith("WP")) {
+        g_form.setValue('current.assignment_group', 'fe91e02fdbf026403dc77bec0f961961');
+        g_form.save();
+    }
 }
 
 function sPortSearch() {
@@ -371,6 +426,7 @@ function outageTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("FM")) {
         prov = "AB"
+        g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
         prov = "BC"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
@@ -436,6 +492,7 @@ function poorRfTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("FM")) {
         prov = "AB"
+        g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
         prov = "BC"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
@@ -501,6 +558,7 @@ function telcoTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("FM")) {
         prov = "AB"
+        g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
         prov = "BC"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
@@ -566,6 +624,7 @@ function noiseTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("FM")) {
         prov = "AB"
+        g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
         prov = "BC"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
@@ -631,6 +690,7 @@ function piTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("FM")) {
         prov = "AB"
+        g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
         prov = "BC"
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
@@ -862,6 +922,12 @@ var fieldDefs = {
         'type': 'checkbox',
         'default': true
     },
+    'ptminc': {
+        'label': 'Push to maint.:',
+        'labelPos': 'left',
+        'type': 'checkbox',
+        'default': true
+    },
     'checkallchg': {
         'section': [GM_config.create('Change Control Buttons'), 'Select the buttons that show on Change Control'],
         'label': 'Check All:',
@@ -1015,6 +1081,9 @@ var smqnoc = GM_config.get('smqnoc');
 var bmqnoc = GM_config.get('bmqnoc');
 var pmnoc = GM_config.get('pmnoc');
 var psnoc = GM_config.get('psnoc');
+var atminc = GM_config.get('atminc');
+var ptminc = GM_config.get('ptminc');
+var atmnoc = GM_config.get('atmnoc');
 
 if (document.getElementById('section_form_id')){
     var formId = document.getElementById('section_form_id').value;
@@ -1036,15 +1105,17 @@ if (formId == 'sn_customerservice_rac_escalation.do') {
     sessionStorage.setItem('nodeSysId', nodeSysId);
     sessionStorage.setItem('node', node);
     sessionStorage.setItem('cmts', cmts);
-    if (window.NOW.compact) {
-        if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
-            addButton('Assign to me', aTM, topBarRight, compactStyle);
-            addButton('Assign to me', aTM, buttomButtons, compactStyle);
-        }
-    } else {
-        if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
-            addButton('Assign to me', aTM, topBarRight, normalStyle);
-            addButton('Assign to me', aTM, buttomButtons, normalStyle);
+    if (atmnoc == true) {
+        if (window.NOW.compact) {
+            if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
+                addButton('Assign to me', aTM, topBarRight, compactStyle);
+                addButton('Assign to me', aTM, buttomButtons, compactStyle);
+            }
+        } else {
+            if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
+                addButton('Assign to me', aTM, topBarRight, normalStyle);
+                addButton('Assign to me', aTM, buttomButtons, normalStyle);
+            }
         }
     }
 }
@@ -1193,8 +1264,16 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Cancel', cancelInc, topBarRightBut, compactStyle);
                     addButton('Cancel', cancelInc, buttomButtons, compactStyle);
                     if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
-                        addButton('Assign to me', aTM, topBarRight, compactStyle);
-                        addButton('Assign to me', aTM, buttomButtons, compactStyle);
+                        if (atminc == true) {
+                            addButton('Assign to me', aTM, topBarRight, compactStyle);
+                            addButton('Assign to me', aTM, buttomButtons, compactStyle);
+                        }
+                    }
+                    if (ptminc == true) {
+                        if (document.getElementById('sys_display.incident.assignment_group').value.includes('Maintenance -') == false) {
+                            addButton('Push to Maint.', pTM, topBarRight, compactStyle);
+                            addButton('Push to Maint.', pTM, buttomButtons, compactStyle);
+                        }
                     }
                 }
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
@@ -1236,8 +1315,16 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Cancel', cancelInc, topBarRightBut, normalStyle);
                     addButton('Cancel', cancelInc, buttomButtons, normalStyle);
                     if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
-                        addButton('Assign to me', aTM, topBarRight, normalStyle);
-                        addButton('Assign to me', aTM, buttomButtons, normalStyle);
+                        if (atminc == true) {
+                            addButton('Assign to me', aTM, topBarRight, normalStyle);
+                            addButton('Assign to me', aTM, buttomButtons, normalStyle);
+                        }
+                    }
+                    if (ptminc == true) {
+                        if (document.getElementById('sys_display.incident.assignment_group').value.includes('Maintenance -') == false) {
+                            addButton('Push to Maint.', pTM, topBarRight, normalStyle);
+                            addButton('Push to Maint.', pTM, buttomButtons, normalStyle);
+                        }
                     }
                 }
                 addGlobalStyle('.section_view { display:none !important; }');
