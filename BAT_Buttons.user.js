@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.2.2
+// @version 2.2.3
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -122,6 +122,13 @@ function aTM() {
     var userID = g_user.userID;
     if (g_form.getValue('current.assignment_group') == '5b91e02fdbf026403dc77bec0f961997' || document.getElementById('sys_display.incident.assignment_group').value.includes('Maintenance -') == true) {
         var node = sessionStorage.getItem('node');
+        if (node == null) {
+            var nodesListBox = document.getElementById('nodesListbox');
+            node = nodesListBox.options[nodesListBox.selectedIndex].text;
+            if (node == null && document.getElementById('sys_display.incident.cmdb_ci').includes('PR') == false) {
+                node = document.getElementById('sys_display.incident.cmdb_ci').value;
+            }
+        }
         if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
             prov = "AB";
             g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
