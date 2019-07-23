@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.2.4
+// @version 2.2.5
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -209,6 +209,9 @@ function pTM() {
         g_form.save();
     } else if (hub.startsWith("FF") || hub.startsWith("PP") || hub.startsWith("TH") || hub.startsWith("WP")) {
         g_form.setValue('current.assignment_group', 'fe91e02fdbf026403dc77bec0f961961');
+        g_form.save();
+    } else if (hub.startsWith("FM")) {
+        g_form.setValue('current.assignment_group', 'be91e02fdbf026403dc77bec0f961947');
         g_form.save();
     }
 }
