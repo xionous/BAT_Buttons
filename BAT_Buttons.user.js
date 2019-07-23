@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.2.5
+// @version 2.2.6
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -120,7 +120,7 @@ function cancelInc() {
 
 function aTM() {
     var userID = g_user.userID;
-    if (g_form.getValue('current.assignment_group') == '5b91e02fdbf026403dc77bec0f961997' || document.getElementById('sys_display.incident.assignment_group').value.includes('Maintenance -') == true) {
+    if (g_form.getValue('current.assignment_group') == '5b91e02fdbf026403dc77bec0f961997') {
         var node = sessionStorage.getItem('node');
         if (node == null) {
             var nodesListBox = document.getElementById('nodesListbox');
@@ -147,6 +147,32 @@ function aTM() {
             g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
         }
     }
+    if (formId == 'incident.do'){
+        if (document.getElementById('sys_display.incident.assignment_group').value.includes('Maintenance -') == true) {
+                var nodesListBox = document.getElementById('nodesListbox');
+                var node = nodesListBox.options[nodesListBox.selectedIndex].text;
+                if (node == null && document.getElementById('sys_display.incident.cmdb_ci').includes('PR') == false) {
+                    node = document.getElementById('sys_display.incident.cmdb_ci').value;
+                }
+            if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
+                g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+            } else if (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
+                g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+            } else if (node.startsWith("FM")) {
+                g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+            } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
+                g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+            } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
+                g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+            } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
+                g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+            } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
+                g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+            } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
+                g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+            }
+        }
+    }
     g_form.setValue('current.assigned_to', userID);
     g_form.save();
 }
@@ -155,7 +181,7 @@ function pTM() {
     var hub;
     var getShortDesc = document.getElementById('incident.short_description').value
     var getHub = getShortDesc.split('-');
-    hub = getHub[1]
+    hub = getHub[1].trim()
     if (hub.startsWith("CG") || hub.startsWith("DH") || hub.startsWith("CN")) {
         g_form.setValue('current.assignment_group', 'b691e02fdbf026403dc77bec0f961941');
         g_form.save();
@@ -213,6 +239,146 @@ function pTM() {
     } else if (hub.startsWith("FM")) {
         g_form.setValue('current.assignment_group', 'be91e02fdbf026403dc77bec0f961947');
         g_form.save();
+    } else if (hub == 'CAMH') {
+        g_form.setValue('current.assignment_group', '3e91e02fdbf026403dc77bec0f96193f');
+        g_form.save();
+    } else if (hub == 'CAPG') {
+        g_form.setValue('current.assignment_group', '3e91e02fdbf026403dc77bec0f961955');
+        g_form.save();
+    } else if (hub == 'CAQU') {
+        g_form.setValue('current.assignment_group', '7a91e02fdbf026403dc77bec0f961956');
+        g_form.save();
+    } else if (hub == 'CAWL') {
+        g_form.setValue('current.assignment_group', 'b291e02fdbf026403dc77bec0f961961');
+        g_form.save();
+    } else if (hub == 'CCCR') {
+        g_form.setValue('current.assignment_group', 'f291e02fdbf026403dc77bec0f961942');
+        g_form.save();
+    } else if (hub == 'CCDT') {
+        g_form.setValue('current.assignment_group', '7e91e02fdbf026403dc77bec0f961943');
+        g_form.save();
+    } else if (hub == 'CCPO') {
+        g_form.setValue('current.assignment_group', '7291e02fdbf026403dc77bec0f961954');
+        g_form.save();
+    } else if (hub == 'CQHO') {
+        g_form.setValue('current.assignment_group', '3291e02fdbf026403dc77bec0f961943');
+        g_form.save();
+    } else if (hub == 'CQMT') {
+        g_form.setValue('current.assignment_group', 'f3b01f9edb927a00fe647749af9619a9');
+        g_form.save();
+    } else if (hub == 'DUDU') {
+        g_form.setValue('current.assignment_group', 'f691e02fdbf026403dc77bec0f961945');
+        g_form.save();
+    } else if (hub == 'EDBA' || hub == 'EDDR' || hub == 'EDWL' || hub == 'ESED' || hub == 'HNWN') {
+        g_form.setValue('current.assignment_group', 'f8c1756edb3ecf88bf5f9e26db9619c7');
+        g_form.save();
+    } else if (hub == 'EDBF' || hub == 'EDCD' || hub == 'EDCH' || hub == 'EDCW' || hub == 'EDGI' || hub == 'EDKN' || hub == 'EDLD' || hub == 'EDLO' || hub == 'EDMW' || hub == 'EDNI' || hub == 'EDSA' || hub == 'EDSG' || hub == 'EDSH' || hub == 'EDTW' || hub == 'EDWE' || hub == 'EDBD') {
+        g_form.setValue('current.assignment_group', '7291e02fdbf026403dc77bec0f961947');
+        g_form.save();
+    } else if (hub == 'EKCB') {
+        g_form.setValue('current.assignment_group', 'e26d52dedbc6a3445b3c69c3ca961988');
+        g_form.save();
+    } else if (hub == 'EKCS') {
+        g_form.setValue('current.assignment_group', '751e9a96db0aa3445b3c69c3ca9619cc');
+        g_form.save();
+    } else if (hub == 'EKFH') {
+        g_form.setValue('current.assignment_group', '48fad6dedb46a3445b3c69c3ca9619cd');
+        g_form.save();
+    } else if (hub == 'EKFN') {
+        g_form.setValue('current.assignment_group', '6ccd56d2db0aa3445b3c69c3ca961987');
+        g_form.save();
+    } else if (hub == 'GVCV' || hub == 'GVDT' || hub == 'GVEQ' || hub == 'GVLP' || hub == 'GVMT' || hub == 'GVOB' || hub == 'GVSO') {
+        g_form.setValue('current.assignment_group', 'fa91e02fdbf026403dc77bec0f96195e');
+        g_form.save();
+    } else if (hub == 'GVPN') {
+        g_form.setValue('current.assignment_group', '3a91e02fdbf026403dc77bec0f961949');
+        g_form.save();
+    } else if (hub == 'GVSA') {
+        g_form.setValue('current.assignment_group', '7240b485dbaeb24059cf776baf9619d3');
+        g_form.save();
+    } else if (hub == 'LLMA') {
+        g_form.setValue('current.assignment_group', '45676c45dbeab24059cf776baf9619b4');
+        g_form.save();
+    } else if (hub == 'LMAB' || hub == 'LMLM') {
+        g_form.setValue('current.assignment_group', 'a93ee562db7acf88bf5f9e26db9619de');
+        g_form.save();
+    } else if (hub == 'NBDC') {
+        g_form.setValue('current.assignment_group', 'ba91e02fdbf026403dc77bec0f961944');
+        g_form.save();
+    } else if (hub == 'NBFS') {
+        g_form.setValue('current.assignment_group', 'fa91e02fdbf026403dc77bec0f961948');
+        g_form.save();
+    } else if (hub == 'NIPI') {
+        g_form.setValue('current.assignment_group', '21ebd44a1b16ff802eb48444cc4bcbc3');
+        g_form.save();
+    } else if (hub == 'NOBB' || hub == 'PKPK') {
+        g_form.setValue('current.assignment_group', '3291e02fdbf026403dc77bec0f961950');
+        g_form.save();
+    } else if (hub == 'OKCS' || hub == 'OKKA' || hub == 'OKLV' || hub == 'OKPN') {
+        g_form.setValue('current.assignment_group', '7691e02fdbf026403dc77bec0f96194a');
+        g_form.save();
+    } else if (hub == 'OKDT' || hub == 'OKHT' || hub == 'OKWB' || hub == 'OKWF') {
+        g_form.setValue('current.assignment_group', 'b291e02fdbf026403dc77bec0f96194b');
+        g_form.save();
+    } else if (hub == 'OKSM') {
+        g_form.setValue('current.assignment_group', 'f6cfcf92db927a00fe647749af961908');
+        g_form.save();
+    } else if (hub == 'OKVN') {
+        g_form.setValue('current.assignment_group', 'be91e02fdbf026403dc77bec0f96195d');
+        g_form.save();
+    } else if (hub == 'PIPI') {
+        g_form.setValue('current.assignment_group', 'f691e02fdbf026403dc77bec0f961952');
+        g_form.save();
+    } else if (hub == 'VAAB' || hub == 'VADL') {
+        g_form.setValue('current.assignment_group', '7a91e02fdbf026403dc77bec0f961940');
+        g_form.save();
+    } else if (hub == 'VAAG' || hub == 'VACH') {
+        g_form.setValue('current.assignment_group', '3291e02fdbf026403dc77bec0f961943');
+        g_form.save();
+    } else if (hub == 'VCAN' || hub == 'VCBB' || hub == 'VCBW' || hub == 'VCCA' || hub == 'VCCD' || hub == 'VCHH' || hub == 'VCHS' || hub == 'VCRH' || hub == 'VCST' || hub == 'VCVT') {
+        g_form.setValue('current.assignment_group', '7291e02fdbf026403dc77bec0f96195d');
+        g_form.save();
+    } else if (hub == 'VCIW' || hub == 'RI') {
+        g_form.setValue('current.assignment_group', 'f291e02fdbf026403dc77bec0f961958');
+        g_form.save();
+    } else if (hub == 'VFAU' || hub == 'VFMA' || hub == 'VFPC' || hub == 'VFSS') {
+        g_form.setValue('current.assignment_group', '3691e02fdbf026403dc77bec0f961953');
+        g_form.save();
+    } else if (hub == 'VNBI') {
+        g_form.setValue('current.assignment_group', '27baecc9db2eb24059cf776baf961925');
+        g_form.save();
+    } else if (hub == 'VNDN' || hub == 'VNNV') {
+        g_form.setValue('current.assignment_group', '7e91e02fdbf026403dc77bec0f961950');
+        g_form.save();
+    } else if (hub == 'VNSQ') {
+        g_form.setValue('current.assignment_group', 'e17e9041dbe6b24059cf776baf9619a5');
+        g_form.save();
+    } else if (hub == 'VNWS') {
+        g_form.setValue('current.assignment_group', '2f426841db6ab24059cf776baf9619d6');
+        g_form.save();
+    } else if (hub == 'VSFL' || hub == 'VSNE' || hub == 'VSNW' || hub == 'VSWY') {
+        g_form.setValue('current.assignment_group', 'f691e02fdbf026403dc77bec0f96195b');
+        g_form.save();
+    } else if (hub == 'VSLA' || hub == 'VSWB') {
+        g_form.setValue('current.assignment_group', '3e91e02fdbf026403dc77bec0f96194c');
+        g_form.save();
+    } else if (hub == 'VWSU') {
+        g_form.setValue('current.assignment_group', '7691e02fdbf026403dc77bec0f961960');
+        g_form.save();
+    } else if (hub == 'WKCA') {
+        g_form.setValue('current.assignment_group', '7691e02fdbf026403dc77bec0f961960');
+        g_form.save();
+    } else if (hub == 'WKGR') {
+        g_form.setValue('current.assignment_group', '693cde52dbc6a3445b3c69c3ca961904');
+        g_form.save();
+    } else if (hub == 'WKNL') {
+        g_form.setValue('current.assignment_group', '0fac561adbc6a3445b3c69c3ca961967');
+        g_form.save();
+    } else if (hub == 'WKTL') {
+        g_form.setValue('current.assignment_group', '460dd6dadbc6a3445b3c69c3ca96190c');
+        g_form.save();
+    } else {
+        window.alert(hub + ' is not supported by this button at this time. Please manually set the assignment group for this ticket');
     }
 }
 
