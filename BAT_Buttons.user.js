@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.2.6
+// @version 2.2.7
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1092,7 +1092,7 @@ var fieldDefs = {
         'default': true
     },
     'ptminc': {
-        'label': 'Push to maint.:',
+        'label': 'Maintenance:',
         'labelPos': 'left',
         'type': 'checkbox',
         'default': true
@@ -1440,8 +1440,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     }
                     if (ptminc == true) {
                         if (document.getElementById('sys_display.incident.assignment_group').value.includes('Maintenance -') == false) {
-                            addButton('Push to Maint.', pTM, topBarRight, compactStyle);
-                            addButton('Push to Maint.', pTM, buttomButtons, compactStyle);
+                            addButton('Maintenance', pTM, topBarRight, compactStyle);
+                            addButton('Maintenance', pTM, buttomButtons, compactStyle);
                         }
                     }
                 }
@@ -1491,8 +1491,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     }
                     if (ptminc == true) {
                         if (document.getElementById('sys_display.incident.assignment_group').value.includes('Maintenance -') == false) {
-                            addButton('Push to Maint.', pTM, topBarRight, normalStyle);
-                            addButton('Push to Maint.', pTM, buttomButtons, normalStyle);
+                            addButton('Maintenance', pTM, topBarRight, normalStyle);
+                            addButton('Maintenance', pTM, buttomButtons, normalStyle);
                         }
                     }
                 }
