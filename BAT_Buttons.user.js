@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.2.7
+// @version 2.2.8
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -86,6 +86,8 @@ function addNodeDropdown(node) {
         var splitNodes;
         if (getNodes[2].includes('/')) {
             splitNodes = getNodes[2].split('/');
+        } else if (getNodes[2].includes('\\')) {
+            splitNodes = getNodes[2].split('\\');
         } else if (getNodes[2].includes('&')) {
             splitNodes = getNodes[2].split('&');
         } else {
