@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.2.9
+// @version 2.3.0
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1285,12 +1285,12 @@ if (formId == 'sn_customerservice_rac_escalation.do') {
     sessionStorage.setItem('cmts', cmts);
     if (atmnoc == true) {
         if (window.NOW.compact) {
-            if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
+            if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID && g_form.getValue('current.state') != '1006') {
                 addButton('Assign to me', aTM, topBarRight, compactStyle);
                 addButton('Assign to me', aTM, buttomButtons, compactStyle);
             }
         } else {
-            if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
+            if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID && g_form.getValue('current.state') != '1006') {
                 addButton('Assign to me', aTM, topBarRight, normalStyle);
                 addButton('Assign to me', aTM, buttomButtons, normalStyle);
             }
