@@ -7,7 +7,7 @@
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
 // @author Matthew Streeter
-// @version 2.3.0
+// @version 2.3.1
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1327,6 +1327,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         }
 
         if (formId == 'sn_customerservice_rac_escalation.do') {
+            addGlobalStyle('#GM_config { border-radius: 10px !important; border-width: thick !important; right: 25% !important; left: 25% !important; height: 435px !important; width: 710px !important; }');
             window.node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
             window.cmts = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_cmts_data').value;
             document.getElementById('more_information').style.display = 'none';
@@ -1408,7 +1409,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         if (document.body.innerHTML.includes(isNewInc)) {
 
         } else if (formId == 'incident.do' && g_form.getValue('incident.category') == 'hfc') {
-            addGlobalStyle('#GM_config { border-radius: 10px !important; border-width: thick !important; right: 25% !important; left: 25% !important; height: 435px !important; width: 710px !important; }')
+            addGlobalStyle('#GM_config { border-radius: 10px !important; border-width: thick !important; right: 25% !important; left: 25% !important; height: 435px !important; width: 710px !important; }');
             if (window.NOW.compact) {
                 if (checkallinc == true) {
                     addButton('Check All', checkNode, topBarMain, compactStyle);
@@ -1510,6 +1511,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
             }
         } else if (formId == 'change_request.do') {
+            addGlobalStyle('#GM_config { border-radius: 10px !important; border-width: thick !important; right: 25% !important; left: 25% !important; height: 435px !important; width: 710px !important; }');
             if (window.NOW.compact) {
                 if (checkallchg == true) {
                     addButton('Check All', checkNode, topBarMain, compactStyle);
