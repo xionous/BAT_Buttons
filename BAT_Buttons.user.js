@@ -6,8 +6,9 @@
 // @include http://plantmonitoring/ModemHistory.aspx*
 // @include http://bslam/squery/*
 // @include https://bmq.sjrb.ca/*
+// @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.3.1
+// @version 2.3.2
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1599,7 +1600,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         }
     }())}
 
-if (document.body.innerHTML.includes('Modem History For')) {
+if (window.location.href.indexOf("ModemHistory") != -1) {
     addGlobalStyle('.alertblue { padding: 20px; background-color: #2196F3; color: white; margin-bottom: 15px; }');
     addGlobalStyle('.alertgreen { padding: 20px; background-color: #4CAF50; color: white; margin-bottom: 15px; }');
     addGlobalStyle('.closebtn { margin-left: 15px; color: white; font-weight: bold; float: right; font-size: 22px; line-height: 20px; cursor: pointer; transition: 0.3s;}');
@@ -1691,9 +1692,7 @@ if (sportCheck) {
     }
 }
 
-var bmqcheck = document.getElementById('welcome');
-
-if (bmqcheck) {
+if (window.location.href.indexOf("bmq") != -1) {
     var getTableBmq = document.querySelector('tbody');
     var getMacs = getTableBmq.querySelectorAll('.mac');
     var head = document.getElementsByTagName('head')[0];
@@ -1770,4 +1769,8 @@ if (bmqcheck) {
     button1.style.color = '#FFFFFF';
     button1.style.border = '1px solid #626262';
     anchor.insertAdjacentElement('afterend', button1);
+}
+
+if (window.location.href.indexOf("vSure") != -1) {
+    addGlobalStyle('li.ng-binding { cursor: pointer !important; } li.ng-binding:hover { background-color: #ccc !important; }');
 }
