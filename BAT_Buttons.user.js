@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.3.2
+// @version 2.3.3
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -897,6 +897,138 @@ function piTemplate() {
     g_form.setValue('incident.state', '2');
 }
 
+function channelTemplate() {
+    var userID = g_user.userID;
+    var node = sessionStorage.getItem('node');
+    var cmts = sessionStorage.getItem('cmts');
+    var nodeSysId = sessionStorage.getItem('nodeSysId');
+    var prov = '';
+    var getHub = '';
+    var h1 = '';
+    var h2 = '';
+    var hub = '';
+
+    if (cmts.length == 9) {
+        getHub = cmts.split('.');
+        h1 = getHub[0].substr(4)
+        h2 = getHub[1]
+        hub = h2+h1
+    } else if (cmts.length == 8) {
+        getHub = cmts.split('.');
+        h1 = getHub[0].substr(3)
+        h2 = getHub[1]
+        hub = h2+h1
+    }
+
+    if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
+        prov = "AB"
+        g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+    } else if (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
+        prov = "AB"
+        g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+    } else if (node.startsWith("FM")) {
+        prov = "AB"
+        g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+    } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
+        prov = "BC"
+        g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+    } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
+        prov = "BC"
+        g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+    } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
+        prov = "SK"
+        g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+    } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
+        prov = "MB"
+        g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+    } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
+        prov = "BC"
+        g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+    }
+
+    g_form.setValue('incident.cmdb_ci', nodeSysId)
+    g_form.setValue('incident.contact_type', 'self-service')
+    if (prov == '' && hub == '' && node == '' && cmts == '') {
+        g_form.setValue('incident.short_description', '<Prov>-V - TV - channel(s) – Issue - <City/system>');
+    } else {
+        g_form.setValue('incident.short_description', ''+prov+'-V - TV - channel(s) – Issue - <City/system>');
+    }
+    g_form.setValue('incident.category', 'video');
+    g_form.setValue('incident.subcategory', 'broadcast');
+    g_form.setValue('incident.u_incident_type', '');
+    g_form.setValue('incident.impact', '4');
+    g_form.setValue('incident.urgency', '4');
+    g_form.setValue('incident.caller_id', userID);
+    g_form.setValue('incident.assigned_to', userID);
+    g_form.setValue('incident.state', '2');
+}
+
+function vodTemplate() {
+    var userID = g_user.userID;
+    var node = sessionStorage.getItem('node');
+    var cmts = sessionStorage.getItem('cmts');
+    var nodeSysId = sessionStorage.getItem('nodeSysId');
+    var prov = '';
+    var getHub = '';
+    var h1 = '';
+    var h2 = '';
+    var hub = '';
+
+    if (cmts.length == 9) {
+        getHub = cmts.split('.');
+        h1 = getHub[0].substr(4)
+        h2 = getHub[1]
+        hub = h2+h1
+    } else if (cmts.length == 8) {
+        getHub = cmts.split('.');
+        h1 = getHub[0].substr(3)
+        h2 = getHub[1]
+        hub = h2+h1
+    }
+
+    if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
+        prov = "AB"
+        g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+    } else if (node.startsWith("ED") || node.startsWith("RD") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
+        prov = "AB"
+        g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+    } else if (node.startsWith("FM")) {
+        prov = "AB"
+        g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+    } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
+        prov = "BC"
+        g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+    } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
+        prov = "BC"
+        g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+    } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
+        prov = "SK"
+        g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+    } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
+        prov = "MB"
+        g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
+    } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
+        prov = "BC"
+        g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
+    }
+
+    g_form.setValue('incident.cmdb_ci', nodeSysId)
+    g_form.setValue('incident.contact_type', 'self-service')
+    if (prov == '' && hub == '' && node == '' && cmts == '') {
+        g_form.setValue('incident.short_description', '<Prov>-V - VOD - error # - issue - <City/system>');
+    } else {
+        g_form.setValue('incident.short_description', ''+prov+'-V - VOD - error # - issue - <City/system>');
+    }
+    g_form.setValue('incident.category', 'video');
+    g_form.setValue('incident.subcategory', 'vod');
+    g_form.setValue('incident.u_incident_type', '');
+    g_form.setValue('incident.impact', '4');
+    g_form.setValue('incident.urgency', '4');
+    g_form.setValue('incident.caller_id', userID);
+    g_form.setValue('incident.assigned_to', userID);
+    g_form.setValue('incident.state', '2');
+}
+
 function copyStringToClipboard (str) {
     var el = document.createElement('textarea');
     el.value = str;
@@ -1587,6 +1719,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addli('Plant Intermittency', piTemplate, escInc);
                     addli('Noise', noiseTemplate, escInc);
                     addli('Telco', telcoTemplate, escInc);
+                    addli('V-Channel Issue', channelTemplate, escInc);
+                    addli('V-VOD', vodTemplate, escInc);
                 }
             } else {
                 if (topBarMain == null) {
@@ -1595,6 +1729,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addli('Plant Intermittency', piTemplate, escInc);
                     addli('Noise', noiseTemplate, escInc);
                     addli('Telco', telcoTemplate, escInc);
+                    addli('V-Channel Issue', channelTemplate, escInc);
+                    addli('V-VOD', vodTemplate, escInc);
                 }
             }
         }
