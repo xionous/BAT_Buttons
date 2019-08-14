@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.3.3
+// @version 2.3.4
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1464,7 +1464,9 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             window.node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
             window.cmts = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_cmts_data').value;
             document.getElementById('more_information').style.display = 'none';
-            document.getElementById('show_dashboard').style.display = 'none';
+            if (document.getElementById('show_dashboard')) {
+                document.getElementById('show_dashboard').style.display = 'none';
+            }
             if (window.NOW.compact) {
                 if (checkallnoc == true) {
                     addButton('Check All', checkNode, topBarMain, compactStyle);
