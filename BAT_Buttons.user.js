@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.3.4
+// @version 2.3.5
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1508,10 +1508,10 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (checkallnoc == true) {
                     addButton('Check All', checkNode, topBarMain, normalStyle);
                 }
-                if (nocinc == true) {
+                if (incnoc == true) {
                     addButton('Incident', incSearch, topBarMain, normalStyle);
                 }
-                if (nocchg == true) {
+                if (chgnoc == true) {
                     addButton('Change', chgSearch, topBarMain, normalStyle);
                 }
                 if (sportnoc == true) {
