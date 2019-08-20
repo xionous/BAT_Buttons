@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.3.5
+// @version 2.3.6
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -36,48 +36,57 @@ function wait(ms){
 }
 
 function addButton(text, onclick, node, cssVal, cssObj) {
-    cssObj = cssObj || cssVal
-    let button = document.createElement('button'), btnStyle = button.style
-    node.appendChild(button)
-    button.innerHTML = text
-    button.onclick = onclick
-    Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key])
-    return button
+    cssObj = cssObj || cssVal;
+    let button = document.createElement('button'), btnStyle = button.style;
+    node.appendChild(button);
+    button.innerHTML = text;
+    button.onclick = onclick;
+    Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key]);
+    return button;
 }
 
 function addButton2(onclick, node, cssVal, pos, classIn, cssObj) {
-    cssObj = cssObj || cssVal
-    let button = document.createElement('button'), btnStyle = button.style
-    node.insertAdjacentElement(pos, button)
-    button.onclick = onclick
-    button.className = classIn
-    Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key])
-    return button
+    cssObj = cssObj || cssVal;
+    let button = document.createElement('button'), btnStyle = button.style;
+    node.insertAdjacentElement(pos, button);
+    button.onclick = onclick;
+    button.className = classIn;
+    Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key]);
+    return button;
 }
 
 function createInc(text, node, cssVal, cssObj) {
-    cssObj = cssObj || cssVal
-    let newButton = document.createElement ('button'), btnStyle = newButton.style
-    newButton.innerHTML = text
-    newButton.setAttribute("class", "form_action_button header action_context btn btn-default")
-    newButton.setAttribute("type", "submit")
-    newButton.setAttribute("value", "13db290edb9d360064aefa38bf9619b8")
-    newButton.setAttribute("onclick", "var create_incident_rac=window.create_incident_rac;launchIncidentModal();return false;")
-    newButton.setAttribute("id", "create_incident_rac")
-    newButton.setAttribute("data-action-name", "create_incident_rac")
-    newButton.setAttribute("gsft_id", "13db290edb9d360064aefa38bf9619b8")
-    topBarRightBut.insertBefore(newButton, node)
-    Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key])
-    return newButton
+    cssObj = cssObj || cssVal;
+    let newButton = document.createElement ('button'), btnStyle = newButton.style;
+    newButton.innerHTML = text;
+    newButton.setAttribute("class", "form_action_button header action_context btn btn-default");
+    newButton.setAttribute("type", "submit");
+    newButton.setAttribute("value", "13db290edb9d360064aefa38bf9619b8");
+    newButton.setAttribute("onclick", "var create_incident_rac=window.create_incident_rac;launchIncidentModal();return false;");
+    newButton.setAttribute("id", "create_incident_rac");
+    newButton.setAttribute("data-action-name", "create_incident_rac");
+    newButton.setAttribute("gsft_id", "13db290edb9d360064aefa38bf9619b8");
+    topBarRightBut.insertBefore(newButton, node);
+    Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key]);
+    return newButton;
 }
 
 function addli(text, onclick, node) {
-    let li = document.createElement('a')
-    node.appendChild(li)
-    li.innerHTML = text
-    li.onclick = onclick
-    li.style.padding = '5px'
-    return li
+    let li = document.createElement('a');
+    node.appendChild(li);
+    li.innerHTML = text;
+    li.onclick = onclick;
+    li.style.padding = '5px';
+    return li;
+}
+
+function addDiv(id, loc, anchor, margnLeft, margnBottom) {
+    let div = document.createElement('div');
+    div.id = id;
+    div.style.marginLeft = margnLeft;
+    div.style.marginBottom = margnBottom;
+    anchor.insertAdjacentElement(loc, div);
+    return div;
 }
 
 function addNodeDropdown(node) {
@@ -96,7 +105,7 @@ function addNodeDropdown(node) {
         }
         var index;
         let select = document.createElement('select');
-        node.appendChild(select)
+        node.appendChild(select);
         if (splitNodes.length == 1) {
             select.style.display = 'none';
         }
@@ -410,7 +419,7 @@ function powerSupply() {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
-        node = nodesListBox.options[nodesListBox.selectedIndex].text
+        node = nodesListBox.options[nodesListBox.selectedIndex].text;
         if (node == null) {
             node = document.getElementById('sys_display.incident.cmdb_ci').value;
         }
@@ -427,7 +436,7 @@ function incSearch() {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
-        node = nodesListBox.options[nodesListBox.selectedIndex].text
+        node = nodesListBox.options[nodesListBox.selectedIndex].text;
         if (node == null) {
             node = document.getElementById('sys_display.incident.cmdb_ci').value;
         }
@@ -444,7 +453,7 @@ function chgSearch() {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
-        node = nodesListBox.options[nodesListBox.selectedIndex].text
+        node = nodesListBox.options[nodesListBox.selectedIndex].text;
         if (node == null) {
             node = document.getElementById('sys_display.incident.cmdb_ci').value;
         }
@@ -461,7 +470,7 @@ function portSearch() {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
-        node = nodesListBox.options[nodesListBox.selectedIndex].text
+        node = nodesListBox.options[nodesListBox.selectedIndex].text;
         if (node == null) {
             node = document.getElementById('sys_display.incident.cmdb_ci').value;
         }
@@ -483,7 +492,7 @@ function smqSearch() {
             node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
         } else {
             var nodesListBox = document.getElementById('nodesListbox');
-            node = nodesListBox.options[nodesListBox.selectedIndex].text
+            node = nodesListBox.options[nodesListBox.selectedIndex].text;
             if (node == null) {
                 node = document.getElementById('sys_display.incident.cmdb_ci').value;
             }
@@ -580,14 +589,14 @@ function outageTemplate() {
 
     if (cmts.length == 9) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(4)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(4);
+        h2 = getHub[1];
+        hub = h2+h1;
     } else if (cmts.length == 8) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(3)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(3);
+        h2 = getHub[1];
+        hub = h2+h1;
     }
 
     if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
@@ -616,8 +625,8 @@ function outageTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId)
-    g_form.setValue('incident.contact_type', 'self-service')
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+    g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Outage - [ISSUE]');
     } else {
@@ -646,14 +655,14 @@ function poorRfTemplate() {
 
     if (cmts.length == 9) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(4)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(4);
+        h2 = getHub[1];
+        hub = h2+h1;
     } else if (cmts.length == 8) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(3)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(3);
+        h2 = getHub[1];
+        hub = h2+h1;
     }
 
     if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
@@ -682,8 +691,8 @@ function poorRfTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId)
-    g_form.setValue('incident.contact_type', 'self-service')
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+    g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Poor RF - [ISSUE]');
     } else {
@@ -712,14 +721,14 @@ function telcoTemplate() {
 
     if (cmts.length == 9) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(4)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(4);
+        h2 = getHub[1];
+        hub = h2+h1;
     } else if (cmts.length == 8) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(3)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(3);
+        h2 = getHub[1];
+        hub = h2+h1;
     }
 
     if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
@@ -748,8 +757,8 @@ function telcoTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId)
-    g_form.setValue('incident.contact_type', 'self-service')
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+    g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Noise - Telco');
     } else {
@@ -778,14 +787,14 @@ function noiseTemplate() {
 
     if (cmts.length == 9) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(4)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(4);
+        h2 = getHub[1];
+        hub = h2+h1;
     } else if (cmts.length == 8) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(3)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(3);
+        h2 = getHub[1];
+        hub = h2+h1;
     }
 
     if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
@@ -814,8 +823,8 @@ function noiseTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId)
-    g_form.setValue('incident.contact_type', 'self-service')
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+    g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Noise - [ISSUE]');
     } else {
@@ -844,14 +853,14 @@ function piTemplate() {
 
     if (cmts.length == 9) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(4)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(4);
+        h2 = getHub[1];
+        hub = h2+h1;
     } else if (cmts.length == 8) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(3)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(3);
+        h2 = getHub[1];
+        hub = h2+h1;
     }
 
     if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
@@ -880,8 +889,8 @@ function piTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId)
-    g_form.setValue('incident.contact_type', 'self-service')
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+    g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Plant Intermittency - [ISSUE]');
     } else {
@@ -910,14 +919,14 @@ function channelTemplate() {
 
     if (cmts.length == 9) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(4)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(4);
+        h2 = getHub[1];
+        hub = h2+h1;
     } else if (cmts.length == 8) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(3)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(3);
+        h2 = getHub[1];
+        hub = h2+h1;
     }
 
     if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
@@ -946,8 +955,8 @@ function channelTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId)
-    g_form.setValue('incident.contact_type', 'self-service')
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+    g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', '<Prov>-V - TV - channel(s) – Issue - <City/system>');
     } else {
@@ -976,14 +985,14 @@ function vodTemplate() {
 
     if (cmts.length == 9) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(4)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(4);
+        h2 = getHub[1];
+        hub = h2+h1;
     } else if (cmts.length == 8) {
         getHub = cmts.split('.');
-        h1 = getHub[0].substr(3)
-        h2 = getHub[1]
-        hub = h2+h1
+        h1 = getHub[0].substr(3);
+        h2 = getHub[1];
+        hub = h2+h1;
     }
 
     if (node.startsWith("CG") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
@@ -1012,8 +1021,8 @@ function vodTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId)
-    g_form.setValue('incident.contact_type', 'self-service')
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+    g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', '<Prov>-V - VOD - error # - issue - <City/system>');
     } else {
@@ -1029,7 +1038,57 @@ function vodTemplate() {
     g_form.setValue('incident.state', '2');
 }
 
-function copyStringToClipboard (str) {
+function incTempTelco() {
+    var getShortDesc = document.getElementById('incident.short_description').value
+    if (getShortDesc != null) {
+        var sdItems = getShortDesc.split(' - ');
+        g_form.setValue('incident.short_description', sdItems[0]+' - '+sdItems[1]+' - '+sdItems[2]+' - '+sdItems[3]+' - '+sdItems[4]+' - Telco');
+        g_form.setValue('incident.subcategory', 'telco_ingress');
+        g_form.setValue('incident.u_incident_type', 'Customer Gear');
+    }
+}
+
+function incTempRaised() {
+    var getShortDesc = document.getElementById('incident.short_description').value
+    if (getShortDesc != null) {
+        var sdItems = getShortDesc.split(' - ');
+        g_form.setValue('incident.short_description', sdItems[0]+' - '+sdItems[1]+' - '+sdItems[2]+' - '+sdItems[3]+' - '+sdItems[4]+' - Raised Floor');
+    }
+}
+
+function incTempHump() {
+    var getShortDesc = document.getElementById('incident.short_description').value
+    if (getShortDesc != null) {
+        var sdItems = getShortDesc.split(' - ');
+        g_form.setValue('incident.short_description', sdItems[0]+' - '+sdItems[1]+' - '+sdItems[2]+' - '+sdItems[3]+' - '+sdItems[4]+' - Humps');
+    }
+}
+
+function incTempSpikes() {
+    var getShortDesc = document.getElementById('incident.short_description').value
+    if (getShortDesc != null) {
+        var sdItems = getShortDesc.split(' - ');
+        g_form.setValue('incident.short_description', sdItems[0]+' - '+sdItems[1]+' - '+sdItems[2]+' - '+sdItems[3]+' - '+sdItems[4]+' - Spikes');
+    }
+}
+
+function incTempRolling() {
+    var getShortDesc = document.getElementById('incident.short_description').value
+    if (getShortDesc != null) {
+        var sdItems = getShortDesc.split(' - ');
+        g_form.setValue('incident.short_description', sdItems[0]+' - '+sdItems[1]+' - '+sdItems[2]+' - '+sdItems[3]+' - '+sdItems[4]+' - Rolling Spikes');
+    }
+}
+
+function incTempImpulse() {
+    var getShortDesc = document.getElementById('incident.short_description').value
+    if (getShortDesc != null) {
+        var sdItems = getShortDesc.split(' - ');
+        g_form.setValue('incident.short_description', sdItems[0]+' - '+sdItems[1]+' - '+sdItems[2]+' - '+sdItems[3]+' - '+sdItems[4]+' - Impulse');
+    }
+}
+
+function copyStringToClipboard(str) {
     var el = document.createElement('textarea');
     el.value = str;
     el.setAttribute('readonly', '');
@@ -1232,6 +1291,12 @@ var fieldDefs = {
         'type': 'checkbox',
         'default': true
     },
+    'iqtinc': {
+        'label': 'Incident Quick templates:',
+        'labelPos': 'left',
+        'type': 'checkbox',
+        'default': false
+    },
     'checkallchg': {
         'section': [GM_config.create('Change Control Buttons'), 'Select the buttons that show on Change Control'],
         'label': 'Check All:',
@@ -1395,6 +1460,7 @@ var psnoc = GM_config.get('psnoc');
 var atminc = GM_config.get('atminc');
 var ptminc = GM_config.get('ptminc');
 var atmnoc = GM_config.get('atmnoc');
+var iqtinc = GM_config.get('iqtinc');
 
 if (document.getElementById('section_form_id')){
     var formId = document.getElementById('section_form_id').value;
@@ -1440,6 +1506,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         var topBarRight = document.querySelector('.navbar-right');
         var topBarRightIn = document.querySelector('.sn-form-presence-container');
         var topBarRightBut = document.querySelector('.navbar_ui_actions');
+        var incDesc = document.getElementById('element.incident.short_description');
         var denyButton = document.getElementById('deny_escalation');
         var buttomButtons = document.querySelector('.form_action_button_container');
         var escInc = document.querySelector('form[id="incident.do"]');
@@ -1545,6 +1612,22 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
 
         } else if (formId == 'incident.do' && g_form.getValue('incident.category') == 'hfc') {
             addGlobalStyle('#GM_config { border-radius: 10px !important; border-width: thick !important; right: 25% !important; left: 25% !important; height: 435px !important; width: 710px !important; }');
+            addDiv('inctemp', 'afterend', incDesc, '17%', '2px');
+            var incTemp = document.getElementById('inctemp');
+            var getShortDesc = document.getElementById('incident.short_description').value;
+            var checkNoise;
+            if (getShortDesc != null) {
+                var sdItems = getShortDesc.split('-');
+                 checkNoise = sdItems[4].trim();
+            }
+            if (iqtinc == true && checkNoise == 'Noise') {
+                addli('Telco', incTempTelco, incTemp);
+                addli('Raised Floor', incTempRaised, incTemp);
+                addli('Humps', incTempHump, incTemp);
+                addli('Spikes', incTempSpikes, incTemp);
+                addli('Rolling Spikes', incTempRolling, incTemp);
+                addli('Impulse', incTempImpulse, incTemp);
+            }
             if (window.NOW.compact) {
                 if (checkallinc == true) {
                     addButton('Check All', checkNode, topBarMain, compactStyle);
