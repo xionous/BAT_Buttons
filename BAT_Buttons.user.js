@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.3.7
+// @version 2.3.8
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1053,6 +1053,8 @@ function incTempRaised() {
     if (getShortDesc != null) {
         var sdItems = getShortDesc.split(' - ');
         g_form.setValue('incident.short_description', sdItems[0]+' - '+sdItems[1]+' - '+sdItems[2]+' - '+sdItems[3]+' - '+sdItems[4]+' - Raised Floor');
+        g_form.setValue('incident.subcategory', 'noise_ingress');
+        g_form.setValue('incident.u_incident_type', '');
     }
 }
 
@@ -1061,6 +1063,8 @@ function incTempHump() {
     if (getShortDesc != null) {
         var sdItems = getShortDesc.split(' - ');
         g_form.setValue('incident.short_description', sdItems[0]+' - '+sdItems[1]+' - '+sdItems[2]+' - '+sdItems[3]+' - '+sdItems[4]+' - Humps');
+        g_form.setValue('incident.subcategory', 'noise_ingress');
+        g_form.setValue('incident.u_incident_type', '');
     }
 }
 
@@ -1069,6 +1073,8 @@ function incTempSpikes() {
     if (getShortDesc != null) {
         var sdItems = getShortDesc.split(' - ');
         g_form.setValue('incident.short_description', sdItems[0]+' - '+sdItems[1]+' - '+sdItems[2]+' - '+sdItems[3]+' - '+sdItems[4]+' - Spikes');
+        g_form.setValue('incident.subcategory', 'noise_ingress');
+        g_form.setValue('incident.u_incident_type', '');
     }
 }
 
@@ -1077,6 +1083,8 @@ function incTempRolling() {
     if (getShortDesc != null) {
         var sdItems = getShortDesc.split(' - ');
         g_form.setValue('incident.short_description', sdItems[0]+' - '+sdItems[1]+' - '+sdItems[2]+' - '+sdItems[3]+' - '+sdItems[4]+' - Rolling Spikes');
+        g_form.setValue('incident.subcategory', 'noise_ingress');
+        g_form.setValue('incident.u_incident_type', '');
     }
 }
 
@@ -1085,6 +1093,8 @@ function incTempImpulse() {
     if (getShortDesc != null) {
         var sdItems = getShortDesc.split(' - ');
         g_form.setValue('incident.short_description', sdItems[0]+' - '+sdItems[1]+' - '+sdItems[2]+' - '+sdItems[3]+' - '+sdItems[4]+' - Impulse');
+        g_form.setValue('incident.subcategory', 'noise_ingress');
+        g_form.setValue('incident.u_incident_type', '');
     }
 }
 
