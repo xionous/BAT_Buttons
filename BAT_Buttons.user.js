@@ -1540,7 +1540,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             addGlobalStyle('#GM_config { border-radius: 10px !important; border-width: thick !important; right: 25% !important; left: 25% !important; height: 435px !important; width: 710px !important; }');
             window.node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
             window.cmts = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_cmts_data').value;
-            findFormHeader = document.querySelectorAll('h1');
+            var findFormHeader = document.querySelectorAll('h1');
             findFormHeader[0].style.display = 'none';
             document.getElementById('more_information').style.display = 'none';
             if (document.getElementById('show_dashboard')) {
