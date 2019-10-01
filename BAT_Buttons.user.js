@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.4.0
+// @version 2.4.1
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -132,7 +132,7 @@ function cancelInc() {
 
 function aTM() {
     var userID = g_user.userID;
-    if (g_form.getValue('current.assignment_group') == '5b91e02fdbf026403dc77bec0f961997') {
+    if (formId == 'sn_customerservice_rac_escalation.do') {
         var node = sessionStorage.getItem('node');
         if (node == null) {
             var nodesListBox = document.getElementById('nodesListbox');
