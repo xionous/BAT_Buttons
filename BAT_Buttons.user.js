@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.4.1
+// @version 2.4.2
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -2005,5 +2005,5 @@ if (window.location.href.indexOf("bmq") != -1) {
 }
 
 if (window.location.href.indexOf("vSure") != -1) {
-    addGlobalStyle('li.ng-binding { cursor: pointer !important; } li.ng-binding:hover { background-color: #ccc !important; }');
+    addGlobalStyle('tr.ng-scope { cursor: pointer !important; } tr.ng-scope:hover { background-color: #ccc !important; }');
 }
