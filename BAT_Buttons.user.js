@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.4.2
+// @version 2.4.3
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -548,10 +548,14 @@ function checkNode() {
         window.open(the_URL2);
         window.open(the_URL3);
         window.open(the_URL4);
-        wait(200);
+    }
+    function open_tabs2() {
         window.open(the_URL5);
     }
-    if (node != '' && node != null) open_tabs();
+    if (node != '' && node != null) {
+        open_tabs();
+        setTimeout(open_tabs2, 150)
+    }
 }
 
 function pmNodeHistory() {
