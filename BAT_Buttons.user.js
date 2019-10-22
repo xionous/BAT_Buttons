@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.4.3
+// @version 2.4.4
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -45,12 +45,13 @@ function addButton(text, onclick, node, cssVal, cssObj) {
     return button;
 }
 
-function addButton2(onclick, node, cssVal, pos, classIn, cssObj) {
+function addButton2(text, onclick, node, cssVal, pos, classIn, cssObj) {
     cssObj = cssObj || cssVal;
     let button = document.createElement('button'), btnStyle = button.style;
     node.insertAdjacentElement(pos, button);
     button.onclick = onclick;
     button.className = classIn;
+    button.innerHTML = text;
     Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key]);
     return button;
 }
@@ -1521,9 +1522,16 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         var topBarRightIn = document.querySelector('.sn-form-presence-container');
         var topBarRightBut = document.querySelector('.navbar_ui_actions');
         var incDesc = document.getElementById('element.incident.short_description');
+        var secBtn = document.getElementById('create_security_inc');
         var denyButton = document.getElementById('deny_escalation');
         var buttomButtons = document.querySelector('.form_action_button_container');
         var escInc = document.querySelector('form[id="incident.do"]');
+        var atmChk;
+        if (document.getElementById('cb442020db5fbf40555e5f77489619c5')) {
+            atmChk = true;
+        } else {
+            atmChk = false;
+        }
         var userID = g_user.userID;
         var isNewInc = 'New record';
         var compactStyleCog = {'z-index': '500'};
@@ -1578,7 +1586,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (psnoc == true) {
                     addButton('Power Supply', powerSupply, topBarMain, compactStyle);
                 }
-                addButton2(openConfig, topBarRightIn, compactStyleCog, 'afterend', 'icon-cog btn btn-icon')
+                addButton2('', openConfig, topBarRightIn, compactStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
                 addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; line-height: 2.6rem!important; }');
                 addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
@@ -1615,7 +1623,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (psnoc == true) {
                     addButton('Power Supply', powerSupply, topBarMain, normalStyle);
                 }
-                addButton2(openConfig, topBarRightIn, normalStyleCog, 'afterend', 'icon-cog btn btn-icon')
+                addButton2('', openConfig, topBarRightIn, normalStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
                 if (document.getElementById('create_incident_rac') == null){
@@ -1672,14 +1680,14 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (psinc == true) {
                     addButton('Power Supply', powerSupply, topBarMain, compactStyle);
                 }
-                addButton2(openConfig, topBarRightIn, compactStyleCog, 'afterend', 'icon-cog btn btn-icon')
+                addButton2('', openConfig, topBarRightIn, compactStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addNodeDropdown(topBarMain)
                 if (g_form.getValue('incident.state') != 8 && g_form.getValue('incident.state') != 6) {
                     addButton('Cancel', cancelInc, topBarRightBut, compactStyle);
                     addButton('Cancel', cancelInc, buttomButtons, compactStyle);
                     if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
-                        if (atminc == true) {
-                            addButton('Assign to me', aTM, topBarRight, compactStyle);
+                        if (atminc == true && atmChk == false) {
+                            addButton2('Assign to me', aTM, secBtn, compactStyle, 'beforebegin');
                             addButton('Assign to me', aTM, buttomButtons, compactStyle);
                         }
                     }
@@ -1723,14 +1731,14 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (psinc == true) {
                     addButton('Power Supply', powerSupply, topBarMain, normalStyle);
                 }
-                addButton2(openConfig, topBarRightIn, normalStyleCog, 'afterend', 'icon-cog btn btn-icon')
+                addButton2('', openConfig, topBarRightIn, normalStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addNodeDropdown(topBarMain)
                 if (g_form.getValue('incident.state') != 8 && g_form.getValue('incident.state') != 6) {
                     addButton('Cancel', cancelInc, topBarRightBut, normalStyle);
                     addButton('Cancel', cancelInc, buttomButtons, normalStyle);
                     if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
-                        if (atminc == true) {
-                            addButton('Assign to me', aTM, topBarRight, normalStyle);
+                        if (atminc == true && atmChk == false) {
+                            addButton2('Assign to me', aTM, secBtn, normalStyle, 'beforebegin');
                             addButton('Assign to me', aTM, buttomButtons, normalStyle);
                         }
                     }
@@ -1774,7 +1782,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (pschg == true) {
                     addButton('Power Supply', powerSupply, topBarMain, compactStyle);
                 }
-                addButton2(openConfig, topBarRightIn, compactStyleCog, 'afterend', 'icon-cog btn btn-icon')
+                addButton2('', openConfig, topBarRightIn, compactStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.avatar-container { height: 2.6rem !important; width: 2.6rem!important; }');
                 addGlobalStyle('.avatar { height: 2.6rem !important; width: 2.6rem!important; line-height: 2.6rem!important; }');
                 addGlobalStyle('.form-presence-users-multiple { height: 2.6rem !important; }');
@@ -1808,7 +1816,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 if (pschg == true) {
                     addButton('Power Supply', powerSupply, topBarMain, normalStyle);
                 }
-                addButton2(openConfig, topBarRightIn, normalStyleCog, 'afterend', 'icon-cog btn btn-icon')
+                addButton2('', openConfig, topBarRightIn, normalStyleCog, 'afterend', 'icon-cog btn btn-icon')
                 addGlobalStyle('.section_view { display:none !important; }');
                 addGlobalStyle('.record-paging-nowrap { display:none !important; }');
             }
