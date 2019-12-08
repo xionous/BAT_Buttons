@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.4.4
+// @version 2.4.5
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1909,6 +1909,7 @@ if (window.location.href.indexOf("ModemHistory") != -1) {
 var sportCheck = document.getElementById('optionSelect');
 
 if (sportCheck) {
+    $(window).off('beforeunload');
     if (sportCheck.selectedIndex == 6) {
         var sPortTime = '';
         var observer = new MutationObserver(function(mutations) {
