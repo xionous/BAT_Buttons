@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.4.6
+// @version 2.4.7
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1635,6 +1635,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         if (document.body.innerHTML.includes(isNewInc)) {
 
         } else if (formId == 'incident.do' && g_form.getValue('incident.category') == 'hfc') {
+            var secBtn = document.getElementById('create_security_inc');
+            secBtn.style.display = 'none';
             addGlobalStyle('#GM_config { border-radius: 10px !important; border-width: thick !important; right: 25% !important; left: 25% !important; height: 435px !important; width: 710px !important; }');
             addDiv('inctemp', 'afterend', incDesc, '17%', '2px');
             var incTemp = document.getElementById('inctemp');
