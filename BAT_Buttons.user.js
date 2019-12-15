@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.4.7
+// @version 2.4.8
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1310,7 +1310,7 @@ var fieldDefs = {
         'label': 'Incident Quick templates:',
         'labelPos': 'left',
         'type': 'checkbox',
-        'default': false
+        'default': true
     },
     'checkallchg': {
         'section': [GM_config.create('Change Control Buttons'), 'Select the buttons that show on Change Control'],
@@ -1481,6 +1481,10 @@ if (document.getElementById('section_form_id')){
     var formId = document.getElementById('section_form_id').value;
 }
 
+if (document.getElementById('homepage-settings-popover')){
+    var homePage = document.getElementById('homepage-settings-popover');
+}
+
 var node = '';
 var cmts = '';
 var nodeSysId = '';
@@ -1510,6 +1514,10 @@ if (formId == 'sn_customerservice_rac_escalation.do') {
             }
         }
     }
+}
+
+if (homePage){
+    setTimeout(function(){ location.reload(); }, 60*1000);
 }
 
 if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_customerservice_rac_escalation.do' || formId == 'change_request.do'){
