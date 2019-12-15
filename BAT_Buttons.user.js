@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.4.8
+// @version 2.4.9
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1535,7 +1535,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
         var buttomButtons = document.querySelector('.form_action_button_container');
         var escInc = document.querySelector('form[id="incident.do"]');
         var atmChk;
-        if (document.getElementById('cb442020db5fbf40555e5f77489619c5')) {
+        if (document.getElementById('assign_to_me')) {
             atmChk = true;
         } else {
             atmChk = false;
@@ -1644,6 +1644,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
 
         } else if (formId == 'incident.do' && g_form.getValue('incident.category') == 'hfc') {
             var secBtn = document.getElementById('create_security_inc');
+            var saveBtn = document.getElementById('sysverb_update_and_stay');
             secBtn.style.display = 'none';
             addGlobalStyle('#GM_config { border-radius: 10px !important; border-width: thick !important; right: 25% !important; left: 25% !important; height: 435px !important; width: 710px !important; }');
             addDiv('inctemp', 'afterend', incDesc, '17%', '2px');
@@ -1697,7 +1698,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Cancel', cancelInc, buttomButtons, compactStyle);
                     if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
                         if (atminc == true && atmChk == false) {
-                            addButton2('Assign to me', aTM, secBtn, compactStyle, 'beforebegin');
+                            addButton2('Assign to me', aTM, saveBtn, compactStyle, 'afterend');
                             addButton('Assign to me', aTM, buttomButtons, compactStyle);
                         }
                     }
@@ -1748,7 +1749,7 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addButton('Cancel', cancelInc, buttomButtons, normalStyle);
                     if (g_form.getValue('current.assigned_to') == '' || g_form.getValue('current.assigned_to') != userID) {
                         if (atminc == true && atmChk == false) {
-                            addButton2('Assign to me', aTM, secBtn, normalStyle, 'beforebegin');
+                            addButton2('Assign to me', aTM, saveBtn, normalStyle, 'afterend');
                             addButton('Assign to me', aTM, buttomButtons, normalStyle);
                         }
                     }
