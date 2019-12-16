@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.5.0
+// @version 2.5.1
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -135,6 +135,7 @@ function aTM() {
     var userID = g_user.userID;
     if (formId == 'sn_customerservice_rac_escalation.do') {
         var node = sessionStorage.getItem('node');
+        var hubSite = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_hubsite').value;
         if (node == null) {
             var nodesListBox = document.getElementById('nodesListbox');
             node = nodesListBox.options[nodesListBox.selectedIndex].text;
@@ -142,21 +143,21 @@ function aTM() {
                 node = document.getElementById('sys_display.incident.cmdb_ci').value;
             }
         }
-        if (node.startsWith("CG") || node.startsWith("RD") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
+        if (node.startsWith("CG") || node.startsWith("RD") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH") || hubSite.startsWith("CG") || hubSite.startsWith("RD") || hubSite.startsWith("DH") || hubSite.startsWith("CN") || hubSite.startsWith("BR") || hubSite.startsWith("LB") || hubSite.startsWith("MH")) {
             g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-        } else if (node.startsWith("ED") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM")) {
+        } else if (node.startsWith("ED") || node.startsWith("ES") || node.startsWith("HN") || node.startsWith("LM") || hubSite.startsWith("ED") || hubSite.startsWith("ES") || hubSite.startsWith("HN") || hubSite.startsWith("LM")) {
             g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-        } else if (node.startsWith("FM")) {
+        } else if (node.startsWith("FM") || hubSite.startsWith("FM")) {
             g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-        } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK")) {
+        } else if (node.startsWith("CA") || node.startsWith("EK") || node.startsWith("LL") || node.startsWith("NB") || node.startsWith("OK") || node.startsWith("VA") || node.startsWith("WK") || hubSite.startsWith("CA") || hubSite.startsWith("EK") || hubSite.startsWith("LL") || hubSite.startsWith("NB") || hubSite.startsWith("OK") || hubSite.startsWith("VA") || hubSite.startsWith("WK")) {
             g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-        } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW")) {
+        } else if (node.startsWith("SS0") || node.startsWith("NH") || node.startsWith("NV") || node.startsWith("PA") || node.startsWith("PS") || node.startsWith("PV") || node.startsWith("SA") || node.startsWith("SF") || node.startsWith("SV") || node.startsWith("UF") || node.startsWith("UV") || node.startsWith("VC") || node.startsWith("VF") || node.startsWith("VN") || node.startsWith("VS") || node.startsWith("VW") || hubSite.startsWith("VC") || hubSite.startsWith("VF") || hubSite.startsWith("VN") || hubSite.startsWith("VS") || hubSite.startsWith("VW")) {
             g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
-        } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS")) {
+        } else if (node.startsWith("MJ") || node.startsWith("PR") || node.startsWith("SC") || node.startsWith("SS") || hubSite.startsWith("MJ") || hubSite.startsWith("PR") || hubSite.startsWith("SC") || hubSite.startsWith("SS")) {
             g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-        } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR")) {
+        } else if (node.startsWith("AS") || node.startsWith("DR") || node.startsWith("DT") || node.startsWith("FG") || node.startsWith("FR") || node.startsWith("HY") || node.startsWith("KN") || node.startsWith("LS") || node.startsWith("OS") || node.startsWith("PP") || node.startsWith("RH") || node.startsWith("SE") || node.startsWith("SJ") || node.startsWith("SN") || node.startsWith("SU") || node.startsWith("TB") || node.startsWith("TH") || node.startsWith("WE") || node.startsWith("WP") || node.startsWith("WR") || hubSite.startsWith("FF") || hubSite.startsWith("PP") || hubSite.startsWith("TH") || hubSite.startsWith("WP")) {
             g_form.setValue('current.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
-        } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK")) {
+        } else if (node.startsWith("CC") || node.startsWith("DU") || node.startsWith("GV") || node.startsWith("NO") || node.startsWith("PK") || hubSite.startsWith("CC") || hubSite.startsWith("DU") || hubSite.startsWith("GV") || hubSite.startsWith("NO") || hubSite.startsWith("PK")) {
             g_form.setValue('current.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
         }
     }
