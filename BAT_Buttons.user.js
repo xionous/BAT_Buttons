@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.5.2
+// @version 2.5.3
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -402,7 +402,7 @@ function sPortSearch() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
-        if (node == null) {
+        if (node == null || node == '') {
             node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
         }
     } else {
@@ -422,7 +422,7 @@ function powerSupply() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
-        if (node == null) {
+        if (node == null || node == '') {
             node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
         }
     } else {
@@ -442,7 +442,7 @@ function incSearch() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
-        if (node == null) {
+        if (node == null || node == '') {
             node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
         }
     } else {
@@ -462,7 +462,7 @@ function chgSearch() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
-        if (node == null) {
+        if (node == null || node == '') {
             node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
         }
     } else {
@@ -482,7 +482,7 @@ function portSearch() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
-        if (node == null) {
+        if (node == null || node == '') {
             node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
         }
     } else {
@@ -507,7 +507,7 @@ function smqSearch() {
             node = document.getElementById('sys_display.change_request.cmdb_ci').value;
         } else if (formId == 'sn_customerservice_rac_escalation.do') {
             node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
-            if (node == null) {
+            if (node == null || node == '') {
                 node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
             }
         } else {
@@ -533,7 +533,7 @@ function bmqSearch() {
             node = document.getElementById('sys_display.change_request.cmdb_ci').value;
         } else if (formId == 'sn_customerservice_rac_escalation.do') {
             node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
-            if (node == null) {
+            if (node == null || node == '') {
                 node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
             }
         } else {
@@ -554,7 +554,7 @@ function checkNode() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
-        if (node == null) {
+        if (node == null || node == '') {
             node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
         }
     } else {
@@ -591,7 +591,7 @@ function pmNodeHistory() {
             node = document.getElementById('sys_display.change_request.cmdb_ci').value;
         } else if (formId == 'sn_customerservice_rac_escalation.do') {
             node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
-            if (node == null) {
+            if (node == null || node == '') {
                 node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
             }
         } else {
