@@ -402,6 +402,9 @@ function sPortSearch() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
+        if (node == null) {
+            node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
+        }
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text;
@@ -419,6 +422,9 @@ function powerSupply() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
+        if (node == null) {
+            node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
+        }
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text;
@@ -436,6 +442,9 @@ function incSearch() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
+        if (node == null) {
+            node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
+        }
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text;
@@ -453,6 +462,9 @@ function chgSearch() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
+        if (node == null) {
+            node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
+        }
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text;
@@ -470,6 +482,9 @@ function portSearch() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
+        if (node == null) {
+            node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
+        }
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text;
@@ -492,6 +507,9 @@ function smqSearch() {
             node = document.getElementById('sys_display.change_request.cmdb_ci').value;
         } else if (formId == 'sn_customerservice_rac_escalation.do') {
             node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
+            if (node == null) {
+                node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
+            }
         } else {
             var nodesListBox = document.getElementById('nodesListbox');
             node = nodesListBox.options[nodesListBox.selectedIndex].text;
@@ -515,6 +533,9 @@ function bmqSearch() {
             node = document.getElementById('sys_display.change_request.cmdb_ci').value;
         } else if (formId == 'sn_customerservice_rac_escalation.do') {
             node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
+            if (node == null) {
+                node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
+            }
         } else {
             var nodesListBox = document.getElementById('nodesListbox');
             node = nodesListBox.options[nodesListBox.selectedIndex].text
@@ -533,6 +554,9 @@ function checkNode() {
         node = document.getElementById('sys_display.change_request.cmdb_ci').value;
     } else if (formId == 'sn_customerservice_rac_escalation.do') {
         node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
+        if (node == null) {
+            node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
+        }
     } else {
         var nodesListBox = document.getElementById('nodesListbox');
         node = nodesListBox.options[nodesListBox.selectedIndex].text
@@ -567,6 +591,9 @@ function pmNodeHistory() {
             node = document.getElementById('sys_display.change_request.cmdb_ci').value;
         } else if (formId == 'sn_customerservice_rac_escalation.do') {
             node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
+            if (node == null) {
+                node = prompt('Node is missing from the ticket please supply the node.').replace(/[- ]/g, "");
+            }
         } else {
             var nodesListBox = document.getElementById('nodesListbox');
             node = nodesListBox.options[nodesListBox.selectedIndex].text
