@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.5.5
+// @version 2.5.6
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1899,9 +1899,33 @@ if (formId == 'u_field_dispatch_incident.do' || formId == 'incident.do' || formI
             var fdrProv = fdrDescSpl[0];
             var fdrHub = fdrDescSpl[1];
             var fdrNode = fdrDescSpl[2];
+            var fdrType = fdrDescSpl[4];
+            var fdrNoise = fdrDescSpl[5];
+            if (fdrNoise.startsWith('E:')) {
+                fdrNoise = 'UC errors';
+            } else if (fdrNoise.startsWith('S:')) {
+                fdrNoise = 'Low MER';
+            } else if (fdrNoise.startsWith('Telco')) {
+                fdrNoise = 'Telco';
+            } else if (fdrNoise.startsWith('Raised Floor')) {
+                fdrNoise = 'Raised Floor';
+            } else if (fdrNoise.startsWith('Humps')) {
+                fdrNoise = 'Humps';
+            } else if (fdrNoise.startsWith('Spikes')) {
+                fdrNoise = 'Spikes';
+            } else if (fdrNoise.startsWith('Rolling Spikes')) {
+                fdrNoise = 'Rolling Spikes';
+            } else if (fdrNoise.startsWith('Impulse')) {
+                fdrNoise = 'Impulse';
+            }
             if (fdrNode.includes(';')) {
                 var fdrNodeSpl = fdrNode.split(';');
                 fdrNode = fdrNodeSpl[0];
+            }
+            if (fdrType = 'Noise') {
+                g_form.setValue('u_address', fdrNoise+' | ')
+            } else if (fdrType = 'Outage')  {
+                g_form.setValue('u_address', 'Outage | ')
             }
             g_form.setValue('u_province', fdrProv);
             g_form.setValue('u_hub', fdrHub);
@@ -1979,7 +2003,7 @@ if (formId == 'u_field_dispatch_incident.do' || formId == 'incident.do' || formI
 				g_form.setValue('u_region', 'thunder_bay');
                 g_form.setValue('u_branch', 'kenora');
                 g_form.setValue('u_city', 'Kenora');
-			} else if (ffdrHub == 'LSNP') {
+			} else if (fdrHub == 'LSNP') {
 				g_form.setValue('u_region', 'thunder_bay');
                 g_form.setValue('u_branch', 'nipigon');
                 g_form.setValue('u_city', 'Nipigon');
@@ -2067,7 +2091,7 @@ if (formId == 'u_field_dispatch_incident.do' || formId == 'incident.do' || formI
 				g_form.setValue('u_region', 'calgary');
                 g_form.setValue('u_branch', 'calgary_rural');
                 g_form.setValue('u_city', 'Airdrie');
-			} else if (fdrHub == '') {
+			} else if (fdrHub == 'CGOK') {
 				g_form.setValue('u_region', 'calgary');
                 g_form.setValue('u_branch', 'calgary_rural');
                 g_form.setValue('u_city', 'Okotoks');
