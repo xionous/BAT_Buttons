@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.5.4
+// @version 2.5.5
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1259,6 +1259,14 @@ function getTime() {
             document.execCommand('copy');
             document.body.removeChild(el);
         }
+
+        function getSiteData(url) {
+            var site = document.createElement('iframe');
+            document.body.appendChild(site);
+            site.src = encodeURI(url);
+            site.style.display = 'none';
+            site.id = 'getsitedata';
+        }
     }
 }
 
@@ -1915,7 +1923,7 @@ if (formId == 'u_field_dispatch_incident.do' || formId == 'incident.do' || formI
                 g_form.setValue('u_region', 'winnipeg');
                 g_form.setValue('u_branch', 'winnipeg');
                 g_form.setValue('u_city', 'Stonewall');
-            } else if (fdrHub.startsWith('WP')) {
+            } else if (fdrHub == 'WPBU' || fdrHub == 'WPCA' || fdrHub == 'WPEK' || fdrHub == 'WPKY' || fdrHub == 'WPMS' || fdrHub == 'WPNK' || fdrHub == 'WPNR' || fdrHub == 'WPSC' || fdrHub == 'WPWS' || fdrHub == 'WPTC' || fdrHub == 'WPSV' || fdrHub == 'WPSJ') {
                 g_form.setValue('u_region', 'winnipeg');
                 g_form.setValue('u_branch', 'winnipeg');
                 if (fdrNode == 'WP240') {
@@ -1923,8 +1931,163 @@ if (formId == 'u_field_dispatch_incident.do' || formId == 'incident.do' || formI
                 } else {
                     g_form.setValue('u_city', 'Winnipeg');
                 }
-
-            }
+            } else if (fdrHub == 'WPNV') {
+				g_form.setValue('u_region', 'winnipeg');
+                g_form.setValue('u_branch', 'winnipeg');
+                g_form.setValue('u_city', 'Niverville');
+			} else if (fdrHub == 'FFFF') {
+                g_form.setValue('u_region', 'winnipeg');
+                g_form.setValue('u_branch', 'winnipeg');
+                g_form.setValue('u_city', 'Flin Flon');
+            } else if (fdrHub == 'PPRA') {
+				g_form.setValue('u_region', 'winnipeg');
+                g_form.setValue('u_branch', 'portage_la_prairie');
+                g_form.setValue('u_city', 'Portage La Prairie');
+			} else if (fdrHub == 'THSK') {
+				g_form.setValue('u_region', 'winnipeg');
+                g_form.setValue('u_branch', 'winnipeg');
+                g_form.setValue('u_city', 'Thompson');
+			} else if (fdrHub == 'SCCH') {
+                g_form.setValue('u_region', 'saskatoon');
+                g_form.setValue('u_branch', 'swift_current');
+                g_form.setValue('u_city', 'Swift Current');
+            } else if (fdrHub == 'MJMJ' || fdrHub == 'MJAS') {
+                g_form.setValue('u_region', 'saskatoon');
+                g_form.setValue('u_branch', 'moose_jaw');
+                g_form.setValue('u_city', 'Moose Jaw');
+            } else if (fdrHub == 'PRPA') {
+                g_form.setValue('u_region', 'saskatoon');
+                g_form.setValue('u_branch', 'prince_albert');
+                g_form.setValue('u_city', 'Prince Albert');
+            } else if (fdrHub == 'SSEA' || fdrHub == 'SSHA') {
+                g_form.setValue('u_region', 'saskatoon');
+                g_form.setValue('u_branch', 'saskatoon');
+                g_form.setValue('u_city', 'Saskatoon');
+            } else if (fdrHub == 'TBAT') {
+                g_form.setValue('u_region', 'thunder_bay');
+                g_form.setValue('u_branch', 'atikokan');
+                g_form.setValue('u_city', 'Atikokan');
+			} else if (fdrHub == 'DRQU') {
+				g_form.setValue('u_region', 'thunder_bay');
+                g_form.setValue('u_branch', 'dryden');
+                g_form.setValue('u_city', 'Dryden');
+			} else if (fdrHub == 'TBFF') {
+				g_form.setValue('u_region', 'thunder_bay');
+                g_form.setValue('u_branch', 'fort_frances');
+                g_form.setValue('u_city', 'Fort Frances');
+			} else if (fdrHub == 'KNKR') {
+				g_form.setValue('u_region', 'thunder_bay');
+                g_form.setValue('u_branch', 'kenora');
+                g_form.setValue('u_city', 'Kenora');
+			} else if (ffdrHub == 'LSNP') {
+				g_form.setValue('u_region', 'thunder_bay');
+                g_form.setValue('u_branch', 'nipigon');
+                g_form.setValue('u_city', 'Nipigon');
+			} else if (fdrHub == 'DRRL') {
+				g_form.setValue('u_region', 'thunder_bay');
+                g_form.setValue('u_branch', 'red_lake');
+                g_form.setValue('u_city', 'Red Lake');
+			} else if (fdrHub == 'DRSL') {
+				g_form.setValue('u_region', 'thunder_bay');
+                g_form.setValue('u_branch', 'sioux_lookout');
+                g_form.setValue('u_city', 'Sioux Lookout');
+			} else if (fdrHub == 'TBBW' || fdrHub == 'TBTB') {
+				g_form.setValue('u_region', 'thunder_bay');
+                g_form.setValue('u_branch', 'thunderbay');
+                g_form.setValue('u_city', 'Thunder Bay');
+			} else if (fdrHub == 'DRER') {
+				g_form.setValue('u_region', 'thunder_bay');
+                g_form.setValue('u_branch', 'dryden');
+                g_form.setValue('u_city', 'Ear Falls');
+			} else if (fdrHub == 'LSMA') {
+				g_form.setValue('u_region', 'sault_ste_marie');
+                g_form.setValue('u_branch', 'marathon');
+                g_form.setValue('u_city', 'Marathon');
+			} else if (fdrHub == 'SUHE') {
+				g_form.setValue('u_region', 'sault_ste_marie');
+                g_form.setValue('u_branch', 'sault_ste_marie');
+                g_form.setValue('u_city', 'Sault Ste Marie');
+			} else if (fdrHub == 'LSTB') {
+				g_form.setValue('u_region', 'sault_ste_marie');
+                g_form.setValue('u_branch', 'terrace_bay');
+                g_form.setValue('u_city', 'Terrace Bay');
+			} else if (fdrHub == 'LSWW') {
+				g_form.setValue('u_region', 'sault_ste_marie');
+                g_form.setValue('u_branch', 'wawa');
+                g_form.setValue('u_city', 'Wawa');
+			} else if (fdrHub == 'LSMN') {
+				g_form.setValue('u_region', 'sault_ste_marie');
+                g_form.setValue('u_branch', 'marathon');
+                g_form.setValue('u_city', 'Manitouwadge');
+			} else if (fdrHub == 'LSWR') {
+				g_form.setValue('u_region', 'sault_ste_marie');
+                g_form.setValue('u_branch', 'marathon');
+                g_form.setValue('u_city', 'White River');
+			} else if (fdrHub == 'LBLB') {
+				g_form.setValue('u_region', 'lethbridge');
+                g_form.setValue('u_branch', 'lethbridge');
+                g_form.setValue('u_city', 'Lethbridge');
+			} else if (fdrHub == 'LBTB') {
+				g_form.setValue('u_region', 'lethbridge');
+                g_form.setValue('u_branch', 'lethbridge');
+                g_form.setValue('u_city', 'Taber');
+			} else if (fdrHub == 'LBPC') {
+				g_form.setValue('u_region', 'lethbridge');
+                g_form.setValue('u_branch', 'pincher_creek');
+                g_form.setValue('u_city', 'Pincher Creek');
+			} else if (fdrHub == 'BRBK') {
+				g_form.setValue('u_region', 'medicine_hat');
+                g_form.setValue('u_branch', 'brooks');
+                g_form.setValue('u_city', 'Brooks');
+			} else if (fdrHub == 'MHMH') {
+				g_form.setValue('u_region', 'medicine_hat');
+                g_form.setValue('u_branch', 'medicine_hat');
+                g_form.setValue('u_city', 'Medicine Hat');
+			} else if (fdrHub == 'RDHE') {
+				g_form.setValue('u_region', 'central_alberta');
+                g_form.setValue('u_branch', 'red_deer');
+                g_form.setValue('u_city', 'Red Deer');
+			} else if (fdrHub == 'RDRH') {
+				g_form.setValue('u_region', 'central_alberta');
+                g_form.setValue('u_branch', 'rocky_mountain_house');
+                g_form.setValue('u_city', 'Rocky Mountain House');
+			} else if (fdrHub == 'RDST') {
+				g_form.setValue('u_region', 'central_alberta');
+                g_form.setValue('u_branch', 'stettler');
+                g_form.setValue('u_city', 'Stettler');
+			} else if (fdrHub == 'CNCN') {
+				g_form.setValue('u_region', 'calgary');
+                g_form.setValue('u_branch', 'canmore');
+                if (fdrNode == '') {
+                    g_form.setValue('u_city', 'Banff');
+                } else {
+                    g_form.setValue('u_city', 'Canmore');
+                }
+			} else if (fdrHub == 'CGAI') {
+				g_form.setValue('u_region', 'calgary');
+                g_form.setValue('u_branch', 'calgary_rural');
+                g_form.setValue('u_city', 'Airdrie');
+			} else if (fdrHub == '') {
+				g_form.setValue('u_region', 'calgary');
+                g_form.setValue('u_branch', 'calgary_rural');
+                g_form.setValue('u_city', 'Okotoks');
+			} else if (fdrHub == 'CGCM') {
+				g_form.setValue('u_region', 'calgary');
+                g_form.setValue('u_branch', 'calgary_rural');
+                g_form.setValue('u_city', 'Chestermere');
+			} else if (fdrHub == 'DHDT') {
+				g_form.setValue('u_region', 'calgary');
+                g_form.setValue('u_branch', 'drumheller');
+                g_form.setValue('u_city', 'Drumheller');
+			} else if (fdrHub == 'CGCW') {
+				g_form.setValue('u_region', 'calgary');
+                g_form.setValue('u_branch', 'calgary_rural');
+                g_form.setValue('u_city', 'Cochrane');
+			} else if (fdrHub == 'CGCH' || fdrHub == 'CGCL' || fdrHub == 'CGDT' || fdrHub == 'CGEL' || fdrHub == 'CGHH' || fdrHub == 'CGHW' || fdrHub == 'CGHY' || fdrHub == 'CGMD' || fdrHub == 'CGMO' || fdrHub == 'CGNL' || fdrHub == 'CGNO' || fdrHub == 'CGNW' || fdrHub == 'CGRA' || fdrHub == 'CGRR' || fdrHub == 'CGRU' || fdrHub == 'CGSE' || fdrHub == 'CGSH' || fdrHub == 'CGSO' || fdrHub == 'CGSV' || fdrHub == 'CGWS') {
+				g_form.setValue('u_region', 'calgary');
+                g_form.setValue('u_branch', 'calgary');
+                g_form.setValue('u_city', 'Calgary');
+			}
         }
     }())}
 
