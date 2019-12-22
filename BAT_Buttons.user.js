@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.5.3
+// @version 2.5.4
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1548,7 +1548,7 @@ if (homePage){
     setTimeout(function(){ location.reload(); }, 60*1000);
 }
 
-if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_customerservice_rac_escalation.do' || formId == 'change_request.do'){
+if (formId == 'u_field_dispatch_incident.do' || formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_customerservice_rac_escalation.do' || formId == 'change_request.do'){
 
     (function(){
         'use strict'
@@ -1583,7 +1583,6 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                 addButton('Close Task', closeTask, topBarRightBut, normalStyle);
             }
         }
-
         if (formId == 'sn_customerservice_rac_escalation.do') {
             addGlobalStyle('#GM_config { border-radius: 10px !important; border-width: thick !important; right: 25% !important; left: 25% !important; height: 435px !important; width: 710px !important; }');
             window.node = document.getElementById('sys_display.sn_customerservice_rac_escalation.u_case.u_node').value;
@@ -1679,6 +1678,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
             var incTemp = document.getElementById('inctemp');
             var getShortDesc = document.getElementById('incident.short_description').value;
             var checkNoise;
+            var incNum = g_form.getValue('number');
+            sessionStorage.setItem('inc', incNum);
             if (getShortDesc != null) {
                 var sdItems = getShortDesc.split('-');
                  checkNoise = sdItems[4].trim();
@@ -1732,8 +1733,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     }
                     if (ptminc == true) {
                         if (document.getElementById('sys_display.incident.assignment_group').value.includes('Maintenance -') == false) {
-                            addButton('Maintenance', pTM, topBarRight, compactStyle);
-                            addButton('Maintenance', pTM, buttomButtons, compactStyle);
+                            //addButton('Maintenance', pTM, topBarRight, compactStyle);
+                            //addButton('Maintenance', pTM, buttomButtons, compactStyle);
                         }
                     }
                 }
@@ -1783,8 +1784,8 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     }
                     if (ptminc == true) {
                         if (document.getElementById('sys_display.incident.assignment_group').value.includes('Maintenance -') == false) {
-                            addButton('Maintenance', pTM, topBarRight, normalStyle);
-                            addButton('Maintenance', pTM, buttomButtons, normalStyle);
+                            //addButton('Maintenance', pTM, topBarRight, normalStyle);
+                            //addButton('Maintenance', pTM, buttomButtons, normalStyle);
                         }
                     }
                 }
@@ -1880,6 +1881,49 @@ if (formId == 'incident.do' || formId == 'incident_task.do' || formId == 'sn_cus
                     addli('V-Channel Issue', channelTemplate, escInc);
                     addli('V-VOD', vodTemplate, escInc);
                 }
+            }
+        }
+        var incNum = sessionStorage.getItem('inc');
+        if (document.getElementById('sys_display.u_field_dispatch_incident.parent').value == incNum) {
+            sessionStorage.setItem('inc', '');
+            var fdrDesc = document.getElementById('u_field_dispatch_incident.description').innerHTML;
+            var fdrDescSpl = fdrDesc.split(' - ');
+            var fdrProv = fdrDescSpl[0];
+            var fdrHub = fdrDescSpl[1];
+            var fdrNode = fdrDescSpl[2];
+            if (fdrNode.includes(';')) {
+                var fdrNodeSpl = fdrNode.split(';');
+                fdrNode = fdrNodeSpl[0];
+            }
+            g_form.setValue('u_province', fdrProv);
+            g_form.setValue('u_hub', fdrHub);
+            if (fdrHub == 'WPSE') {
+                g_form.setValue('u_region', 'winnipeg');
+                g_form.setValue('u_branch', 'selkirk');
+                if (fdrNode == 'WP284') {
+                    g_form.setValue('u_city', 'Tulon');
+                } else if (fdrNode == 'WP133')  {
+                    g_form.setValue('u_city', 'Beausejour');
+                } else {
+                    g_form.setValue('u_city', 'Selkirk');
+                }
+            } else if (fdrHub == 'WPST') {
+                g_form.setValue('u_region', 'winnipeg');
+                g_form.setValue('u_branch', 'steinbach');
+                g_form.setValue('u_city', 'Steinbach');
+            } else if (fdrHub == 'WPSW')  {
+                g_form.setValue('u_region', 'winnipeg');
+                g_form.setValue('u_branch', 'winnipeg');
+                g_form.setValue('u_city', 'Stonewall');
+            } else if (fdrHub.startsWith('WP')) {
+                g_form.setValue('u_region', 'winnipeg');
+                g_form.setValue('u_branch', 'winnipeg');
+                if (fdrNode == 'WP240') {
+                    g_form.setValue('u_city', 'Elie');
+                } else {
+                    g_form.setValue('u_city', 'Winnipeg');
+                }
+
             }
         }
     }())}
