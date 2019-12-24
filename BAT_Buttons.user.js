@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.5.6
+// @version 2.5.7
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1892,7 +1892,7 @@ if (formId == 'u_field_dispatch_incident.do' || formId == 'incident.do' || formI
             }
         }
         var incNum = sessionStorage.getItem('inc');
-        if (document.getElementById('sys_display.u_field_dispatch_incident.parent').value == incNum) {
+        if (document.getElementById('sys_display.u_field_dispatch_incident.parent').value == incNum && g_form.getValue('assignment_group') == '') {
             sessionStorage.setItem('inc', '');
             var fdrDesc = document.getElementById('u_field_dispatch_incident.description').innerHTML;
             var fdrDescSpl = fdrDesc.split(' - ');
@@ -1922,11 +1922,11 @@ if (formId == 'u_field_dispatch_incident.do' || formId == 'incident.do' || formI
                 var fdrNodeSpl = fdrNode.split(';');
                 fdrNode = fdrNodeSpl[0];
             }
-            if (fdrType = 'Noise') {
-                g_form.setValue('u_address', fdrNoise+' | ')
-            } else if (fdrType = 'Outage')  {
-                g_form.setValue('u_address', 'Outage | ')
-            }
+            //if (fdrType = 'Noise') {
+            //    g_form.setValue('u_address', fdrNoise+' | ')
+            //} else if (fdrType = 'Outage')  {
+            //    g_form.setValue('u_address', 'Outage | ')
+            //}
             g_form.setValue('u_province', fdrProv);
             g_form.setValue('u_hub', fdrHub);
             if (fdrHub == 'WPSE') {
