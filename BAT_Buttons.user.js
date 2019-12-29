@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.5.9
+// @version 2.6.0
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -632,6 +632,8 @@ function outageTemplate() {
         hub = h2+h1;
     }
 
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+
     if (node.startsWith("CG") || node.startsWith("RD") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
         prov = "AB"
         g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
@@ -658,7 +660,6 @@ function outageTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId);
     g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Outage - [ISSUE]');
@@ -666,13 +667,13 @@ function outageTemplate() {
         g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Outage - [ISSUE]');
     }
     g_form.setValue('incident.category', 'hfc');
-    g_form.setValue('incident.subcategory', 'network_connectivity');
     g_form.setValue('incident.u_incident_type', '');
     g_form.setValue('incident.impact', '4');
     g_form.setValue('incident.urgency', '3');
     g_form.setValue('incident.caller_id', userID);
     g_form.setValue('incident.assigned_to', userID);
     g_form.setValue('incident.state', '2');
+    setTimeout(function() {g_form.setValue('incident.subcategory', 'network_connectivity')}, 500);
 }
 
 function poorRfTemplate() {
@@ -698,6 +699,8 @@ function poorRfTemplate() {
         hub = h2+h1;
     }
 
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+
     if (node.startsWith("CG") || node.startsWith("RD") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
         prov = "AB"
         g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
@@ -724,7 +727,6 @@ function poorRfTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId);
     g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Poor RF - [ISSUE]');
@@ -732,13 +734,13 @@ function poorRfTemplate() {
         g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Poor RF - [ISSUE]');
     }
     g_form.setValue('incident.category', 'hfc');
-    g_form.setValue('incident.subcategory', 'network_connectivity');
     g_form.setValue('incident.u_incident_type', '');
     g_form.setValue('incident.impact', '4');
     g_form.setValue('incident.urgency', '4');
     g_form.setValue('incident.caller_id', userID);
     g_form.setValue('incident.assigned_to', userID);
     g_form.setValue('incident.state', '2');
+    setTimeout(function() {g_form.setValue('incident.subcategory', 'network_connectivity')}, 500);
 }
 
 function telcoTemplate() {
@@ -764,6 +766,8 @@ function telcoTemplate() {
         hub = h2+h1;
     }
 
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+
     if (node.startsWith("CG") || node.startsWith("RD") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
         prov = "AB"
         g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
@@ -790,7 +794,6 @@ function telcoTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId);
     g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Noise - Telco');
@@ -798,13 +801,13 @@ function telcoTemplate() {
         g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Noise - Telco');
     }
     g_form.setValue('incident.category', 'hfc');
-    g_form.setValue('incident.subcategory', 'telco_ingress');
     g_form.setValue('incident.u_incident_type', 'Customer Gear');
     g_form.setValue('incident.impact', '4');
     g_form.setValue('incident.urgency', '4');
     g_form.setValue('incident.caller_id', userID);
     g_form.setValue('incident.assigned_to', userID);
     g_form.setValue('incident.state', '2');
+    setTimeout(function() {g_form.setValue('incident.subcategory', 'telco_ingress')}, 500);
 }
 
 function noiseTemplate() {
@@ -830,6 +833,8 @@ function noiseTemplate() {
         hub = h2+h1;
     }
 
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+
     if (node.startsWith("CG") || node.startsWith("RD") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
         prov = "AB"
         g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
@@ -856,7 +861,6 @@ function noiseTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId);
     g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Noise - [ISSUE]');
@@ -864,13 +868,13 @@ function noiseTemplate() {
         g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Noise - [ISSUE]');
     }
     g_form.setValue('incident.category', 'hfc');
-    g_form.setValue('incident.subcategory', 'noise_ingress');
     g_form.setValue('incident.u_incident_type', '');
     g_form.setValue('incident.impact', '4');
     g_form.setValue('incident.urgency', '4');
     g_form.setValue('incident.caller_id', userID);
     g_form.setValue('incident.assigned_to', userID);
     g_form.setValue('incident.state', '2');
+    setTimeout(function() {g_form.setValue('incident.subcategory', 'noise_ingress')}, 500);
 }
 
 function piTemplate() {
@@ -896,6 +900,8 @@ function piTemplate() {
         hub = h2+h1;
     }
 
+    g_form.setValue('incident.cmdb_ci', nodeSysId);
+
     if (node.startsWith("CG") || node.startsWith("RD") || node.startsWith("DH") || node.startsWith("CN") || node.startsWith("BR") || node.startsWith("LB") || node.startsWith("MH")) {
         prov = "AB"
         g_form.setValue('incident.assignment_group', '5791e02fdbf026403dc77bec0f9619a1');
@@ -922,7 +928,6 @@ function piTemplate() {
         g_form.setValue('incident.assignment_group', '9f91e02fdbf026403dc77bec0f96199e');
     }
 
-    g_form.setValue('incident.cmdb_ci', nodeSysId);
     g_form.setValue('incident.contact_type', 'self-service');
     if (prov == '' && hub == '' && node == '' && cmts == '') {
         g_form.setValue('incident.short_description', 'PROV - HUB - NODE - CMTS - Plant Intermittency - [ISSUE]');
@@ -930,13 +935,13 @@ function piTemplate() {
         g_form.setValue('incident.short_description', ''+prov+' - '+hub+' - '+node+' - '+cmts+' - Plant Intermittency - [ISSUE]');
     }
     g_form.setValue('incident.category', 'hfc');
-    g_form.setValue('incident.subcategory', 'network_connectivity');
     g_form.setValue('incident.u_incident_type', '');
     g_form.setValue('incident.impact', '4');
     g_form.setValue('incident.urgency', '4');
     g_form.setValue('incident.caller_id', userID);
     g_form.setValue('incident.assigned_to', userID);
     g_form.setValue('incident.state', '2');
+    setTimeout(function() {g_form.setValue('incident.subcategory', 'network_connectivity')}, 500);
 }
 
 function channelTemplate() {
