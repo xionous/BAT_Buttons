@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.6.0
+// @version 2.6.1
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -2055,7 +2055,11 @@ if (formId == 'u_field_dispatch_incident.do' || formId == 'incident.do' || formI
 			} else if (fdrHub == 'LBLB') {
 				g_form.setValue('u_region', 'lethbridge');
                 g_form.setValue('u_branch', 'lethbridge');
-                g_form.setValue('u_city', 'Lethbridge');
+                if (fdrNode == 'LB43A') {
+                    g_form.setValue('u_city', 'Picture Butte');
+                } else {
+                    g_form.setValue('u_city', 'Lethbridge');
+                }
 			} else if (fdrHub == 'LBTB') {
 				g_form.setValue('u_region', 'lethbridge');
                 g_form.setValue('u_branch', 'lethbridge');
