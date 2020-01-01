@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.6.1
+// @version 2.6.2
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -2143,7 +2143,7 @@ if (window.location.href.indexOf("ModemHistory") != -1) {
     popupMessage('Double click on any time field to copy the time and date', 'alertblue', getform, 'beforebegin')
     for (i = 0; i < getTimePm.length; ++i) {
         var getYear = new Date().getFullYear();
-        if (getTimePm[i].innerHTML.startsWith(getYear)) {
+        if (getTimePm[i].innerHTML.startsWith(getYear) || getTimePm[i].innerHTML.startsWith('2019')) {
             getTimePm[i].id = 'time'+i;
             var time = getTimePm[i].innerHTML;
             timeList[i] = time;
