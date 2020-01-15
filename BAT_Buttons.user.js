@@ -2079,7 +2079,11 @@ if (formId == 'u_field_dispatch_incident.do' || formId == 'incident.do' || formI
 			} else if (fdrHub == 'RDHE') {
 				g_form.setValue('u_region', 'central_alberta');
                 g_form.setValue('u_branch', 'red_deer');
-                g_form.setValue('u_city', 'Red Deer');
+                if (fdrNode == 'RD80') {
+                    g_form.setValue('u_city', 'Innisfail');
+                } else {
+                    g_form.setValue('u_city', 'Red Deer');
+                }
 			} else if (fdrHub == 'RDRH') {
 				g_form.setValue('u_region', 'central_alberta');
                 g_form.setValue('u_branch', 'rocky_mountain_house');
