@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.6.3
+// @version 2.6.4
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -2193,6 +2193,12 @@ var sportCheck = document.getElementById('optionSelect');
 
 if (sportCheck) {
     $(window).off('beforeunload');
+    if (document.getElementsByClassName('darkreader')) { 
+        var spacer = document.querySelectorAll('.spacer');
+        spacer[0].style.backgroundImage = 'none';
+        var banner = document.querySelectorAll('body');
+        banner[0].style.backgroundImage = 'none';
+    }
     if (sportCheck.selectedIndex == 6) {
         var sPortTime = '';
         var observer = new MutationObserver(function(mutations) {
