@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.6.5
+// @version 2.6.6
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1898,7 +1898,7 @@ if (formId == 'u_field_dispatch_incident.do' || formId == 'incident.do' || formI
         }
         var incNum = sessionStorage.getItem('inc');
         if (document.getElementById('sys_display.u_field_dispatch_incident.parent').value == incNum && g_form.getValue('assignment_group') == '') {
-            sessionStorage.setItem('inc', '');
+            //sessionStorage.setItem('inc', '');
             var fdrDesc = document.getElementById('u_field_dispatch_incident.description').innerHTML;
             var fdrDescSpl = fdrDesc.split(' - ');
             var fdrProv = fdrDescSpl[0];
