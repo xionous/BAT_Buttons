@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.6.6
+// @version 2.6.7
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -2200,6 +2200,14 @@ if (sportCheck) {
         banner[0].style.backgroundImage = 'none';
     }
     if (sportCheck.selectedIndex == 6) {
+        function pageTitle() {
+            var cNode = document.getElementById('sPortHeaderResult').innerHTML;
+            var cNodeSplit = cNode.split(' ');
+            document.title = 'sPort - '+ cNodeSplit[2];
+        }
+        setTimeout(pageTitle, 1000);
+        var sPortGo = document.getElementById('sPortGo');
+        sPortGo.addEventListener('DOMSubtreeModified', pageTitle);
         var sPortTime = '';
         var observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
