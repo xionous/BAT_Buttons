@@ -27,6 +27,11 @@ function addGlobalStyle(css) {
     head.appendChild(style);
 }
 
+function triggerEvent(elem, event) {
+    var initEvent = new Event(event);
+    elem.dispatchEvent(initEvent);
+}
+
 function wait(ms){
     var start = new Date().getTime();
     var end = start;
