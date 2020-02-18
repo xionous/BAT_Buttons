@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.6.7
+// @version 2.6.8
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1277,6 +1277,37 @@ function getTime() {
             site.style.display = 'none';
             site.id = 'getsitedata';
         }
+
+        function getNodeAddr(node) {
+            var site = document.createElement('iframe');
+            document.body.appendChild(site);
+            site.src = encodeURI('http://bslam/nodes/mtoolsaddr.php?nodeval='+node);
+            site.style.display = 'none';
+            site.id = 'nodeaddr';
+            nodeAddr = document.getElementById('nodeaddr').innerHTML;
+        }
+
+        function getSiteDataJQ(url){
+            $.ajax({
+                url: url,
+            })
+            .done(function(html) {
+                var content = document.createElement('div');
+                document.body.appendChild(content);
+                content.style.display = 'none';
+                content.id = 'getsitedata';
+                $("#getsitedata").append(html);
+            });
+        }
+
+        function getNodeAddrJQ(node){
+            $.ajax({
+                url: 'http://bslam/nodes/mtoolsaddr.php?nodeval='+node,
+            })
+            .done(function(html) {
+                nodeAddr = html;
+            });
+        }
     }
 }
 
@@ -1534,6 +1565,7 @@ if (document.getElementById('homepage-settings-popover')){
 var node = '';
 var cmts = '';
 var nodeSysId = '';
+var nodeAddr = '';
 
 if (formId == 'sn_customerservice_rac_escalation.do') {
     var userID = g_user.userID;
