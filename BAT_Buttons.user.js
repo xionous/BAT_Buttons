@@ -8,7 +8,7 @@
 // @include https://bmq.sjrb.ca/*
 // @include https://vsure.nms.shaw.ca/*
 // @author Matthew Streeter
-// @version 2.6.8
+// @version 2.6.9
 // @downloadURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @updateURL https://github.com/xionous/BAT_Buttons/raw/master/BAT_Buttons.user.js
 // @require https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -1512,7 +1512,7 @@ GM_config.init(
       id: 'GM_config',
       title: 'mTools Buttons Config',
       fields: fieldDefs,
-      css: '#GM_config .config_var { margin: 0 0 4px !important; float: left !important; }'+'#GM_config_section_0 { margin-top: 10px !important;}'+'#GM_config_section_1 { margin-top: 60px !important;}'+'#GM_config_section_2 { margin-top: 60px !important;}'+'#GM_config_buttons_holder { margin-top: 55px !important; }'+'#GM_config { background: #e6e8ea !important; }'+'#GM_config .saveclose_buttons { margin: 10px 5px 10px !important; border-radius: 5px !important;  }',
+      css: '#GM_config .config_var { margin: 0 0 4px 5px !important; float: left !important; border: 2px solid black !important; padding-left: 3px !important; border-radius: 5px !important; }'+'#GM_config_section_0 { margin-top: 10px !important;}'+'#GM_config_section_1 { margin-top: 60px !important;}'+'#GM_config_section_2 { margin-top: 60px !important;}'+'#GM_config_buttons_holder { margin-top: 55px !important; }'+'#GM_config { background: #e6e8ea !important; }'+'#GM_config .saveclose_buttons { margin: 10px 5px 10px !important; border-radius: 5px !important;  }'+'#GM_config .field_label { float: left !important; padding-top: 2.5px !important; }',
       events:
         {
             close: function() {
